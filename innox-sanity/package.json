@@ -1,0 +1,38 @@
+{
+  "name": "innox",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "license": "UNLICENSED",
+  "scripts": {
+    "typegen": "sanity schema extract --studio sanity.config.ts --output schema.json && sanity typegen generate --studio sanity.config.ts && cp sanity.types.ts ../types/sanity/schema.d.ts",
+    "start": "sanity schema extract --studio sanity.config.ts --output schema.json && sanity typegen generate --watch --studio sanity.config.ts && cp sanity.types.ts ../types/sanity/schema.d.ts & sanity start",
+    "dev": "sanity schema extract --studio sanity.config.ts --output schema.json && sanity typegen generate --watch --studio sanity.config.ts && cp sanity.types.ts ../types/sanity/schema.d.ts & sanity dev",
+    "build": "sanity schema extract --studio sanity.config.ts --output schema.json && sanity typegen generate --studio sanity.config.ts && cp sanity.types.ts ../types/sanity/schema.d.ts && sanity build",
+    "deploy": "sanity schema extract --studio sanity.config.ts --output schema.json && sanity typegen generate --studio sanity.config.ts && cp sanity.types.ts ../types/sanity/schema.d.ts && sanity deploy",
+    "deploy-graphql": "sanity schema extract --studio sanity.config.ts --output schema.json && sanity typegen generate --studio sanity.config.ts && cp sanity.types.ts ../types/sanity/schema.d.ts && sanity graphql deploy"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/vision": "^4.22.0",
+    "react": "^19.1",
+    "react-dom": "^19.1",
+    "sanity": "^4.22.0",
+    "styled-components": "^6.1.18"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^5.0.2",
+    "@types/react": "^19.1",
+    "eslint": "^9.28",
+    "prettier": "^3.5",
+    "typescript": "^5.8"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
+  }
+}

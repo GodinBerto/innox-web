@@ -1,0 +1,62 @@
+{
+  "name": "innox-website",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "dev": "next dev --turbopack -p 3002",
+    "build": "next build",
+    "start": "next start",
+    "prepare": "pnpm husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix --no-warn-ignored",
+    "format": "prettier --write .",
+    "validate": "pnpm lint && pnpm test:run && pnpm build",
+    "deploy": "cd innox-sanity && pnpm deploy",
+    "clean": "pnpm -r exec rm -rf dist .next node_modules .turbo"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@sanity/image-url": "^1.2.0",
+    "@splinetool/loader": "^1.10.22",
+    "@splinetool/react-spline": "^4.0.0",
+    "@types/three": "^0.178.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "groq": "^4.12.0",
+    "lucide-react": "^0.515.0",
+    "motion": "^12.18.1",
+    "next": "15.3.3",
+    "next-sanity": "^11.6.2",
+    "next-themes": "^0.4.6",
+    "radix-ui": "^1.4.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-intersection-observer": "^9.16.0",
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.152.2",
+    "use-debounce": "^10.0.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4",
+    "tw-animate-css": "^1.3.4",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "**/*.{js,ts,tsx}": [
+      "eslint --fix --no-warn-ignored"
+    ]
+  }
+}

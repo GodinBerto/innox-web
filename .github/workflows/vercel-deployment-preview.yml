@@ -1,0 +1,33 @@
+##!!!! Dont Touch Me Please, I'm dangerous
+
+name: Deploy Preview
+on:
+  pull_request:
+    branches: release
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Deploy to Vercel Preview
+      - uses: amondnet/vercel-action@v20
+        id: vercel
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+
+      # Post Preview URL as PR comment
+      - uses: marocchino/sticky-pull-request-comment@v2
+        if: success()
+        with:
+          header: preview
+          message: |
+            :white_check_mark: **Preview Deployment Successful!**
+            :globe_with_meridians: [Open Preview](${{ steps.vercel.outputs.preview-url }})

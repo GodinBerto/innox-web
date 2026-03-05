@@ -1,0 +1,22 @@
+export const SANI_TAGS = {
+  MENU: 'menu',
+  MENU_BY_SLUG: (slug: string) => `menu-${slug}`,
+  MENU_SLUGS: 'menu-slugs',
+  ABOUT_SECTION: 'about-section',
+  TESTIMONIALS: 'testimonials',
+  RESTAURANT_INFO: 'restaurant-info',
+  BRAND_LOGOS: 'brand-logos',
+  CHEFS_PICK: 'chefs-pick',
+  HERO_SLIDES: 'hero-slides',
+  SERVICE: 'service',
+  SERVICE_BY_SLUG: (slug: string) => `service-${slug}`,
+  SERVICE_SLUGS: 'service-slugs',
+  // New tags for module pages and data
+  HOMEPAGE: 'homepage',
+  MODULE_PAGES: 'module-pages',
+  MODULE_PAGE: 'module-page',
+  MODULE_PAGE_BY_SLUG: (slug: string) => `module-page-${slug}`,
+  FOOTER: 'footer',
+  FUNCTIONAL_MODULES: 'functional-modules',
+  MOVING_MODULES: 'moving-modules',
+};
