@@ -118,7 +118,7 @@ export default function BusinessSolutions() {
 
             return (
               <MotionWrapper key={solution.title} variant="slideUp">
-                <article className="group h-full p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#11356D]/40 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950/60">
+                <article className="group h-full p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#11356D]/40 hover:shadow-xl">
                   <div className="mb-5 flex items-center justify-between">
                     <div
                       className={`flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-md ${solution.iconBg}`}
