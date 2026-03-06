@@ -1,5 +1,6 @@
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import { OverlaySection } from '../shared/overlay-section';
+import { Scale } from 'lucide-react';
 
 const LegalBanner = () => {
   return (
@@ -8,12 +9,17 @@ const LegalBanner = () => {
         <OverlaySection
           imageSrc="/assets/images/legal-banner.png"
           heading="Stay Ahead of Every Case"
-          subheading="Manage your entire legal
-workflow in one secure,
-organized system."
+          subheading="Manage your entire legal workflow in one secure, organized system."
           linkText="View Legal Features"
           href="#"
           direction="right"
+          eyebrow="Legal Compliance"
+          icon={Scale}
+          featureTags={[
+            'Case Tracking',
+            'Document Security',
+            'Compliance Logs',
+          ]}
         />
       </MotionWrapper>
     </div>

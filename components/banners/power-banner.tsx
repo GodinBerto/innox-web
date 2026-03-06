@@ -1,5 +1,6 @@
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import { OverlaySection } from '../shared/overlay-section';
+import { Zap } from 'lucide-react';
 
 const PowerBanner = () => {
   return (
@@ -12,6 +13,13 @@ const PowerBanner = () => {
           linkText="View Power Modules"
           href="#"
           direction="right"
+          eyebrow="Power and Utilities"
+          icon={Zap}
+          featureTags={[
+            'Asset Monitoring',
+            'Live Meter Data',
+            'System Event Logs',
+          ]}
         />
       </MotionWrapper>
     </div>
