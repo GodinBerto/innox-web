@@ -24,10 +24,10 @@ import Streamline from '@/components/sections/streamline';
 
 export default function HomePage() {
   return (
-    <>
+    <div className="overflow-x-clip">
       <Hero />
       <ModulesCarousel />
-      <div className="space-y-4 md:space-y-12 mt-8 md:mt-16">
+      <div className="space-y-8 md:space-y-12 mt-8 md:mt-16">
         <BusinessSolutions />
         <Streamline />
         <ManagePeople />
@@ -49,6 +49,6 @@ export default function HomePage() {
         <FAQ faqs={faqs} />
         <DividerContent text="Book Demo" link="/demo" />
       </div>
-    </>
+    </div>
   );
 }
