@@ -69,11 +69,11 @@ export const TypewriterEffectSmooth = ({
   return (
     <div
       className={cn(
-        'block w-full max-w-5xl text-xs sm:text-base md:text-xl lg:text-3xl xl:text-6xl font-bold text-center',
+        'block w-full max-w-5xl leading-0.5 text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-center',
         className,
       )}
     >
-      <span className="dark:text-white text-black leading-16">
+      <span className="dark:text-white text-black leading-5">
         {staticDisplay}
       </span>
       <motion.span
@@ -83,7 +83,7 @@ export const TypewriterEffectSmooth = ({
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         className={cn(
-          'inline text-blue-500 bg-transparent! leading-16',
+          'inline text-blue-500 bg-transparent! leading-5',
           currentPhrase.className,
         )}
       >

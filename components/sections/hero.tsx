@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="">
           <Typography
             variant="subtitle"
-            className="max-w-2xl mx-auto my-2 text-2xl text-center relative z-10 px-6"
+            className="max-w-2xl mx-auto my-2 text-lg md:text-2xl text-center relative z-10 px-6"
           >
             Simplify your workflow and boost productivity with InnoX, the
             all-in-one platform for modern business automation.
@@ -30,7 +30,7 @@ const Hero = () => {
         <div className="w-full flex flex-row items-center justify-center gap-4">
           <Link
             href="/auth/sign-up"
-            className="px-8 py-3 text-sm font-semibold text-white transition-all duration-300 bg-orange-600 rounded-full shadow-lg hover:bg-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 dark:bg-orange-500 dark:hover:bg-orange-600 w-full sm:w-auto"
+            className="px-8 py-3 text-sm font-semibold text-white transition-all duration-300 bg-orange-600 rounded-full shadow-lg hover:bg-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 dark:bg-orange-500 dark:hover:bg-orange-600 w-fit"
           >
             Book a Demo
           </Link>
