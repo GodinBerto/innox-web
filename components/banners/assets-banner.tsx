@@ -1,6 +1,5 @@
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import { OverlaySection } from '../shared/overlay-section';
-import { Boxes } from 'lucide-react';
 
 const AssetsBanner = () => {
   return (
@@ -13,13 +12,13 @@ const AssetsBanner = () => {
           linkText="Explore Asset Module"
           href="#"
           direction="left"
-          eyebrow="Asset Management"
-          icon={Boxes}
-          featureTags={[
-            'Inventory Tracking',
-            'Maintenance',
-            'Lifecycle Visibility',
-          ]}
+          // eyebrow="Asset Management"
+          // icon={Boxes}
+          // featureTags={[
+          //   'Inventory Tracking',
+          //   'Maintenance',
+          //   'Lifecycle Visibility',
+          // ]}
         />
       </MotionWrapper>
     </div>

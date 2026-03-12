@@ -1,6 +1,5 @@
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import { OverlaySection } from '../shared/overlay-section';
-import { Users } from 'lucide-react';
 
 const HRBanner = () => {
   return (
@@ -13,9 +12,9 @@ const HRBanner = () => {
           linkText="See it in Action"
           href="#"
           direction="right"
-          eyebrow="Human Resource"
-          icon={Users}
-          featureTags={['Recruitment', 'Payroll', 'Performance']}
+          // eyebrow="Human Resource"
+          // icon={Users}
+          // featureTags={['Recruitment', 'Payroll', 'Performance']}
         />
       </MotionWrapper>
     </div>

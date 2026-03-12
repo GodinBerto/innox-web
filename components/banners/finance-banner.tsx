@@ -1,4 +1,3 @@
-import { Wallet } from 'lucide-react';
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import { OverlaySection } from '../shared/overlay-section';
 
@@ -13,9 +12,9 @@ const FinanceBanner = () => {
           linkText="See it in Action"
           href="#"
           direction="left"
-          eyebrow="Finance and Accounting"
-          icon={Wallet}
-          featureTags={['Budgeting', 'Payroll', 'Accounting Automation']}
+          // eyebrow="Finance and Accounting"
+          // icon={Wallet}
+          // featureTags={['Budgeting', 'Payroll', 'Accounting Automation']}
         />
       </MotionWrapper>
     </div>

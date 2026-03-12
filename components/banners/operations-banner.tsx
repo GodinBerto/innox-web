@@ -1,6 +1,5 @@
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import { OverlaySection } from '../shared/overlay-section';
-import { Workflow } from 'lucide-react';
 
 const OperationsBanner = () => {
   return (
@@ -13,13 +12,13 @@ const OperationsBanner = () => {
           linkText="Streamline Admin Workflows"
           href="#"
           direction="left"
-          eyebrow="Operations"
-          icon={Workflow}
-          featureTags={[
-            'Task Coordination',
-            'Meeting Workflows',
-            'Cross-Team Visibility',
-          ]}
+          // eyebrow="Operations"
+          // icon={Workflow}
+          // featureTags={[
+          //   'Task Coordination',
+          //   'Meeting Workflows',
+          //   'Cross-Team Visibility',
+          // ]}
         />
       </MotionWrapper>
     </div>
