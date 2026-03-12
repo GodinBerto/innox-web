@@ -24,10 +24,10 @@ const IndustrySection = ({
     <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 font-sans">
       {/* Header Section */}
       <div className="mb-12 max-w-2xl">
-        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-gray-300 mb-4">
           {data?.mainTitle || 'Find Your Industry'}
         </h2>
-        <p className="text-gray-600 leading-relaxed">
+        <p className="text-gray-600 leading-relaxed dark:text-gray-400">
           {data?.mainnDescription}
         </p>
       </div>
@@ -77,15 +77,11 @@ const IndustrySection = ({
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-gray-300 mb-6">
                 {currentItem.title}
               </h3>
-              <p className="text-md text-gray-600 leading-relaxed mb-8">
-                {currentItem.description} Lorem, ipsum dolor sit amet
-                consectetur adipisicing elit. Accusamus temporibus nesciunt
-                explicabo architecto dolorem optio repudiandae tenetur officiis
-                velit nihil commodi, unde repellat ipsam soluta praesentium
-                voluptatum. Neque, corrupti culpa!
+              <p className="text-md text-gray-600 leading-relaxed mb-8 dark:text-gray-400">
+                {currentItem.description}
               </p>
 
               <button className="bg-[#F06A2D] hover:bg-[#d95a20] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg transition-colors shadow-lg">

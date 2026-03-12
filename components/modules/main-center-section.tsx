@@ -132,13 +132,13 @@ const MainCenterSection = ({
         <MotionWrapper variant="slideLeft">
           <div className="max-w-3xl text-center px-6 ">
             {introTitle && (
-              <h1 className="mb-4 text-2xl sm:text-3xl md:text-5xl font-semibold text-gray-900">
+              <h1 className="mb-4 text-2xl sm:text-3xl md:text-5xl font-semibold text-gray-900 dark:text-white">
                 {introTitle}
               </h1>
             )}
             <Typography
               variant="paragraph"
-              className="text-base sm:text-lg md:text-xl leading-relaxed"
+              className="text-base sm:text-lg md:text-xl leading-relaxed dark:text-gray-300"
             >
               {introDescription ||
                 'Experience our streamlined vehicle management workflow. From initial assignments to comprehensive fuel audits, our system ensures every diamond in your fleet shines with operational excellence.'}

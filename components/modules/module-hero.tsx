@@ -13,21 +13,29 @@ const ModulesHero = ({ hero }: { hero: _IModulesPageHero }) => {
   return (
     <div className="min-h-[calc(100vh-50px)] lg:h-[calc(100vh-50px)] w-full rounded-md relative flex items-center justify-center overflow-hidden py-12 sm:py-16">
       <Image
-        src={'/assets/images/modules/hero.jpg'}
+        src="/assets/images/modules/hero.jpg"
         alt={hero.title}
         fill
-        className="absolute w-full h-full object-cover"
+        className="absolute w-full h-full object-cover dark:hidden"
         priority
       />
-      <div className="bg-white/80 w-full h-full absolute top-0"></div>
+      <Image
+        src="/assets/images/modules/dark-hero.jpg"
+        alt=""
+        aria-hidden
+        fill
+        className="absolute w-full h-full object-cover hidden dark:block"
+        priority
+      />
+      <div className="bg-white/80 dark:bg-black/60 w-full h-full absolute top-0"></div>
 
       <div className="container relative z-10 flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-8">
         {/* Left side - Text content */}
-        <div className="w-full lg:flex-1 items-start space-y-6 sm:space-y-8">
+        <div className="w-full lg:flex-1 items-center md:items-start space-y-6 sm:space-y-8">
           <MotionWrapper variant="slideRight">
             <Typography
               variant="span"
-              className="border border-orange-500 text-orange-500 font-semibold text-xs sm:text-sm bg-white px-3 py-1 rounded-full"
+              className="border border-orange-500 text-orange-500 font-semibold text-xs  bg-white dark:bg-black px-3 py-1 rounded-full"
             >
               {hero.slug.toUpperCase()}
             </Typography>
@@ -35,7 +43,7 @@ const ModulesHero = ({ hero }: { hero: _IModulesPageHero }) => {
           <MotionWrapper variant="slideRight">
             <Typography
               variant="title"
-              className="font-semibold text-center text-black lg:text-left max-w-[500px] text-3xl sm:text-4xl lg:text-5xl"
+              className="font-semibold text-center text-black lg:text-left max-w-[500px] text-3xl sm:text-4xl lg:text-6xl"
             >
               {hero.title ||
                 'InnoX Modules: Tailored Solutions for Every Department'}
@@ -44,7 +52,7 @@ const ModulesHero = ({ hero }: { hero: _IModulesPageHero }) => {
           <MotionWrapper variant="slideRight">
             <Typography
               variant="paragraph"
-              className="text-black/50 font-semibold max-w-[440px] text-center lg:text-left"
+              className="text-black/50 max-w-[440px] text-center lg:text-left"
             >
               {hero.description}
             </Typography>
