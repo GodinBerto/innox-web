@@ -43,14 +43,14 @@ function getIconComponent(name?: string) {
 
 const DiamondTimeline = ({ data }: { data: _ITest[] }) => {
   return (
-    <div className="w-full py-28 md:py-44 overflow-x-auto">
+    <div className="w-full py-28 md:py-44 flex justify-center">
       {/* Container for the whole timeline */}
-      <div className="relative flex items-center justify-center min-w-max px-6 md:px-20">
+      <div className="relative flex items-center justify-center w-max">
         {/* THE CENTER LINE */}
         {/* <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gray-600/30 -translate-y-1/2 z-0" /> */}
 
         {/* DIAMOND ITEMS */}
-        <div className="flex -space-x-4 md:-space-x-6">
+        <div className="flex items-center justify-center">
           {data.slice(0, 10).map((item, idx) => {
             const isEven = idx % 2 === 0;
             const bg = PALETTE[idx % PALETTE.length];
@@ -146,17 +146,20 @@ const MainCenterSection = ({
           </div>
         </MotionWrapper>
 
-        <MotionWrapper variant="slideRight" className="w-full">
+        <MotionWrapper
+          variant="slideRight"
+          className="w-full origin-center scale-[0.72] sm:scale-[0.85] md:scale-100 flex items-center justify-center"
+        >
           <DiamondTimeline data={data} />
         </MotionWrapper>
       </div>
 
       {/* BACKGROUND DECORATIONS (as requested) */}
-      <div className="absolute top-10 left-0 opacity-40 pointer-events-none">
+      <div className="absolute top-10 left-0 opacity-20 pointer-events-none">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/images/circleoflines2.png" alt="" className="w-48" />
       </div>
-      <div className="absolute bottom-10 right-0 opacity-40 pointer-events-none">
+      <div className="absolute bottom-10 right-0 opacity-20 pointer-events-none">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/images/squares.png" alt="" className="w-48" />
       </div>
