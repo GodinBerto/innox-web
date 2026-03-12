@@ -122,7 +122,7 @@ const ModulesPage = async ({ params }: _TPageProps<{ module: string }>) => {
       name: content.title?.trim() || `Content ${idx + 1}`,
       slug: content._key || slugify(content.title || `content-${idx + 1}`),
       description: content.description?.trim() || '',
-      link: `/modules/${module}`,
+      link: content.link || `/modules/${module}`,
       image: content.image,
     }));
 

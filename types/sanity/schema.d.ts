@@ -178,6 +178,7 @@ export type ModulePageContent = {
         crop?: SanityImageCrop
         _type: 'image'
       }
+      link?: string
       _type: 'contentItem'
       _key: string
     }>

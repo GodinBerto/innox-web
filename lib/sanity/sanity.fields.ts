@@ -45,6 +45,7 @@ export const modulePageContentFields = groq`
       _key,
       title,
       description,
+      link,
       image {
         asset->{
           _id,
