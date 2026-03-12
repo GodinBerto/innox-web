@@ -71,9 +71,14 @@ export default async function ModulePage({
       })) ?? [];
 
   const trimmedSlug = subModuleData.slug?.replace(/-/g, ' ');
+  const heroBackgroundImage =
+    subModuleData.hero?.backgroundImage?.asset?.url ??
+    '/assets/images/pages/hr.png';
+  const heroDarkBackgroundImage = '/assets/images/modules/dark-hero.jpg';
 
   const heroData: _ISubModulesPageHero = {
-    backgroundImageUrl: '/assets/images/pages/hr.png',
+    backgroundImageUrl: heroBackgroundImage,
+    darkBackgroundImageUrl: heroDarkBackgroundImage,
     slug: trimmedSlug || '',
     title:
       subModuleData.hero?.title ?? subModuleData.name ?? unslugify(submodule),

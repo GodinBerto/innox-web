@@ -11,7 +11,7 @@ const HeroCard = memo(
     return (
       <div
         className={cn(
-          'flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-xl hover:translate-x-0.5 transition-all duration-300 absolute shadow-neutral-200 dark:shadow-neutral-800',
+          'flex flex-col items-center justify-center p-4 bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-xl hover:translate-x-0.5 transition-all duration-300 absolute shadow-neutral-200 dark:shadow-neutral-800',
           classname,
         )}
       >
@@ -26,18 +26,28 @@ const ModulesHero = ({ data }: { data: _ISubModulesPageHero }) => {
   return (
     <div className="h-screen w-full rounded-md relative flex flex-row items-center justify-center">
       <Image
-        src={'/assets/images/pages/hr.png'}
+        src={data.backgroundImageUrl}
         alt={data.title.trim().slice(0, 10)}
         fill
-        className="absolute w-full h-full object-cover"
+        className="absolute w-full h-full object-cover dark:hidden"
         priority
       />
+      <Image
+        src={data.darkBackgroundImageUrl || data.backgroundImageUrl}
+        alt=""
+        aria-hidden
+        fill
+        className="absolute w-full h-full object-cover hidden dark:block"
+        priority
+      />
+      <div className="absolute inset-0 bg-white/80 dark:bg-black/60" />
+
       <div className="container relative z-10 -mt-20 flex">
         <div className="flex-1 items-start space-y-8">
           <MotionWrapper variant="slideRight">
             <Typography
               variant="span"
-              className="border border-orange-500 text-orange-500 font-semibold text-sm bg-white px-3 py-1 rounded-full"
+              className="border border-orange-500 text-orange-500 font-semibold text-sm bg-white dark:bg-black px-3 py-1 rounded-full"
             >
               {data.slug.toUpperCase()}
             </Typography>
@@ -45,7 +55,7 @@ const ModulesHero = ({ data }: { data: _ISubModulesPageHero }) => {
           <MotionWrapper variant="slideRight">
             <Typography
               variant="title"
-              className="font-semibold text-center text-black sm:text-left max-w-[500px]"
+              className="font-semibold text-center text-black dark:text-white sm:text-left max-w-[500px]"
             >
               {data.title}
             </Typography>
@@ -53,7 +63,7 @@ const ModulesHero = ({ data }: { data: _ISubModulesPageHero }) => {
           <MotionWrapper variant="slideRight">
             <Typography
               variant="paragraph"
-              className=" text-black/50 font-semibold max-w-[440px]"
+              className="text-black/50 dark:text-gray-300 font-semibold max-w-[440px]"
             >
               {data.description}
             </Typography>
