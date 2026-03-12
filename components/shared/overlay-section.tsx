@@ -29,7 +29,7 @@ export const OverlaySection = ({
   return (
     <section
       className={cn(
-        'relative flex w-full flex-col lg:flex-row items-center justify-between overflow-hidden bg-cover bg-center h-[400px] lg:h-[600px]',
+        'relative flex w-full flex-col lg:flex-row items-center justify-between overflow-hidden bg-cover bg-center h-[400px] lg:h-[500px]',
         className,
       )}
       style={{
@@ -42,8 +42,8 @@ export const OverlaySection = ({
         className={cn(
           'absolute inset-0 w-full h-full lg:inset-y-0 flex items-center',
           direction === 'left'
-            ? 'bg-gradient-to-r from-black via-black/70 to-transparent  lg:left-0 justify-start'
-            : 'bg-gradient-to-r from-transparent via-black/70 to-black lg:right-0 justify-end',
+            ? 'bg-linear-to-r from-black via-black/70 to-transparent  lg:left-0 justify-start'
+            : 'bg-linear-to-r from-transparent via-black/70 to-black lg:right-0 justify-end',
         )}
       >
         <div
@@ -55,18 +55,15 @@ export const OverlaySection = ({
           <div
             className={cn(
               'items-start',
-              direction === 'left' ? 'max-w-[450px]' : 'max-w-[300px]',
+              direction === 'left' ? 'max-w-[500px]' : 'max-w-[350px]',
               contentClassName,
             )}
           >
-            <Typography
-              variant="title"
-              className="m-0 p-0 font-bold text-white text-left"
-            >
+            <h1 className="m-0 p-0 font-semibold text-white text-left text-5xl">
               {heading}
-            </Typography>
+            </h1>
             <Typography
-              variant="subheading"
+              variant="paragraph"
               className={cn('my-12 text-white', subheadingClassName)}
             >
               {subheading}
