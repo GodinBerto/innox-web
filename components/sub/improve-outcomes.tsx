@@ -123,27 +123,27 @@ export function ImproveOutcomes({
   const improveImageSrc = improve?.image?.asset?.url || '/hand-chart.png';
 
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-background py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 md:mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4 md:mb-6">
               {heading}
             </h2>
 
             {improve?.description && (
-              <p className="text-gray-600 mb-6 md:mb-8 max-w-xl">
+              <p className="text-muted-foreground mb-6 md:mb-8 max-w-xl">
                 {improve.description}
               </p>
             )}
 
             {activeCard && (
-              <div className="bg-gray-50 rounded-xl p-6 flex items-start gap-6 max-w-xl">
+              <div className="bg-muted/40 border border-border rounded-xl p-6 flex items-start gap-6 max-w-xl">
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900 mb-2">
+                  <h4 className="font-semibold text-foreground mb-2">
                     {activeCard.title}
                   </h4>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-muted-foreground mb-4">
                     {activeCard.description}
                   </p>
 
@@ -155,7 +155,7 @@ export function ImproveOutcomes({
             )}
           </div>
 
-          <div className="relative w-full h-60 sm:h-[280px] rounded-xl overflow-hidden bg-gray-100">
+          <div className="relative w-full h-60 sm:h-[280px] rounded-xl overflow-hidden bg-muted">
             <Image
               src={improveImageSrc}
               alt="Performance illustration"
@@ -178,18 +178,20 @@ export function ImproveOutcomes({
                 onMouseEnter={() => setActiveIndex(idx)}
                 className={`text-left rounded-xl p-6 shadow-sm border transition ${
                   isActive
-                    ? 'bg-orange-50/40 border-orange-300'
-                    : 'bg-white border-gray-100 hover:border-orange-200'
+                    ? 'bg-orange-50/40 border-orange-300 dark:bg-orange-500/10 dark:border-orange-500/40'
+                    : 'bg-background border-border hover:border-orange-200 dark:hover:border-orange-500/40'
                 }`}
               >
                 <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center mb-4">
                   <Icon size={20} />
                 </div>
 
-                <h4 className="font-semibold text-gray-900 mb-2">
+                <h4 className="font-semibold text-foreground mb-2">
                   {item.title}
                 </h4>
-                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
               </button>
             );
           })}

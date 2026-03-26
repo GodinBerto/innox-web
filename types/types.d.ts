@@ -1,6 +1,7 @@
 interface _ISlideData {
   title?: string;
   button?: string;
+  href?: string;
   src: string;
 }
 

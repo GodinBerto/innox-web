@@ -74,11 +74,11 @@ const SideSectionBlock = ({
 
       <div className="w-full md:w-1/2 flex flex-col gap-4">
         {section.span && (
-          <span className="inline-flex w-fit px-4 py-1.5 rounded-full bg-orange-500/10 text-orange-600 text-xs sm:text-sm font-semibold">
+          <span className="inline-flex w-fit px-4 py-1.5 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs sm:text-sm font-semibold">
             {section.span}
           </span>
         )}
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground">
           {section.title || 'Section'}
         </h3>
         {section.description && (

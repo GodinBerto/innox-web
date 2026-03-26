@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { useCallback, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -15,6 +16,10 @@ export default function Carousel({ slides }: CarouselProps) {
 
   const paginate = useCallback(
     (newDirection: number) => {
+      if (!slides.length) {
+        return;
+      }
+
       setCurrent(([prev]) => {
         const newIndex = (prev + newDirection + slides.length) % slides.length;
         return [newIndex, newDirection];
@@ -24,13 +29,27 @@ export default function Carousel({ slides }: CarouselProps) {
   );
 
   useEffect(() => {
+    if (!slides.length) {
+      return;
+    }
+
     timeoutRef.current = setTimeout(() => paginate(1), 5000);
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [current, paginate]);
+  }, [current, paginate, slides.length]);
+
+  if (!slides.length) {
+    return null;
+  }
+
+  const activeIndex =
+    ((current % slides.length) + slides.length) % slides.length;
+  const previousIndex = (activeIndex - 1 + slides.length) % slides.length;
+  const nextIndex = (activeIndex + 1) % slides.length;
+  const activeSlide = slides[activeIndex];
 
   const variants = {
     enter: (dir: number) => ({
@@ -55,7 +74,7 @@ export default function Carousel({ slides }: CarouselProps) {
     <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden flex items-center justify-center">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
-          key={current}
+          key={activeIndex}
           custom={direction}
           variants={variants}
           initial="enter"
@@ -64,22 +83,27 @@ export default function Carousel({ slides }: CarouselProps) {
           transition={{ duration: 0.6 }}
           className="absolute rounded-2xl shadow-2xl w-[80%] md:w-[60%] lg:w-[60%] h-[90%] z-10 overflow-hidden"
         >
-          <img
-            src={slides[current].src}
-            className="w-full h-full object-cover"
-          />
-          {(slides[current].title || slides[current].button) && (
+          <img src={activeSlide.src} className="w-full h-full object-cover" />
+          {(activeSlide.title || activeSlide.button) && (
             <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white text-center px-4">
-              {slides[current].title && (
+              {activeSlide.title && (
                 <h2 className="text-2xl md:text-4xl font-bold mb-4">
-                  {slides[current].title}
+                  {activeSlide.title}
                 </h2>
               )}
-              {slides[current].button && (
-                <button className="bg-white text-black px-4 py-2 rounded-full text-sm md:text-base font-medium hover:bg-gray-200 transition">
-                  {slides[current].button}
-                </button>
-              )}
+              {activeSlide.button &&
+                (activeSlide.href ? (
+                  <Link
+                    href={activeSlide.href}
+                    className="bg-white text-black px-4 py-2 rounded-full text-sm md:text-base font-medium hover:bg-gray-200 transition"
+                  >
+                    {activeSlide.button}
+                  </Link>
+                ) : (
+                  <span className="bg-white text-black px-4 py-2 rounded-full text-sm md:text-base font-medium">
+                    {activeSlide.button}
+                  </span>
+                ))}
             </div>
           )}
         </motion.div>
@@ -87,22 +111,24 @@ export default function Carousel({ slides }: CarouselProps) {
 
       {/* Overlaying side previews */}
       <img
-        src={slides[(current - 1 + slides.length) % slides.length].src}
+        src={slides[previousIndex].src}
         className="absolute -left-14 w-[70%] h-[95%] object-cover rounded-xl opacity-80 scale-90 z-0 shadow-lg"
       />
       <img
-        src={slides[(current + 1) % slides.length].src}
+        src={slides[nextIndex].src}
         className="absolute -right-14 w-[70%] h-[95%] object-cover rounded-xl opacity-80 scale-90 z-0 shadow-lg"
       />
 
       {/* Controls */}
       <button
+        type="button"
         onClick={() => paginate(-1)}
         className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow"
       >
         <ArrowLeft />
       </button>
       <button
+        type="button"
         onClick={() => paginate(1)}
         className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow"
       >

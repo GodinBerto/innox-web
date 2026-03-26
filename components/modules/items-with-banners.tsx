@@ -52,7 +52,7 @@ const ItemCard = ({ item }: { item: _IItem }) => {
   return (
     <article className="flex flex-col md:flex-row gap-8 md:gap-12 items-center w-full py-8 md:py-10">
       <div className="w-full md:w-1/2 gap-4 flex flex-col">
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground">
           {item.name}
         </h3>
         <p className="text-sm text-muted-foreground mt-1">
@@ -101,7 +101,7 @@ export const BannerCard = ({
     resolveImageUrl(image) || '/assets/images/modules/sub-banner.jpg';
 
   return (
-    <div className="w-full flex items-center gap-6 bg-white">
+    <div className="w-full flex items-center gap-6 bg-background">
       <div
         className="w-full min-h-[360px] h-[65vh] md:h-[400px] overflow-hidden shrink-0 bg-cover bg-no-repeat bg-center relative"
         style={{
