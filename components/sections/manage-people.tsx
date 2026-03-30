@@ -1,93 +1,38 @@
-'use client';
-
+import { urlForImage } from '@/lib/sanity';
+import type { ManagePeople as ManagePeopleType } from '@/types/sanity/schema';
 import Image from 'next/image';
 import StickyScroll from '../ui/sticky-scroll';
 
-const contentData = [
-  {
-    id: 1,
-    title: 'Onboarding and Recruitment',
-    description:
-      'Manage job postings, applications, and onboarding tasks with ease.',
+const ManagePeople = ({
+  mainTitle = 'Manage People and Processes with Ease',
+  mainDescription = 'From recruitment to retirement, InnoX helps HR teams streamline employee data',
+  content = [],
+}: Partial<ManagePeopleType>) => {
+  const sectionContent = content.map((item, index) => ({
+    id: index + 1,
+    title: item.title || '',
+    description: item.description || '',
     content: (
       <Image
         height={400}
         width={640}
-        src="https://images.unsplash.com/photo-1494806812796-244fe51b774d?q=80&w=3534&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Onboarding"
+        src={
+          item.image
+            ? (urlForImage(item.image).width(640).height(400).url() as string)
+            : '/assets/images/pages/modules-bg.png'
+        }
+        alt={item.title || 'Manage people item'}
         className="rounded-md object-cover"
       />
     ),
-  },
-  {
-    id: 2,
-    title: 'Employee Records',
-    description:
-      'Maintain secure, searchable staff profiles with role-based access.',
-    content: (
-      <Image
-        src="https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Employee Records"
-        height={400}
-        width={640}
-        className="rounded-md object-cover"
-      />
-    ),
-  },
-  {
-    id: 3,
-    title: 'Onboarding and Recruitment',
-    description:
-      'Manage job postings, applications, and onboarding tasks with ease.',
-    content: (
-      <Image
-        src="https://images.unsplash.com/photo-1494806812796-244fe51b774d?q=80&w=3534&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Onboarding"
-        height={400}
-        width={640}
-        className="rounded-md object-cover"
-      />
-    ),
-  },
-  {
-    id: 4,
-    title: 'Employee Records',
-    description:
-      'Maintain secure, searchable staff profiles with role-based access.',
-    content: (
-      <Image
-        src="https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Employee Records"
-        height={400}
-        width={640}
-        className="rounded-md object-cover"
-      />
-    ),
-  },
-  {
-    id: 5,
-    title: 'Attendance and Time Tracking',
-    description:
-      'Monitor punctuality, working hours, and leave with real-time visibility.',
-    content: (
-      <Image
-        src="https://images.unsplash.com/photo-1590041794748-2d8eb73a571c?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Attendance"
-        height={400}
-        width={640}
-        className="rounded-md object-cover"
-      />
-    ),
-  },
-];
+  }));
 
-const ManagePeople = () => {
   return (
     <section className="w-full">
       <StickyScroll
-        mainTitle="Manage People and Processes with Ease"
-        mainDescription="From recruitment to retirement, InnoX helps HR teams streamline employee data"
-        content={contentData}
+        mainTitle={mainTitle}
+        mainDescription={mainDescription}
+        content={sectionContent}
         position="left"
       />
     </section>

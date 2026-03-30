@@ -21,8 +21,37 @@ import DividerContent from '@/components/sections/divider-content';
 import FAQ from '@/components/sections/faq';
 import { faqs } from '@/data';
 import Streamline from '@/components/sections/streamline';
+import { getHomePage } from '@/lib/sanity';
+import type { HomePage as HomePageType } from '@/types/sanity/schema';
 
-export default function HomePage() {
+type HomePageSection = NonNullable<HomePageType['sections']>[number];
+
+function getSectionByType<TType extends HomePageSection['_type']>(
+  sections: HomePageSection[],
+  type: TType,
+): Extract<HomePageSection, { _type: TType }> | undefined {
+  return sections.find(
+    (section): section is Extract<HomePageSection, { _type: TType }> =>
+      section._type === type,
+  );
+}
+
+export default async function HomePage() {
+  const homePage = await getHomePage();
+  const sections: HomePageSection[] = homePage.sections ?? [];
+  const managePeopleSection = getSectionByType(sections, 'managePeople');
+  const manageAssetsSection = getSectionByType(sections, 'manageAssets');
+  const documentManagerSection = getSectionByType(sections, 'documentManager');
+  const financeAccountingSection = getSectionByType(
+    sections,
+    'financeAccounting',
+  );
+  const powerAssetsSection = getSectionByType(sections, 'powerAssets');
+  const businessAdministrationSection = getSectionByType(
+    sections,
+    'businessAdministration',
+  );
+
   return (
     <div className="overflow-x-clip">
       <Hero />
@@ -30,17 +59,17 @@ export default function HomePage() {
       <div className="space-y-8 md:space-y-12 mt-8 md:mt-16">
         <BusinessSolutions />
         <Streamline />
-        <ManagePeople />
+        <ManagePeople {...(managePeopleSection ?? {})} />
         <HRBanner />
-        <ManageAssets />
+        <ManageAssets {...(manageAssetsSection ?? {})} />
         <AssetsBanner />
-        <DocumentManager />
+        <DocumentManager {...(documentManagerSection ?? {})} />
         <LegalBanner />
-        <FinanceAccounting />
+        <FinanceAccounting {...(financeAccountingSection ?? {})} />
         <FinanceBanner />
-        <PowerAssets />
+        <PowerAssets {...(powerAssetsSection ?? {})} />
         <PowerBanner />
-        <BusinessAdministration />
+        <BusinessAdministration {...(businessAdministrationSection ?? {})} />
         <OperationsBanner />
         <QuoteBox />
         <VisualizedIllustration />

@@ -8,10 +8,17 @@ const StickyScroll = ({
   mainTitle,
   mainDescription,
 }: StickyScroll) => {
-  const [activeId, setActiveId] = useState(content[0].id);
+  const [activeId, setActiveId] = useState<number | null>(
+    content[0]?.id ?? null,
+  );
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
+    if (!content.length) {
+      setActiveId(null);
+      return;
+    }
+
     const handleScroll = () => {
       const centerY = window.innerHeight / 2;
       let closestId = content[0].id;
@@ -39,7 +46,10 @@ const StickyScroll = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, [content]);
 
-  const activeImage = content.find((item) => item.id === activeId)?.content;
+  const activeImage =
+    activeId === null
+      ? null
+      : content.find((item) => item.id === activeId)?.content;
   const mediaColumnOrderClass =
     position === 'left' ? 'lg:order-1' : 'lg:order-2';
   const contentColumnOrderClass =
