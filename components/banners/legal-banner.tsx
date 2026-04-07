@@ -10,7 +10,7 @@ const LegalBanner = () => {
           heading="Stay Ahead of Every Case"
           subheading="Manage your entire legal workflow in one secure, organized system."
           linkText="View Legal Features"
-          href="#"
+          href="/modules/legal-management"
           direction="right"
           // eyebrow="Legal Compliance"
           // icon={Scale}

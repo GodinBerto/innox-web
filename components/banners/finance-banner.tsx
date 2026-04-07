@@ -10,7 +10,7 @@ const FinanceBanner = () => {
           heading="Take Control of Your Business Finances"
           subheading="Automate budgeting, payroll, and accounting processes to gain full visibility into your organization's financial health."
           linkText="See it in Action"
-          href="#"
+          href="/modules/financials-and-accounting"
           direction="left"
           // eyebrow="Finance and Accounting"
           // icon={Wallet}

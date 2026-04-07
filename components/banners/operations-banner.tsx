@@ -10,7 +10,7 @@ const OperationsBanner = () => {
           heading="Simplify Operations"
           subheading="Coordinate tasks and meetings across teams with connected tools that reduce clutter and boost efficiency"
           linkText="Streamline Admin Workflows"
-          href="#"
+          href="/modules/incident-management-system"
           direction="left"
           // eyebrow="Operations"
           // icon={Workflow}

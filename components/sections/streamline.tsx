@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 const highlightPoints = [
   'Automate repetitive approvals and handoffs',
@@ -68,13 +69,15 @@ export default function Streamline() {
             </div>
 
             <div className="flex justify-center pt-2 lg:justify-start">
-              <Button
-                size="lg"
-                className="h-11 rounded-full bg-[#EF6411] px-8 text-white hover:bg-[#d9570e]"
-              >
-                Get Started
-                <ArrowUpRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link href={'/Modules'}>
+                <Button
+                  size="lg"
+                  className="h-11 rounded-full bg-[#EF6411] px-8 text-white hover:bg-[#d9570e]"
+                >
+                  Get Started
+                  <ArrowUpRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </MotionWrapper>
 

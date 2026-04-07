@@ -10,7 +10,7 @@ const HRBanner = () => {
           heading="Smarter HR Starts Here"
           subheading="Automate recruitment, payroll and performance tracking, all in one place."
           linkText="See it in Action"
-          href="#"
+          href="/modules/human-resource-management-system-hrms"
           direction="right"
           // eyebrow="Human Resource"
           // icon={Users}

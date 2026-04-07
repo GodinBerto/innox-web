@@ -24,7 +24,7 @@ export async function ModulesCarousel() {
   const slideData = slides.map((slide) => ({
     title: slide.title,
     button: slide.buttonText || 'Explore',
-    href: slide.link,
+    href: slide.link || '/modules',
     src: slide.imageUrl
       ? (urlForImage(slide.imageUrl).width(1200).height(600).url() as string)
       : '/assets/images/pages/modules-bg.png',

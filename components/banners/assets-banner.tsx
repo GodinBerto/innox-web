@@ -10,7 +10,7 @@ const AssetsBanner = () => {
           heading="Easily Track and Maintain Every Asset"
           subheading="From inventory tracking to preventive maintenance, manage all your assets seamlessly in one integrated platform."
           linkText="Explore Asset Module"
-          href="#"
+          href="/modules/assets-management"
           direction="left"
           // eyebrow="Asset Management"
           // icon={Boxes}

@@ -10,7 +10,7 @@ const PowerBanner = () => {
           heading="Safer Power Operations"
           subheading="Manage assets, log system events, and capture live meter data on platform"
           linkText="View Power Modules"
-          href="#"
+          href="/modules/power-applications"
           direction="right"
           // eyebrow="Power and Utilities"
           // icon={Zap}
