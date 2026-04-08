@@ -11,7 +11,7 @@ const HeroCard = memo(
     return (
       <div
         className={cn(
-          'flex flex-col items-center justify-center p-4 bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-xl hover:translate-x-0.5 transition-all duration-300 absolute shadow-neutral-200 dark:shadow-neutral-800',
+          'absolute rounded-2xl border border-white/70 bg-white/95 p-3 text-gray-900 shadow-lg shadow-black/5 backdrop-blur-sm transition-all duration-300 dark:border-neutral-700 dark:bg-neutral-900/95 dark:text-gray-100 dark:shadow-black/30 sm:p-4',
           classname,
         )}
       >
@@ -22,14 +22,18 @@ const HeroCard = memo(
 );
 
 HeroCard.displayName = 'HeroCard';
+
 const ModulesHero = ({ data }: { data: _ISubModulesPageHero }) => {
+  const primaryFunctions = data.dashboardFunctions.slice(0, 3);
+  const secondaryFunctions = data.dashboardFunctions.slice(3);
+
   return (
-    <div className="h-screen w-full rounded-md relative flex flex-row items-center justify-center">
+    <section className="relative flex min-h-[calc(100vh-72px)] w-full items-center justify-center overflow-hidden py-14 sm:py-16 lg:min-h-[calc(100vh-50px)] lg:py-20">
       <Image
         src={data.backgroundImageUrl}
         alt={data.title.trim().slice(0, 10)}
         fill
-        className="absolute w-full h-full object-cover dark:hidden"
+        className="absolute inset-0 h-full w-full object-cover dark:hidden"
         priority
       />
       <Image
@@ -37,141 +41,145 @@ const ModulesHero = ({ data }: { data: _ISubModulesPageHero }) => {
         alt=""
         aria-hidden
         fill
-        className="absolute w-full h-full object-cover hidden dark:block"
+        className="absolute inset-0 hidden h-full w-full object-cover dark:block"
         priority
       />
-      <div className="absolute inset-0 bg-white/80 dark:bg-black/60" />
+      <div className="absolute inset-0 bg-white/85 dark:bg-black/65" />
 
-      <div className="container relative z-10 -mt-20 flex">
-        <div className="flex-1 items-start space-y-8">
+      <div className="container relative z-10 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,531px)] lg:gap-10">
+        <div className="order-2 space-y-6 text-center sm:space-y-8 lg:order-1 lg:text-left">
           <MotionWrapper variant="slideRight">
             <Typography
               variant="span"
-              className="border border-orange-500 text-orange-500 font-semibold text-sm bg-white dark:bg-black px-3 py-1 rounded-full"
+              className="inline-flex rounded-full border border-orange-500 bg-white px-3 py-1 text-xs font-semibold text-orange-500 dark:bg-black"
             >
               {data.slug.toUpperCase()}
             </Typography>
           </MotionWrapper>
+
           <MotionWrapper variant="slideRight">
             <Typography
               variant="title"
-              className="font-semibold text-center text-black dark:text-white sm:text-left max-w-[500px]"
+              className="mx-auto max-w-[560px] text-center text-3xl font-semibold text-black dark:text-white sm:text-4xl lg:mx-0 lg:text-left lg:text-6xl"
             >
               {data.title}
             </Typography>
           </MotionWrapper>
+
           <MotionWrapper variant="slideRight">
             <Typography
               variant="paragraph"
-              className="text-black/50 dark:text-gray-300 font-semibold max-w-[440px]"
+              className="mx-auto max-w-[520px] text-center font-semibold text-black/55 dark:text-gray-300 lg:mx-0 lg:text-left line-clamp-4"
             >
               {data.description}
             </Typography>
           </MotionWrapper>
+
           {data.buttonText && data.buttonLink && (
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
               <MotionWrapper variant="slideRight">
                 <Link
                   href={data.buttonLink}
-                  className="px-8 py-3 text-sm font-semibold text-white transition-all duration-300 bg-black rounded-full shadow-lg hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 dark:bg-orange-500 dark:hover:bg-orange-600 w-full sm:w-auto"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-black px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 dark:bg-orange-500 dark:hover:bg-orange-600 sm:w-auto"
                 >
                   Get Started
-                </Link>
-              </MotionWrapper>
-              <MotionWrapper variant="slideRight">
-                <Link
-                  href={data.buttonLink}
-                  className="px-8 py-3 text-sm font-semibold text-white transition-all duration-300 bg-orange-600 rounded-full shadow-lg hover:bg-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 dark:bg-orange-500 dark:hover:bg-orange-600 w-full sm:w-auto"
-                >
-                  {data.buttonText}
                 </Link>
               </MotionWrapper>
             </div>
           )}
         </div>
-        <div className="flex-1 relative">
-          <MotionWrapper variant="slideLeft">
-            <div
-              className="rounded-md shadow-sm relative"
-              style={{
-                width: 531,
-                height: 391,
-              }}
-            >
-              <Image
-                src={'/assets/images/dashboards/hrm.png'}
-                alt={data.title.trim().slice(0, 10)}
-                width={531}
-                height={391}
-                className="absolute object-cover bg-no-repeat"
-              />
-              <MotionWrapper variant="fadeIn">
-                <HeroCard classname="-bottom-10 -left-20 items-start">
-                  {data.dashboardFunctions.slice(0, 3).map((func) => (
-                    <div key={func.content} className="flex items-center gap-2">
-                      {func.iconUrl && (
-                        <DynamicIcon
-                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                          name={func.iconUrl as any}
-                          className="h-4 w-4 text-blue-600"
-                        />
-                      )}
-                      <Typography
-                        variant="paragraph"
-                        className="text-left font-semibold p-0"
-                      >
-                        {func.content}
-                      </Typography>
+
+        <div className="order-1 lg:flex w-full justify-center lg:order-2 lg:justify-end hidden">
+          <MotionWrapper variant="slideLeft" className="w-full max-w-[531px]">
+            <div className="relative mx-auto aspect-531/391 w-full max-w-[531px]">
+              <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/50 shadow-2xl shadow-black/10 dark:border-neutral-800 dark:shadow-black/40">
+                <Image
+                  src="/assets/images/dashboards/hrm.png"
+                  alt={data.title.trim().slice(0, 10)}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {primaryFunctions.length > 0 && (
+                <MotionWrapper variant="fadeIn">
+                  <HeroCard classname="-bottom-8 left-2 w-[min(78%,260px)] sm:-bottom-10 sm:-left-8">
+                    <div className="space-y-2">
+                      {primaryFunctions.map((func) => (
+                        <div
+                          key={func.content}
+                          className="flex items-center gap-2"
+                        >
+                          {func.iconUrl && (
+                            <DynamicIcon
+                              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                              name={func.iconUrl as any}
+                              className="h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400"
+                            />
+                          )}
+                          <Typography
+                            variant="paragraph"
+                            className="p-0 text-left text-sm font-semibold leading-6"
+                          >
+                            {func.content}
+                          </Typography>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </HeroCard>
-              </MotionWrapper>
+                  </HeroCard>
+                </MotionWrapper>
+              )}
+
               <MotionWrapper variant="fadeIn">
-                <HeroCard classname="-bottom-4 -right-10 w-32">
+                <HeroCard classname="-right-1 bottom-2 w-28 text-left sm:-right-8 sm:-bottom-4 sm:w-32">
                   <Typography
                     variant="subtitle"
-                    className="max-w-2xl mx-auto m-0 p-0 text-left relative z-10 text-[#E02475] font-bold"
+                    className="m-0 p-0 text-left font-bold text-[#E02475]"
                   >
                     {data.dashboardStat.value}
                   </Typography>
                   <Typography
                     variant="paragraph"
-                    className="text-left font-semibold p-0"
+                    className="p-0 text-left text-sm font-semibold leading-5"
                   >
                     {data.dashboardStat.description}
                   </Typography>
                 </HeroCard>
               </MotionWrapper>
 
-              <MotionWrapper variant="fadeIn">
-                <HeroCard classname="-top-18 -right-10 items-start">
-                  {data.dashboardFunctions.slice(3).map((func) => (
-                    <div
-                      key={func.content}
-                      className="flex justify-start items-center gap-2"
-                    >
-                      {func.iconUrl && (
-                        <DynamicIcon
-                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                          name={func.iconUrl as any}
-                          className="h-4 w-4 text-blue-600"
-                        />
-                      )}
-                      <Typography
-                        variant="paragraph"
-                        className="text-left font-semibold p-0"
-                      >
-                        {func.content}
-                      </Typography>
+              {secondaryFunctions.length > 0 && (
+                <MotionWrapper variant="fadeIn">
+                  <HeroCard classname="-top-6 right-2 w-[min(72%,240px)] sm:-top-12 sm:-right-8">
+                    <div className="space-y-2">
+                      {secondaryFunctions.map((func) => (
+                        <div
+                          key={func.content}
+                          className="flex items-center gap-2"
+                        >
+                          {func.iconUrl && (
+                            <DynamicIcon
+                              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                              name={func.iconUrl as any}
+                              className="h-4 w-4 shrink-0 text-blue-600 dark:text-blue-400"
+                            />
+                          )}
+                          <Typography
+                            variant="paragraph"
+                            className="p-0 text-left text-sm font-semibold leading-6"
+                          >
+                            {func.content}
+                          </Typography>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </HeroCard>
-              </MotionWrapper>
+                  </HeroCard>
+                </MotionWrapper>
+              )}
             </div>
           </MotionWrapper>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -131,7 +131,7 @@ const ModulesHero = ({
                               <Link
                                 key={subModule.href}
                                 href={subModule.href}
-                                className="group rounded-2xl border border-border bg-card px-5 py-4 transition-all duration-200 hover:border-orange-500/40 hover:bg-orange-500/[0.03] dark:hover:bg-orange-500/[0.08]"
+                                className="group rounded-2xl border border-border bg-card px-5 py-4 transition-all duration-200 hover:border-orange-500/40 hover:bg-orange-500/3 dark:hover:bg-orange-500/8"
                               >
                                 <div className="flex items-start justify-between gap-3">
                                   <div className="space-y-2">

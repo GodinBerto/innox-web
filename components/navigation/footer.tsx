@@ -160,7 +160,7 @@ function getGroupLinkKey(link: FooterGroupLink, index: number) {
   return link._key ?? `${link.label ?? 'link'}-${link.href ?? index}`;
 }
 
-function FooterMark() {
+export function FooterMark() {
   return (
     <div aria-hidden className="relative h-8 w-9">
       <span className="absolute left-0 top-4 h-3 w-2.5 -skew-x-18 rounded-[2px] bg-primary" />

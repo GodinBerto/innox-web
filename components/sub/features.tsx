@@ -84,9 +84,16 @@ function getIconComponent(iconName?: string): LucideIcon {
 
 export function Features({
   functionalFeatures,
+  heading,
 }: {
   functionalFeatures?: FunctionalFeatures;
+  heading?: string;
 }) {
+  const normalizedHeading = heading?.trim();
+  const featureHeading = normalizedHeading
+    ? `${normalizedHeading.charAt(0).toUpperCase()}${normalizedHeading.slice(1)}`
+    : 'Our Performance Management Software';
+
   const mappedFeatures: FeatureCard[] =
     (functionalFeatures ?? [])
       .filter((item) => item?.title?.trim() || item?.content?.trim())
@@ -108,7 +115,7 @@ export function Features({
             Capabilities
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Features Of Inova Performance
+            Features Of {featureHeading}
           </h2>
           <p className="text-muted-foreground text-lg">
             Everything you need to manage performance effectively in one
@@ -117,7 +124,7 @@ export function Features({
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature) => {
+          {features.slice(0, 8).map((feature) => {
             const Icon = getIconComponent(feature.icon);
 
             return (
@@ -131,7 +138,7 @@ export function Features({
                 <h3 className="text-lg font-semibold text-foreground mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm line-clamp-4">
                   {feature.description}
                 </p>
               </div>

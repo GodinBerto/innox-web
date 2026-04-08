@@ -141,9 +141,12 @@ export default async function ModulePage({
         />
       )}
 
-      <Features functionalFeatures={featureCards} />
+      <Features
+        functionalFeatures={featureCards}
+        heading={trimmedSlug || 'this section'}
+      />
 
-      <ResponsiveSection />
+      <ResponsiveSection heading={trimmedSlug || 'this section'} />
     </div>
   );
 }

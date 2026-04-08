@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import { Monitor, Tablet, Smartphone } from 'lucide-react';
 
-export function ResponsiveSection() {
+export function ResponsiveSection({ heading }: { heading?: string }) {
+  const normalizedHeading = heading?.trim();
+  const featureHeading = normalizedHeading
+    ? `${normalizedHeading.charAt(0)}${normalizedHeading.slice(1)}`
+    : 'Our Performance Management Software';
   return (
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
@@ -13,9 +17,8 @@ export function ResponsiveSection() {
             Responsive For Both Desktop and Mobile
           </h2>
           <p className="text-muted-foreground text-lg">
-            Access your performance management tools from anywhere, on any
-            device. Our platform adapts seamlessly to desktop, tablet, and
-            mobile screens.
+            Access your {featureHeading} from anywhere, on any device. Our
+            platform adapts seamlessly to desktop, tablet, and mobile screens.
           </p>
         </div>
 
@@ -29,16 +32,16 @@ export function ResponsiveSection() {
           />
 
           {/* Device indicators */}
-          <div className="flex justify-center gap-8 mt-12">
-            <div className="flex items-center gap-3 bg-background rounded-full px-6 py-3 shadow-lg border border-border">
+          <div className="flex justify-center gap-3 lg:gap-8 mt-12">
+            <div className="flex items-center gap-1 bg-background rounded-full px-4 py-3 shadow-lg border border-border text-sm">
               <Monitor className="w-5 h-5 text-orange-500" />
               <span className="font-medium text-foreground">Desktop</span>
             </div>
-            <div className="flex items-center gap-3 bg-background rounded-full px-6 py-3 shadow-lg border border-border">
+            <div className="flex items-center gap-1 bg-background rounded-full px-4 py-3 shadow-lg border border-border text-sm">
               <Tablet className="w-5 h-5 text-orange-500" />
               <span className="font-medium text-foreground">Tablet</span>
             </div>
-            <div className="flex items-center gap-3 bg-background rounded-full px-6 py-3 shadow-lg border border-border">
+            <div className="flex items-center gap-1 bg-background rounded-full px-4 py-3 shadow-lg border border-border text-sm">
               <Smartphone className="w-5 h-5 text-orange-500" />
               <span className="font-medium text-foreground">Mobile</span>
             </div>

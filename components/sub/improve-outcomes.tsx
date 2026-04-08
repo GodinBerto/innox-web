@@ -146,21 +146,17 @@ export function ImproveOutcomes({
                   <p className="text-sm text-muted-foreground mb-4">
                     {activeCard.description}
                   </p>
-
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition">
-                    Try it Out
-                  </button>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="relative w-full h-60 sm:h-[280px] rounded-xl overflow-hidden bg-muted">
+          <div className="relative w-full h-60 sm:h-[400px] rounded-xl overflow-hidden bg-muted">
             <Image
               src={improveImageSrc}
               alt="Performance illustration"
               fill
-              className="object-cover"
+              className="object-cover h-full w-full rounded-xl"
             />
           </div>
         </div>

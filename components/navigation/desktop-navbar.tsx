@@ -1,12 +1,12 @@
 import { cn } from '@/utils';
 import { motion } from 'motion/react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import React, { use, useState } from 'react';
 import { Typography } from '../ui/typography';
 import { usePathname } from 'next/navigation';
 import NavbarContext from '@/utils/contexts/navbar.context';
+import { FooterMark } from './footer';
 
 interface NavBodyProps {
   children: React.ReactNode;
@@ -113,13 +113,13 @@ export const NavbarLogo = () => {
       href="/"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <Image
-        src="https://assets.aceternity.com/logo-dark.png"
-        alt="logo"
-        width={30}
-        height={30}
-      />
-      <Typography variant="span">Innox</Typography>
+      <div className="">
+        <FooterMark />
+      </div>
+      <span className="text-xl font-semibold tracking-[-0.04em]">
+        <span>Inno</span>
+        <span className="text-orange-500">X</span>
+      </span>
     </Link>
   );
 };
