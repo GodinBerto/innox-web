@@ -11,17 +11,43 @@ export default defineType({
       type: 'string',
       initialValue: 'Site Footer',
     }),
+    defineField({
+      name: 'brandPrimary',
+      title: 'Brand Primary Text',
+      type: 'string',
+      initialValue: 'Inno',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'brandSecondary',
+      title: 'Brand Secondary Text',
+      type: 'string',
+      initialValue: 'X',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'brandLink',
+      title: 'Brand Link',
+      type: 'string',
+      initialValue: '/',
+    }),
 
     defineField({
       name: 'quickLinks',
-      title: 'Quick Links Columns',
+      title: 'Navigation Groups',
       type: 'array',
       of: [
         {
           type: 'object',
           name: 'quickLinkColumn',
-          title: 'Quick Link Column',
+          title: 'Navigation Group',
           fields: [
+            defineField({
+              name: 'title',
+              title: 'Group Title',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
             defineField({
               name: 'links',
               title: 'Links',
@@ -50,6 +76,7 @@ export default defineType({
           ],
         },
       ],
+      validation: (Rule) => Rule.required().min(1),
     }),
 
     defineField({
@@ -65,7 +92,17 @@ export default defineType({
               name: 'icon',
               title: 'Icon Name',
               type: 'string',
-              description: 'Icon identifier (e.g., "linkedin", "instagram", "facebook", "twitter", "youtube")',
+              description:
+                'Icon identifier used in the footer social buttons.',
+              options: {
+                list: [
+                  { title: 'Instagram', value: 'instagram' },
+                  { title: 'YouTube', value: 'youtube' },
+                  { title: 'Twitter / X', value: 'twitter' },
+                  { title: 'Facebook', value: 'facebook' },
+                  { title: 'LinkedIn', value: 'linkedin' },
+                ],
+              },
               validation: (Rule) => Rule.required(),
             }),
             defineField({
@@ -88,15 +125,32 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'legalDisclaimer',
+      title: 'Legal Disclaimer',
+      type: 'text',
+      rows: 4,
+    }),
+    defineField({
+      name: 'riskWarning',
+      title: 'Risk Warning',
+      type: 'text',
+      rows: 4,
+    }),
   ],
 
   preview: {
     select: {
       title: 'title',
+      brandPrimary: 'brandPrimary',
+      brandSecondary: 'brandSecondary',
     },
-    prepare({ title }) {
+    prepare({ title, brandPrimary, brandSecondary }) {
       return {
-        title: title || 'Footer Data',
+        title:
+          title ||
+          `${brandPrimary || ''}${brandSecondary || ''} Footer`.trim() ||
+          'Footer Data',
       }
     },
   },

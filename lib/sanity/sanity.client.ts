@@ -15,6 +15,7 @@ import {
 import { createClient, type SanityClient } from 'next-sanity';
 import {
   FunctionalModulesList,
+  FooterData,
   HomePage,
   ModulePageContent,
 } from '@/types/sanity/schema';
@@ -129,10 +130,10 @@ export async function getAllModulePageContents(): Promise<ModulePageContent[]> {
 }
 
 // Fetch footer data
-export async function getFooterData() {
+export async function getFooterData(): Promise<FooterData | null> {
   const client = getClient();
 
-  return await client.fetch(
+  return await client.fetch<FooterData | null>(
     footerDataQuery,
     {},
     {

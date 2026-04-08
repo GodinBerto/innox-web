@@ -95,7 +95,11 @@ export type FooterData = {
   _updatedAt: string
   _rev: string
   title?: string
+  brandPrimary?: string
+  brandSecondary?: string
+  brandLink?: string
   quickLinks?: Array<{
+    title?: string
     links?: Array<{
       label?: string
       href?: string
@@ -106,12 +110,14 @@ export type FooterData = {
     _key: string
   }>
   socialLinks?: Array<{
-    icon?: string
+    icon?: 'instagram' | 'youtube' | 'twitter' | 'facebook' | 'linkedin'
     label?: string
     href?: string
     _type: 'socialLink'
     _key: string
   }>
+  legalDisclaimer?: string
+  riskWarning?: string
 }
 
 export type ModulePageContent = {

@@ -97,7 +97,11 @@ export const modulePageContentFields = groq`
 export const footerDataFields = groq`
   _id,
   title,
+  brandPrimary,
+  brandSecondary,
+  brandLink,
   quickLinks[] {
+    title,
     links[] {
       label,
       href
@@ -107,7 +111,9 @@ export const footerDataFields = groq`
     icon,
     label,
     href
-  }
+  },
+  legalDisclaimer,
+  riskWarning
 `;
 
 // Functional Modules List fields
