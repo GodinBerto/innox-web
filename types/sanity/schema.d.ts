@@ -251,6 +251,7 @@ export type DividerContent = {
 export type FaqSection = {
   _type: 'faqSection'
   heading?: string
+  description?: string
   faqs?: Array<{
     question?: string
     answer?: string

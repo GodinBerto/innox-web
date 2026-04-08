@@ -5,11 +5,11 @@ const testimonial =
 
 export default function QuoteBox() {
   return (
-    <section className="overflow-hidden bg-white px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
+    <section className="overflow-hidden bg-background px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
       <div className="container">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl font-semibold leading-[1.15] tracking-[-0.03em] text-black sm:text-4xl lg:text-[3.25rem]">
+            <h2 className="text-3xl font-semibold leading-[1.15] tracking-[-0.03em] text-foreground sm:text-4xl lg:text-[3.25rem]">
               Professional&apos;s Perspectives on
               <span className="block">Our Products Brilliance</span>
             </h2>
@@ -24,7 +24,15 @@ export default function QuoteBox() {
                   width={36}
                   height={50}
                   aria-hidden
-                  className="h-10 w-auto opacity-20 grayscale sm:h-12"
+                  className="h-10 w-auto opacity-20 grayscale dark:hidden sm:h-12"
+                />
+                <Image
+                  src="/assets/images/quote-dark.png"
+                  alt=""
+                  width={36}
+                  height={50}
+                  aria-hidden
+                  className="hidden h-10 w-auto opacity-25 dark:block sm:h-12"
                 />
                 <Image
                   src="/assets/images/quote.png"
@@ -32,24 +40,32 @@ export default function QuoteBox() {
                   width={36}
                   height={50}
                   aria-hidden
-                  className="h-10 w-auto opacity-20 grayscale sm:h-12"
+                  className="h-10 w-auto opacity-20 grayscale dark:hidden sm:h-12"
+                />
+                <Image
+                  src="/assets/images/quote-dark.png"
+                  alt=""
+                  width={36}
+                  height={50}
+                  aria-hidden
+                  className="hidden h-10 w-auto opacity-25 dark:block sm:h-12"
                 />
               </div>
 
-              <blockquote className="text-base leading-[2.1] text-black sm:text-lg">
+              <blockquote className="text-base leading-[2.1] text-foreground sm:text-lg">
                 {testimonial}
               </blockquote>
 
               <div className="mt-10">
-                <p className="text-xl font-semibold text-black">Jeffrey</p>
-                <p className="mt-2 text-sm text-[#7c7c84]">
+                <p className="text-xl font-semibold text-foreground">Jeffrey</p>
+                <p className="mt-2 text-sm text-muted-foreground">
                   <a
                     href="https://www.youtube.com/@Lytbox_Academy"
-                    className="text-[#18A0FB]"
+                    className="text-[#18A0FB] dark:text-blue-300"
                   >
                     Jeffrey @ Lytbox
                   </a>
-                  <span className="px-2 text-[#c1c1c7]">|</span>
+                  <span className="px-2 text-border">|</span>
                   Educator
                 </p>
               </div>
@@ -100,15 +116,15 @@ export default function QuoteBox() {
 
                 <span
                   aria-hidden
-                  className="absolute bottom-[4%] left-[16%] h-7 w-28 rotate-[139deg] rounded-full bg-white sm:h-8 sm:w-36"
+                  className="absolute bottom-[4%] left-[16%] h-7 w-28 rotate-[139deg] rounded-full bg-background sm:h-8 sm:w-36"
                 />
                 <span
                   aria-hidden
-                  className="absolute bottom-[20%] left-[4%] h-5 w-20 rotate-[139deg] rounded-full bg-white sm:h-6 sm:w-24"
+                  className="absolute bottom-[20%] left-[4%] h-5 w-20 rotate-[139deg] rounded-full bg-background sm:h-6 sm:w-24"
                 />
                 <span
                   aria-hidden
-                  className="absolute right-[20%] top-[20%] h-5 w-16 rotate-[139deg] rounded-full bg-white sm:h-6 sm:w-20"
+                  className="absolute right-[20%] top-[20%] h-5 w-16 rotate-[139deg] rounded-full bg-background sm:h-6 sm:w-20"
                 />
               </div>
             </div>

@@ -19,7 +19,6 @@ import { MovingModules } from '@/components/sections/moving-modules';
 import OnePlatformBanner from '@/components/banners/one-platform-banner';
 import DividerContent from '@/components/sections/divider-content';
 import FAQ from '@/components/sections/faq';
-import { faqs } from '@/data';
 import Streamline from '@/components/sections/streamline';
 import { getHomePage } from '@/lib/sanity';
 import type { HomePage as HomePageType } from '@/types/sanity/schema';
@@ -51,6 +50,7 @@ export default async function HomePage() {
     sections,
     'businessAdministration',
   );
+  const faqSection = getSectionByType(sections, 'faqSection');
 
   return (
     <div className="overflow-x-clip">
@@ -75,7 +75,7 @@ export default async function HomePage() {
         <VisualizedIllustration />
         <MovingModules />
         <OnePlatformBanner />
-        <FAQ faqs={faqs} />
+        <FAQ {...(faqSection ?? {})} />
         <DividerContent text="Book Demo" link="/demo" />
       </div>
     </div>
