@@ -62,16 +62,10 @@ const ItemCard = ({ item }: { item: _IItem }) => {
         <div className="mt-3">
           <Link
             href={item?.link || '#'}
-            className="text-sm text-primary underline"
+            className="px-4 py-2 rounded-md bg-orange-500 text-white"
           >
             Learn more
           </Link>
-        </div>
-
-        <div className="mt-3">
-          <button className="px-4 py-2 rounded-md bg-orange-500 text-white">
-            Enquire more
-          </button>
         </div>
       </div>
 
@@ -122,9 +116,11 @@ export const BannerCard = ({
               {content}
             </p>
             <div className="mt-3">
-              <button className="px-4 py-2 rounded-full bg-orange-600 text-white">
-                Learn More
-              </button>
+              <Link href={'/contact'}>
+                <button className="px-4 py-2 rounded-full bg-orange-600 text-white cursor-pointer hover:bg-orange-700 transition-colors duration-300">
+                  Get Started
+                </button>
+              </Link>
             </div>
           </div>
         </div>

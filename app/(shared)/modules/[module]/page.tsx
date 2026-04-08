@@ -101,6 +101,24 @@ const ModulesPage = async ({ params }: _TPageProps<{ module: string }>) => {
     dashboards: heroDashboards,
   };
 
+  const heroSubModules = resolvedSubModules
+    .filter(
+      (
+        subModule,
+      ): subModule is {
+        name: string;
+        slug: string;
+        icon?: string;
+        description?: string;
+      } => Boolean(subModule.name && subModule.slug),
+    )
+    .map((subModule) => ({
+      name: subModule.name,
+      slug: subModule.slug,
+      description: subModule.description,
+      href: `/modules/${module}/${subModule.slug}`,
+    }));
+
   const mainBannerImageSrc =
     (
       modulePageData?.mainModuleBanner?.image as
@@ -140,7 +158,7 @@ const ModulesPage = async ({ params }: _TPageProps<{ module: string }>) => {
     <div className="space-y-12 md:space-y-16">
       {/* Module Hero/Banner */}
       <DashboardSliderProvider length={heroData.dashboards?.length || 0}>
-        <ModulesHero hero={heroData} />
+        <ModulesHero hero={heroData} subModules={heroSubModules} />
       </DashboardSliderProvider>
 
       <MainCenterSection

@@ -131,7 +131,7 @@ export default async function ModulesIndexPage() {
                       fill
                       className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
                     <div className="absolute left-4 top-4 w-10 h-10 rounded-lg bg-white/95 text-orange-600 flex items-center justify-center">
                       <Icon className="w-5 h-5" />
                     </div>
