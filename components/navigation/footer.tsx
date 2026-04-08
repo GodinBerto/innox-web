@@ -146,6 +146,20 @@ function isExternalHref(href: string) {
   return /^(https?:\/\/|mailto:|tel:)/.test(href);
 }
 
+function getSocialLinkKey(link: FooterSocialLink, index: number) {
+  return (
+    link._key ?? `${link.icon ?? 'social'}-${link.label ?? 'item'}-${index}`
+  );
+}
+
+function getGroupKey(group: FooterGroup, index: number) {
+  return group._key ?? `${group.title ?? 'group'}-${index}`;
+}
+
+function getGroupLinkKey(link: FooterGroupLink, index: number) {
+  return link._key ?? `${link.label ?? 'link'}-${link.href ?? index}`;
+}
+
 function FooterMark() {
   return (
     <div aria-hidden className="relative h-8 w-9">
@@ -244,7 +258,7 @@ export default async function Footer() {
                 <FooterMark />
                 <span className="text-3xl font-semibold tracking-[-0.04em]">
                   <span>{brandPrimary}</span>
-                  <span className="text-[#cf66c4]">{brandSecondary}</span>
+                  <span className="text-orange-500">{brandSecondary}</span>
                 </span>
               </a>
             ) : (
@@ -256,28 +270,34 @@ export default async function Footer() {
                 <FooterMark />
                 <span className="text-3xl font-semibold tracking-[-0.04em]">
                   <span>{brandPrimary}</span>
-                  <span className="text-[#cf66c4]">{brandSecondary}</span>
+                  <span className="text-orange-500">{brandSecondary}</span>
                 </span>
               </Link>
             )}
 
             <div className="flex flex-wrap items-center gap-3">
-              {socialLinks.map((link) => (
-                <FooterSocialButton key={link._key} link={link} />
+              {socialLinks.map((link, index) => (
+                <FooterSocialButton
+                  key={getSocialLinkKey(link, index)}
+                  link={link}
+                />
               ))}
             </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {quickLinks.map((group) => (
-              <div key={group._key} className="space-y-4">
-                <h3 className="text-sm font-semibold text-[#cf66c4] dark:text-[#e38ccf]">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {quickLinks.map((group, groupIndex) => (
+              <div key={getGroupKey(group, groupIndex)} className="space-y-4 ">
+                <h3 className="text-sm font-semibold text-orange-500 dark:text-orange-400">
                   {group.title}
                 </h3>
 
-                <div className="space-y-2.5">
-                  {group.links?.map((link) => (
-                    <FooterNavLink key={link._key} link={link} />
+                <div className=" flex flex-col">
+                  {group.links?.map((link, linkIndex) => (
+                    <FooterNavLink
+                      key={getGroupLinkKey(link, linkIndex)}
+                      link={link}
+                    />
                   ))}
                 </div>
               </div>
