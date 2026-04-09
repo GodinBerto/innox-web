@@ -291,6 +291,12 @@ export interface SubModuleMainCenter {
 
 export interface SubModulePageContent {
   _id: string;
+  imageUrl?: {
+    asset?: {
+      _id?: string;
+      url?: string;
+    };
+  };
   name?: string;
   slug?: string;
   icon?: string;

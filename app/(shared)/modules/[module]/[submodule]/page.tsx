@@ -75,6 +75,7 @@ export default async function ModulePage({
     subModuleData.hero?.backgroundImage?.asset?.url ??
     '/assets/images/pages/hr.png';
   const heroDarkBackgroundImage = '/assets/images/modules/dark-hero.jpg';
+  const heroDashboardImage = subModuleData.imageUrl?.asset?.url ?? '';
 
   const heroData: _ISubModulesPageHero = {
     backgroundImageUrl: heroBackgroundImage,
@@ -93,6 +94,7 @@ export default async function ModulePage({
         subModuleData.hero?.dashboardStat?.description ??
         'Real-time process visibility',
     },
+    imageUrl: heroDashboardImage,
   };
 
   const featureCards: SubModule['functionalFeatures'] = (

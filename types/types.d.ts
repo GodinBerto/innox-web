@@ -60,6 +60,7 @@ interface _IModuleDashboardStat {
 }
 
 interface _IPageHero {
+  imageUrl?: string;
   backgroundImageUrl: string;
   darkBackgroundImageUrl?: string;
   slug: string;

@@ -23,6 +23,8 @@ const HeroCard = memo(
 HeroCard.displayName = 'HeroCard';
 
 const ModulesHero = ({ data }: { data: _ISubModulesPageHero }) => {
+  const heroImage = data.imageUrl || '/assets/images/dashboards/hrm.png';
+
   return (
     <section className="relative flex min-h-[calc(100vh-72px)] w-full items-center justify-center overflow-hidden py-14 sm:py-16 lg:min-h-[calc(100vh-50px)] lg:py-20">
       <Image
@@ -86,14 +88,14 @@ const ModulesHero = ({ data }: { data: _ISubModulesPageHero }) => {
         </div>
 
         <div className="order-1 lg:flex w-full justify-center lg:order-2 lg:justify-end hidden">
-          <MotionWrapper variant="slideLeft" className="w-full max-w-[531px]">
-            <div className="relative mx-auto aspect-531/391 w-full max-w-[531px]">
+          <MotionWrapper variant="slideLeft" className="w-full max-w-[601px]">
+            <div className="relative mx-auto aspect-531/391 w-full max-w-[601px]">
               <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/50 shadow-2xl shadow-black/10 dark:border-neutral-800 dark:shadow-black/40">
                 <Image
-                  src="/assets/images/dashboards/hrm.png"
+                  src={heroImage}
                   alt={data.title.trim().slice(0, 10)}
                   fill
-                  className="object-cover"
+                  className="object-cover h-[500px]"
                 />
               </div>
             </div>

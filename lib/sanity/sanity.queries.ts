@@ -74,6 +74,12 @@ export const subModulePageContentBySlugsQuery = groq`
     name,
     "slug": slug.current,
     icon,
+    imageUrl {
+      asset->{
+        _id,
+        url
+      }
+    },
     functionalFeatures,
     improve {
       title,
