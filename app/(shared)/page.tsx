@@ -51,6 +51,7 @@ export default async function HomePage() {
     'businessAdministration',
   );
   const faqSection = getSectionByType(sections, 'faqSection');
+  const movingModulesSection = getSectionByType(sections, 'movingModules');
 
   return (
     <div className="overflow-x-clip">
@@ -73,7 +74,11 @@ export default async function HomePage() {
         <OperationsBanner />
         <QuoteBox />
         <VisualizedIllustration />
-        <MovingModules />
+        <MovingModules
+          title={movingModulesSection?.title ?? 'Modules'}
+          groupA={movingModulesSection?.modulesGroupA ?? []}
+          groupB={movingModulesSection?.modulesGroupB ?? []}
+        />
         <OnePlatformBanner />
         <FAQ {...(faqSection ?? {})} />
         <DividerContent text="Book Demo" link="/demo" />
