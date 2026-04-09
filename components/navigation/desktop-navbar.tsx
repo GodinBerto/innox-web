@@ -117,7 +117,7 @@ export const NavbarLogo = () => {
         <FooterMark />
       </div>
       <span className="text-xl font-semibold tracking-[-0.04em]">
-        <span>Inno</span>
+        <span className="text-black dark:text-white">Inno</span>
         <span className="text-orange-500">X</span>
       </span>
     </Link>

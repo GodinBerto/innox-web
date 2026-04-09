@@ -65,6 +65,16 @@ export default function IndustrySection({
     }
   }, [activeIndex, items.length]);
 
+  useEffect(() => {
+    if (items.length <= 1) return;
+
+    const interval = window.setInterval(() => {
+      setActiveIndex((currentIndex) => (currentIndex + 1) % items.length);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [items.length]);
+
   const currentItem = items[activeIndex] ?? items[0];
 
   if (!items.length) return null;
@@ -91,22 +101,22 @@ export default function IndustrySection({
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
+    <section className="mx-auto container px-4 py-12 sm:px-6 md:py-16">
       <div className="sm:p-8 lg:p-10">
         <div className="grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
           <div className="space-y-6">
-            <p className="inline-flex rounded-full border border-slate-200 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600">
+            <p className="inline-flex rounded-full border border-slate-200 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600 dark:border-slate-800 dark:bg-slate-950/40 dark:text-slate-300">
               Industries
             </p>
 
             <div className="space-y-4">
-              <h2 className="max-w-xl text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl lg:text-[2.65rem]">
+              <h2 className="max-w-xl text-3xl font-semibold leading-tight text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-[2.65rem]">
                 {lead ? `${lead} ` : ''}
-                <span className="text-[#0F73D8]">{accent}</span>
+                <span className="text-orange-500">{accent}</span>
               </h2>
 
               {data?.mainnDescription && (
-                <p className="max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
+                <p className="max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
                   {data.mainnDescription}
                 </p>
               )}
@@ -115,20 +125,20 @@ export default function IndustrySection({
             <div className="flex flex-col sm:flex-row sm:items-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F73D8] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0B63BC]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0B63BC]"
               >
                 Book a Free Consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 border-t border-slate-200 pt-6">
+            <div className="grid grid-cols-3 gap-3 border-t border-slate-200 pt-6 dark:border-slate-800">
               {stats.map((stat) => (
                 <div key={stat.label} className="space-y-1">
-                  <p className="text-2xl font-semibold text-slate-900 sm:text-3xl">
+                  <p className="text-2xl font-semibold text-slate-900 dark:text-slate-50 sm:text-3xl">
                     {stat.value}
                   </p>
-                  <p className="text-xs leading-5 text-slate-500 sm:text-sm">
+                  <p className="text-xs leading-5 text-slate-500 dark:text-slate-400 sm:text-sm">
                     {stat.label}
                   </p>
                 </div>
@@ -136,7 +146,7 @@ export default function IndustrySection({
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-100">
+          <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-900">
             <div className="aspect-16/10">
               <AnimatePresence mode="wait">
                 <motion.img
@@ -156,9 +166,9 @@ export default function IndustrySection({
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 border-t border-slate-200 pt-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <div className="mt-10 grid gap-6 border-t border-slate-200 pt-8 dark:border-slate-800 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
               Industry Spotlight
             </p>
 
@@ -169,7 +179,7 @@ export default function IndustrySection({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25 }}
-                className="text-2xl font-semibold leading-tight text-slate-900 sm:text-3xl"
+                className="text-2xl font-semibold leading-tight text-slate-900 dark:text-slate-50 sm:text-3xl"
               >
                 {currentItem?.title || 'Industry overview'}
               </motion.h3>
@@ -183,7 +193,7 @@ export default function IndustrySection({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25 }}
-              className="max-w-2xl text-sm leading-7 text-slate-600 sm:text-base"
+              className="max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base"
             >
               {currentItem?.description ||
                 data?.mainnDescription ||
@@ -203,18 +213,21 @@ export default function IndustrySection({
             return (
               <button
                 key={item._key || `${item.title}-${idx}`}
-                style={{ backgroundImage: `url("${logoSrc}")` }}
+                style={
+                  logoSrc ? { backgroundImage: `url("${logoSrc}")` } : undefined
+                }
                 type="button"
                 onClick={() => setActiveIndex(idx)}
-                className={`rounded-2xl border text-left transition-colors relative ${
+                aria-pressed={isActive}
+                className={`relative min-h-36 overflow-hidden rounded-2xl border bg-cover bg-center bg-no-repeat text-left transition-colors ${
                   isActive
-                    ? 'border-[#0F73D8] bg-slate-50'
-                    : 'border-slate-200 bg-white hover:border-slate-300'
+                    ? 'border-orange-500 bg-slate-50 dark:border-[#4EA3FF] dark:bg-slate-900/80'
+                    : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-800 dark:bg-slate-950/80 dark:hover:border-slate-700'
                 }`}
               >
-                <div className="bg-black/50 absolute top-0 w-full h-full rounded-2xl"></div>
-                <div className="mt-3 flex items-end gap-2 h-30 p-3 relative">
-                  {/* <Icon className="mt-0.5 h-4 w-4 shrink-0 text-[#0F73D8]" /> */}
+                <div className="absolute inset-0 rounded-2xl bg-black/50 dark:bg-slate-950/65" />
+                <div className="relative mt-3 flex h-30 items-end gap-2 p-3">
+                  {/* <Icon className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" /> */}
                   <span className="text-sm font-medium leading-6 text-slate-100">
                     {item.title}
                   </span>
