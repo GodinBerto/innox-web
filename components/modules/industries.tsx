@@ -127,7 +127,7 @@ export default function IndustrySection({
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0B63BC]"
               >
-                Book a Free Consultation
+                Book a demo
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

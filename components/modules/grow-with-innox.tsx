@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function GrowWithInnoX() {
   return (
     <section
@@ -18,9 +20,12 @@ export default function GrowWithInnoX() {
             designed to drive growth and innovation. Discover how InnoX can
             transform your operations and elevate your success.
           </p>
-          <button className="bg-orange-500 text-white-900 font-semibold px-6 py-3 rounded-full hover:bg-orange-600 transition">
-            Learn More
-          </button>
+          <Link
+            href={'/contact'}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0B63BC]"
+          >
+            Get Started
+          </Link>
         </div>
       </div>
     </section>
