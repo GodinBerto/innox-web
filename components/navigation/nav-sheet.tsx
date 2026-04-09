@@ -19,22 +19,11 @@ import { cn } from '@/utils';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { NavbarSheetTheme } from '../shared/toggle-theme';
 import NavbarContext from '@/utils/contexts/navbar.context';
-import { slugify } from '@/utils/functions';
 import { getModulesWithSubModules } from '@/lib/sanity';
-import type { NavModule } from '@/lib/sanity';
-
-interface ISheetSubModule {
-  name: string;
-  link: string;
-  icon?: string;
-}
-
-interface ISheetModule {
-  name: string;
-  link: string;
-  icon?: string;
-  contents: ISheetSubModule[];
-}
+import {
+  mapSanityModules,
+  type NavigationModule,
+} from './modules-navigation.utils';
 
 const navSheetPrimaryLinks: Record<MenuKeys, string | null> = {
   Modules: '/modules',
@@ -42,56 +31,7 @@ const navSheetPrimaryLinks: Record<MenuKeys, string | null> = {
   'About Us': '/about-us',
 };
 
-const normalizeIconName = (icon?: string): string | undefined => {
-  if (!icon) return undefined;
-
-  return icon.replace(/^lucide-/, '').trim();
-};
-
-const resolveSlug = (slug?: string, name?: string): string => {
-  const resolvedSlug = slug?.trim().replace(/^\/+/, '');
-
-  if (resolvedSlug) return resolvedSlug;
-
-  return slugify(name ?? '');
-};
-
-const mapSanityModules = (
-  modulesWithSubModules: NavModule[],
-): ISheetModule[] => {
-  const mappedModules: ISheetModule[] = [];
-
-  for (const sanityModule of modulesWithSubModules) {
-    const moduleName = sanityModule.name?.trim();
-
-    if (!moduleName) continue;
-
-    const subModules: ISheetSubModule[] = [];
-
-    for (const subModule of sanityModule.subModules ?? []) {
-      const subModuleName = subModule.name?.trim();
-
-      if (!subModuleName) continue;
-
-      subModules.push({
-        name: subModuleName,
-        link: resolveSlug(subModule.slug, subModuleName),
-        icon: normalizeIconName(subModule.icon),
-      });
-    }
-
-    mappedModules.push({
-      name: moduleName,
-      link: resolveSlug(sanityModule.slug, moduleName),
-      icon: normalizeIconName(sanityModule.icon),
-      contents: subModules,
-    });
-  }
-
-  return mappedModules;
-};
-
-const ModuleContent = memo(({ module }: { module: ISheetModule }) => {
+const ModuleContent = memo(({ module }: { module: NavigationModule }) => {
   const { closeSheet } = use(NavbarContext);
 
   return (
@@ -142,7 +82,7 @@ ModuleContent.displayName = 'ModuleContent';
 export function NavigationSheet() {
   const { sheetOpen, onSheetOpenChange, closeSheet } = use(NavbarContext);
   const [selectedKey, setSelectedKey] = useState<MenuKeys>('Modules');
-  const [modules, setModules] = useState<ISheetModule[]>([]);
+  const [modules, setModules] = useState<NavigationModule[]>([]);
   const [isLoadingModules, setIsLoadingModules] = useState(true);
 
   useEffect(() => {
