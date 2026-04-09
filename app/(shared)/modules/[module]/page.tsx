@@ -193,34 +193,6 @@ const ModulesPage = async ({ params }: _TPageProps<{ module: string }>) => {
       <GrowWithInnoX />
 
       <IndustrySection data={modulePageData?.industry} />
-
-      {/* <ExploreSubmodules module={module as ModuleName} /> */}
-
-      {/* <SubModulesFunctional /> */}
-
-      {/* Optional: Key Benefits/Features */}
-      {/* {modulePageData.keyFeatures && modulePageData.keyFeatures.length > 0 && (
-        <section>
-          <div className="container">
-            <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
-            <div className="flex flex-wrap gap-4">
-              {modulePageData.keyFeatures.map((item: any, idx: number) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-2 bg-gray-50 rounded px-4 py-2 shadow-sm border border-gray-100"
-                >
-                  <span className="font-bold text-orange-500 text-lg">•</span>
-                  <span className="text-gray-700 text-sm">{item.content}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )} */}
-
-      {/* <FAQ faqs={faqs} /> */}
-
-      {/* <DividerContent text="Book Demo" link="/demo" /> */}
     </div>
   );
 };

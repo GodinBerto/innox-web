@@ -51,8 +51,12 @@ export function MovingModules({
       >
         {title}
       </Typography>
-      <div className="rounded-md flex flex-col dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-        <InfiniteMovingContents className="py-0" direction="right" speed="slow">
+      <div className="rounded-md flex flex-col items-center justify-center relative overflow-hidden">
+        <InfiniteMovingContents
+          className="py-0"
+          direction="right"
+          speed="normal"
+        >
           {(className, _, helperDiv) => (
             <>
               {safeGroupA.map((module, idx) => {
@@ -87,7 +91,11 @@ export function MovingModules({
         </InfiniteMovingContents>
       </div>
       <div className="rounded-md flex flex-col items-center justify-center relative overflow-hidden">
-        <InfiniteMovingContents direction="left" speed="slow" className="py-0">
+        <InfiniteMovingContents
+          direction="left"
+          speed="normal"
+          className="py-0"
+        >
           {(className, _, helperDiv) => (
             <>
               {safeGroupB.map((module, idx) => {

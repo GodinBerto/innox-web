@@ -81,7 +81,7 @@ export default async function HomePage() {
         />
         <OnePlatformBanner />
         <FAQ {...(faqSection ?? {})} />
-        <DividerContent text="Book Demo" link="/demo" />
+        <DividerContent text="Book Demo" link="/contact" />
       </div>
     </div>
   );
