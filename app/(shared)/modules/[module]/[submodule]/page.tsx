@@ -97,23 +97,25 @@ export default async function ModulePage({
     imageUrl: heroDashboardImage,
   };
 
-  const featureCards: SubModule['functionalFeatures'] = (
-    subModuleData.functionalFeatures ?? []
-  )
-    .filter(
-      (
-        feature,
-      ): feature is NonNullable<SubModule['functionalFeatures']>[number] => {
-        return typeof feature !== 'string' && Boolean(feature?._key);
-      },
-    )
-    .map((feature) => ({
-      _key: feature._key,
-      _type: 'functionalFeature',
-      icon: feature.icon,
-      title: feature.title,
-      content: feature.content,
-    }));
+  const featureCards: SubModule['functionalFeatures'] = {
+    title: subModuleData.functionalFeatures?.title,
+    description: subModuleData.functionalFeatures?.description,
+    features: (subModuleData.functionalFeatures?.features ?? [])
+      .filter(
+        (
+          feature,
+        ): feature is NonNullable<
+          NonNullable<SubModule['functionalFeatures']>['features']
+        >[number] => Boolean(feature?._key),
+      )
+      .map((feature) => ({
+        _key: feature._key,
+        _type: 'functionalFeature',
+        icon: feature.icon,
+        title: feature.title,
+        content: feature.content,
+      })),
+  };
 
   return (
     <div className="space-y-4 md:space-y-28">
@@ -124,7 +126,7 @@ export default async function ModulePage({
       <ImproveOutcomes
         title={trimmedSlug || 'this section'}
         improve={subModuleData?.improve}
-        functionalFeatures={subModuleData?.functionalFeatures}
+        functionalFeatures={featureCards.features}
       />
 
       {((subModuleData.mainCenter?.sideSections?.length ?? 0) > 0 ||

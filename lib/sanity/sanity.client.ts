@@ -259,6 +259,12 @@ export interface SubModuleFunctionalFeature {
   content?: string;
 }
 
+export interface SubModuleFunctionalFeaturesSection {
+  title?: string;
+  description?: string;
+  features?: SubModuleFunctionalFeature[];
+}
+
 export interface SubModuleMainCenterListItem {
   _key: string;
   _type: 'listItem';
@@ -300,7 +306,7 @@ export interface SubModulePageContent {
   name?: string;
   slug?: string;
   icon?: string;
-  functionalFeatures?: Array<string | SubModuleFunctionalFeature>;
+  functionalFeatures?: SubModuleFunctionalFeaturesSection;
   improve?: SubModuleImprove;
   mainCenter?: SubModuleMainCenter;
   hero?: SubModulePageHero;

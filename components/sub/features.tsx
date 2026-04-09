@@ -93,9 +93,14 @@ export function Features({
   const featureHeading = normalizedHeading
     ? `${normalizedHeading.charAt(0).toUpperCase()}${normalizedHeading.slice(1)}`
     : 'Our Performance Management Software';
+  const sectionTitle =
+    functionalFeatures?.title?.trim() || `Features Of ${featureHeading}`;
+  const sectionDescription =
+    functionalFeatures?.description?.trim() ||
+    'Everything you need to manage performance effectively in one powerful platform.';
 
   const mappedFeatures: FeatureCard[] =
-    (functionalFeatures ?? [])
+    (functionalFeatures?.features ?? [])
       .filter((item) => item?.title?.trim() || item?.content?.trim())
       .map((item, idx) => ({
         _key: item._key || `feature-${idx}`,
@@ -115,12 +120,9 @@ export function Features({
             Capabilities
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Features Of {featureHeading}
+            {sectionTitle}
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Everything you need to manage performance effectively in one
-            powerful platform.
-          </p>
+          <p className="text-muted-foreground text-lg">{sectionDescription}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

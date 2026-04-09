@@ -12,7 +12,7 @@ import type {
 interface ImproveOutcomesProps {
   title: string;
   improve?: SubModuleImprove;
-  functionalFeatures?: Array<string | SubModuleFunctionalFeature>;
+  functionalFeatures?: SubModuleFunctionalFeature[];
 }
 
 interface ImproveCard {
@@ -80,19 +80,10 @@ export function ImproveOutcomes({
 
     const fromFunctional = (functionalFeatures ?? [])
       .map((item, idx) => ({
-        ...(typeof item === 'string'
-          ? {
-              _key: `functional-${idx}`,
-              title: item.trim() || `Feature ${idx + 1}`,
-              description: '',
-              iconName: undefined,
-            }
-          : {
-              _key: item._key || `functional-${idx}`,
-              title: item.title?.trim() || `Feature ${idx + 1}`,
-              description: item.content?.trim() || '',
-              iconName: item.icon,
-            }),
+        _key: item._key || `functional-${idx}`,
+        title: item.title?.trim() || `Feature ${idx + 1}`,
+        description: item.content?.trim() || '',
+        iconName: item.icon,
       }))
       .filter((item) => item.title || item.description);
 

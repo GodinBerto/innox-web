@@ -52,9 +52,30 @@ export default defineType({
     defineField({
       name: 'functionalFeatures',
       title: 'Functional Features',
-      type: 'array',
-      of: [defineArrayMember({ type: 'functionalFeature' })],
-      description: 'List of functional feature cards for this submodule',
+      type: 'object',
+      description: 'Feature section content for this submodule',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Section Title',
+          type: 'string',
+          description: 'Heading shown above the feature cards',
+        }),
+        defineField({
+          name: 'description',
+          title: 'Section Description',
+          type: 'text',
+          rows: 3,
+          description: 'Supporting copy shown below the section title',
+        }),
+        defineField({
+          name: 'features',
+          title: 'Features',
+          type: 'array',
+          of: [defineArrayMember({ type: 'functionalFeature' })],
+          description: 'List of functional feature cards for this submodule',
+        }),
+      ],
     }),
 
     // Hero Section

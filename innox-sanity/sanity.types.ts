@@ -833,11 +833,15 @@ export type SubModule = {
     crop?: SanityImageCrop
     _type: 'image'
   }
-  functionalFeatures?: Array<
-    {
-      _key: string
-    } & FunctionalFeature
-  >
+  functionalFeatures?: {
+    title?: string
+    description?: string
+    features?: Array<
+      {
+        _key: string
+      } & FunctionalFeature
+    >
+  }
   hero?: {
     backgroundImage?: {
       asset?: {

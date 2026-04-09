@@ -80,7 +80,17 @@ export const subModulePageContentBySlugsQuery = groq`
         url
       }
     },
-    functionalFeatures,
+    functionalFeatures {
+      title,
+      description,
+      features[] {
+        _key,
+        _type,
+        icon,
+        title,
+        content
+      }
+    },
     improve {
       title,
       description,
