@@ -15,7 +15,11 @@ import {
   Building2,
   Send,
   CheckCircle,
+  Sparkles,
+  Target,
+  Zap,
 } from 'lucide-react';
+import Image from 'next/image';
 import FAQ from '@/components/sections/faq';
 import { faqs } from '@/data';
 
@@ -122,26 +126,90 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <main>
-        {/* Hero Section */}
-        <section className="relative py-20 lg:py-28 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto">
-              <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-6">
-                Contact Us
-              </span>
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
-                Get in Touch
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Have questions about Inova HRMS? We would love to hear from you.
-                Our team is always ready to help you find the perfect solution
-                for your needs.
-              </p>
+        {/* Hero Section with Illustration */}
+        <section className="relative py-20 lg:py-28 bg-gradient-to-br from-orange-50 via-white to-amber-50 overflow-hidden">
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-20 left-10 w-64 h-64 bg-orange-200 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 right-20 w-96 h-96 bg-amber-200 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Text Content */}
+              <div className="text-center lg:text-left">
+                <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-6">
+                  Contact Us
+                </span>
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
+                  Let&apos;s Start a Conversation
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  Have questions about InnoX? We&apos;d love to hear from you.
+                  Our team is ready to help you find the perfect solution for
+                  your business needs.
+                </p>
+                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span>24/7 Support Available</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <span>Response within 24 hours</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Illustration Image */}
+              <div className="relative">
+                <div className="relative w-full aspect-square max-w-md mx-auto">
+                  <Image
+                    src="/assets/images/illustration.png"
+                    alt="Contact Us Illustration"
+                    fill
+                    className="object-contain"
+                  />
+                  {/* Floating cards */}
+                  <div className="absolute top-10 right-0 bg-white rounded-xl p-4 shadow-xl border border-orange-100 animate-bounce">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                        <Zap className="w-5 h-5 text-orange-500" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">
+                          Quick Response
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          &lt; 24 hours
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="absolute bottom-20 left-0 bg-white rounded-xl p-4 shadow-xl border border-orange-100 animate-bounce"
+                    style={{ animationDelay: '0.5s' }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                        <Target className="w-5 h-5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">
+                          Dedicated Support
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Expert team
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Contact Methods */}
+        {/* Contact Methods with Icons */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -149,18 +217,18 @@ export default function ContactPage() {
                 <a
                   key={index}
                   href={method.action}
-                  className="group bg-background rounded-xl p-6 border border-border hover:border-orange-500/30 hover:shadow-lg transition-all duration-300"
+                  className="group bg-gradient-to-br from-white to-orange-50 rounded-2xl p-6 border border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-500/20 transition-colors">
-                    <method.icon className="w-6 h-6 text-orange-500" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <method.icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
+                  <h3 className="text-lg font-bold text-foreground mb-1">
                     {method.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-muted-foreground mb-3">
                     {method.description}
                   </p>
-                  <p className="text-sm font-medium text-orange-500">
+                  <p className="text-sm font-semibold text-orange-600">
                     {method.contact}
                   </p>
                 </a>
@@ -169,179 +237,191 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Contact Form & Info */}
-        <section className="py-20 bg-muted/30">
+        {/* Contact Form & Info with Enhanced Design */}
+        <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-orange-50/30">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Contact Form */}
-              <div className="bg-background rounded-2xl p-8 shadow-xl border border-border">
-                <h2 className="text-2xl font-bold text-foreground mb-2">
-                  Send us a Message
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Fill out the form below and we will get back to you within 24
-                  hours.
-                </p>
+              <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl border border-orange-100 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-amber-400/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-orange-400/10 to-amber-400/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
-                {isSubmitted ? (
-                  <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                      <CheckCircle className="w-8 h-8 text-green-600" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-lg flex items-center justify-center">
+                      <MessageCircle className="w-5 h-5 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
-                      Message Sent!
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Thank you for reaching out. We will get back to you
-                      shortly.
-                    </p>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      Send us a Message
+                    </h2>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="block text-sm font-medium text-foreground mb-2"
-                        >
-                          Full Name *
-                        </label>
-                        <Input
-                          id="name"
-                          type="text"
-                          placeholder="John Doe"
-                          value={formState.name}
-                          onChange={(e) =>
-                            setFormState({ ...formState, name: e.target.value })
-                          }
-                          required
-                          className="w-full"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium text-foreground mb-2"
-                        >
-                          Email Address *
-                        </label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="john@company.com"
-                          value={formState.email}
-                          onChange={(e) =>
-                            setFormState({
-                              ...formState,
-                              email: e.target.value,
-                            })
-                          }
-                          required
-                          className="w-full"
-                        />
-                      </div>
-                    </div>
+                  <p className="text-muted-foreground mb-8">
+                    Fill out the form below and our team will get back to you
+                    within 24 hours.
+                  </p>
 
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <label
-                          htmlFor="company"
-                          className="block text-sm font-medium text-foreground mb-2"
-                        >
-                          Company Name
-                        </label>
-                        <Input
-                          id="company"
-                          type="text"
-                          placeholder="Acme Inc."
-                          value={formState.company}
-                          onChange={(e) =>
-                            setFormState({
-                              ...formState,
-                              company: e.target.value,
-                            })
-                          }
-                          className="w-full"
-                        />
+                  {isSubmitted ? (
+                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <CheckCircle className="w-8 h-8 text-green-600" />
                       </div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
+                        Message Sent!
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Thank you for reaching out. We will get back to you
+                        shortly.
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div>
+                          <label
+                            htmlFor="name"
+                            className="block text-sm font-medium text-foreground mb-2"
+                          >
+                            Full Name *
+                          </label>
+                          <Input
+                            id="name"
+                            type="text"
+                            placeholder="John Doe"
+                            value={formState.name}
+                            onChange={(e) =>
+                              setFormState({
+                                ...formState,
+                                name: e.target.value,
+                              })
+                            }
+                            required
+                            className="w-full"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="email"
+                            className="block text-sm font-medium text-foreground mb-2"
+                          >
+                            Email Address *
+                          </label>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="john@company.com"
+                            value={formState.email}
+                            onChange={(e) =>
+                              setFormState({
+                                ...formState,
+                                email: e.target.value,
+                              })
+                            }
+                            required
+                            className="w-full"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div>
+                          <label
+                            htmlFor="company"
+                            className="block text-sm font-medium text-foreground mb-2"
+                          >
+                            Company Name
+                          </label>
+                          <Input
+                            id="company"
+                            type="text"
+                            placeholder="Acme Inc."
+                            value={formState.company}
+                            onChange={(e) =>
+                              setFormState({
+                                ...formState,
+                                company: e.target.value,
+                              })
+                            }
+                            className="w-full"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="subject"
+                            className="block text-sm font-medium text-foreground mb-2"
+                          >
+                            Subject *
+                          </label>
+                          <Input
+                            id="subject"
+                            type="text"
+                            placeholder="How can we help?"
+                            value={formState.subject}
+                            onChange={(e) =>
+                              setFormState({
+                                ...formState,
+                                subject: e.target.value,
+                              })
+                            }
+                            required
+                            className="w-full"
+                          />
+                        </div>
+                      </div>
+
                       <div>
                         <label
-                          htmlFor="subject"
+                          htmlFor="message"
                           className="block text-sm font-medium text-foreground mb-2"
                         >
-                          Subject *
+                          Message *
                         </label>
-                        <Input
-                          id="subject"
-                          type="text"
-                          placeholder="How can we help?"
-                          value={formState.subject}
+                        <Textarea
+                          id="message"
+                          placeholder="Tell us more about your needs..."
+                          value={formState.message}
                           onChange={(e) =>
                             setFormState({
                               ...formState,
-                              subject: e.target.value,
+                              message: e.target.value,
                             })
                           }
                           required
-                          className="w-full"
+                          rows={6}
+                          className="w-full resize-none"
                         />
                       </div>
-                    </div>
 
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-foreground mb-2"
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
                       >
-                        Message *
-                      </label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us more about your needs..."
-                        value={formState.message}
-                        onChange={(e) =>
-                          setFormState({
-                            ...formState,
-                            message: e.target.value,
-                          })
-                        }
-                        required
-                        rows={6}
-                        className="w-full resize-none"
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full bg-orange-500 text-white hover:bg-orange-500/90"
-                    >
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </Button>
-                  </form>
-                )}
+                        <Send className="w-4 h-4 mr-2" />
+                        Send Message
+                      </Button>
+                    </form>
+                  )}
+                </div>
               </div>
-
-              {/* Support Options & Hours */}
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {/* Support Options */}
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-6">
+                  <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-orange-500" />
                     Support Options
                   </h3>
                   <div className="space-y-4">
                     {supportOptions.map((option, index) => (
                       <div
                         key={index}
-                        className="bg-background rounded-xl p-6 border border-border"
+                        className="bg-white rounded-2xl p-6 border border-orange-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                       >
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <option.icon className="w-6 h-6 text-orange-500" />
+                          <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <option.icon className="w-6 h-6 text-white" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-foreground mb-1">
+                            <h4 className="font-bold text-foreground mb-1">
                               {option.title}
                             </h4>
                             <p className="text-sm text-muted-foreground mb-2">
@@ -349,7 +429,7 @@ export default function ContactPage() {
                             </p>
                             <a
                               href={`mailto:${option.email}`}
-                              className="text-sm font-medium text-orange-500 hover:underline"
+                              className="text-sm font-semibold text-orange-600 hover:underline"
                             >
                               {option.email}
                             </a>
@@ -361,12 +441,12 @@ export default function ContactPage() {
                 </div>
 
                 {/* Business Hours */}
-                <div className="bg-background rounded-xl p-6 border border-border">
+                <div className="bg-white rounded-2xl p-6 border border-orange-100 shadow-lg">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-orange-500" />
+                    <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-white" />
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground">
+                    <h3 className="text-lg font-bold text-foreground">
                       Business Hours
                     </h3>
                   </div>
@@ -398,23 +478,30 @@ export default function ContactPage() {
                 </div>
 
                 {/* Response Time */}
-                <div className="bg-orange-500/5 rounded-xl p-6 border border-orange-500/20">
-                  <h4 className="font-semibold text-foreground mb-2">
-                    Expected Response Time
-                  </h4>
-                  <p className="text-muted-foreground text-sm">
-                    We typically respond to all inquiries within 24 business
-                    hours. For urgent matters, please use our live chat or call
-                    us directly.
-                  </p>
+                <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-6 border border-orange-200">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Zap className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-foreground mb-2">
+                        Expected Response Time
+                      </h4>
+                      <p className="text-muted-foreground text-sm">
+                        We typically respond to all inquiries within 24 business
+                        hours. For urgent matters, please use our live chat or
+                        call us directly.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Global Offices */}
-        <section className="py-20 bg-background">
+        {/* Global Offices with Enhanced Cards */}
+        <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-orange-50/30">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-4">
@@ -433,16 +520,16 @@ export default function ContactPage() {
               {offices.map((office, index) => (
                 <div
                   key={index}
-                  className="bg-background rounded-2xl p-8 border border-border shadow-lg hover:shadow-xl transition-shadow"
+                  className="bg-white rounded-3xl p-8 border border-orange-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
+                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                       <span className="text-white font-bold text-sm">
                         {office.flag}
                       </span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-foreground">
+                      <h3 className="text-xl font-bold text-foreground">
                         {office.city}
                       </h3>
                       <p className="text-sm text-muted-foreground">

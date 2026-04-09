@@ -2,91 +2,91 @@
 
 import { MotionWrapper } from '../hoc/motion-wrapper';
 import {
-  BriefcaseBusiness,
-  Building2,
-  Calculator,
+  Boxes,
+  Fingerprint,
+  MessagesSquare,
+  Printer,
   Scale,
-  ShieldCheck,
   Zap,
 } from 'lucide-react';
 
 const solutions = [
   {
-    title: 'Human Resource',
+    title: 'Power Apps',
     description:
-      'Run hiring, employee records, and attendance from one connected workspace.',
-    icon: BriefcaseBusiness,
-    iconBg: 'bg-gradient-to-br from-[#11356D] to-[#2457A7]',
-    features: [
-      'Human Resource Management',
-      'Recruitment',
-      'Time & Attendance',
-      'Employee Self-Service',
-    ],
-  },
-  {
-    title: 'Finance & Accounting',
-    description:
-      'Gain real-time control over budgets, payroll, procurement, and billing.',
-    icon: Calculator,
-    iconBg: 'bg-gradient-to-br from-[#EF6411] to-[#F7953D]',
-    features: [
-      'Financials & Accounting',
-      'Payroll Management',
-      'Budget Management',
-      'Procurement and Billing',
-    ],
-  },
-  {
-    title: 'Administration',
-    description:
-      'Coordinate teams, projects, and reporting workflows without scattered tools.',
-    icon: Building2,
-    iconBg: 'bg-gradient-to-br from-[#0F7B6C] to-[#24A18B]',
-    features: [
-      'Task Management',
-      'Project Management',
-      'Activity Reports',
-      'Document Management',
-    ],
-  },
-  {
-    title: 'Legal Compliance',
-    description:
-      'Track cases, documents, and obligations while keeping compliance evidence organized.',
-    icon: Scale,
-    iconBg: 'bg-gradient-to-br from-[#264653] to-[#3A6073]',
-    features: [
-      'Legal Management',
-      'Compliance Tracking',
-      'Case Management',
-      'Document Archiving',
-    ],
-  },
-  {
-    title: 'Power and Utilities',
-    description:
-      'Improve field operations with outage planning, telemetry, and asset control.',
+      'Coordinate utility operations, field visibility, and outage workflows from one connected platform.',
     icon: Zap,
-    iconBg: 'bg-gradient-to-br from-[#1A759F] to-[#34A0A4]',
+    iconBg: 'bg-gradient-to-br from-red-500 via-red-500 to-black',
     features: [
-      'Power Apps',
       'eLog Book',
       'Telemetry (iTel)',
-      'Planned Outage Management',
+      'Transmission Service Bills',
+      'Planned Outage Management System (POMS)',
     ],
   },
   {
-    title: 'Safety and Risk',
+    title: 'Asset Management System',
     description:
-      'Standardize safety workflows and keep incidents, audits, and requests actionable.',
-    icon: ShieldCheck,
-    iconBg: 'bg-gradient-to-br from-[#7A3E1D] to-[#B96530]',
+      'Track assignments, maintenance, and asset performance across infrastructure, fleet, and IT resources.',
+    icon: Boxes,
+    iconBg: 'bg-gradient-to-br from-yellow-500 via-yellow-500 to-black',
     features: [
-      'Safety Management',
-      'Accident Reporting',
-      'PPE Requests',
-      'Safety Group Management',
+      'IT Asset Management',
+      'Power Systems Asset Management',
+      'Transport Management',
+      'Real Estate Management',
+    ],
+  },
+  {
+    title: 'Legal Management System',
+    description:
+      'Centralize legal records, references, and matter workflows in one secure operational workspace.',
+    icon: Scale,
+    iconBg: 'bg-gradient-to-br from-green-500 via-green-500 to-black',
+    features: [
+      'Case Management',
+      'Legal Research & Reference',
+      'Document Archiving',
+      'Laws & Judgement Catalogues',
+    ],
+  },
+  {
+    title: 'Automated Biometric Identification System',
+    description:
+      'Support biometric enrollment, identity verification, and traceable review workflows with stronger security.',
+    icon: Fingerprint,
+    iconBg: 'bg-gradient-to-br from-blue-500 via-blue-500 to-black',
+    features: [
+      'Biometric Enrollment',
+      'Identity Verification',
+      'Watchlist Screening',
+      'Audit & Reporting',
+    ],
+  },
+  {
+    title: 'Print Management System',
+    description:
+      'Manage print requests, device usage, and output tracking from one controlled print workflow.',
+    icon: Printer,
+    iconBg: 'bg-gradient-to-br from-orange-500 via-orange-500 to-black',
+    features: [
+      'Print Job Requests',
+      'Queue Monitoring',
+      'Device Management',
+      'Usage Reports',
+    ],
+  },
+  {
+    title: 'Central Messaging System',
+    description:
+      'Deliver coordinated alerts, campaigns, and transactional updates across a single communication hub.',
+    icon: MessagesSquare,
+    iconBg: 'bg-gradient-to-br from-cyan-500 via-cyan-500 to-black',
+    features: [
+      'Bulk SMS',
+      'Email Notifications',
+      'Contact Groups',
+      'Delivery Reports',
     ],
   },
 ] as const;
