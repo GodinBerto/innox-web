@@ -91,6 +91,12 @@ export const subModulePageContentBySlugsQuery = groq`
         content
       }
     },
+    FAQ[] {
+      _key,
+      _type,
+      question,
+      answer
+    },
     improve {
       title,
       description,

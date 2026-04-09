@@ -22,54 +22,16 @@ export type MovingModulesData = {
   title?: string
   modulesGroupA?: Array<{
     name?: string
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
+    icon?: string
     _type: 'movingModule'
     _key: string
   }>
   modulesGroupB?: Array<{
     name?: string
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
+    icon?: string
     _type: 'movingModule'
     _key: string
   }>
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
 }
 
 export type FunctionalModulesList = {
@@ -247,6 +209,22 @@ export type ModulePageContent = {
   }
 }
 
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
 export type DividerContent = {
   _type: 'dividerContent'
   text?: string
@@ -289,35 +267,13 @@ export type MovingModules = {
   title?: string
   modulesGroupA?: Array<{
     name?: string
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
+    icon?: string
     _type: 'module'
     _key: string
   }>
   modulesGroupB?: Array<{
     name?: string
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
+    icon?: string
     _type: 'module'
     _key: string
   }>
@@ -951,6 +907,12 @@ export type SubModule = {
       _type: 'image'
     }
   }
+  FAQ?: Array<{
+    question?: string
+    answer?: string
+    _type: 'faq'
+    _key: string
+  }>
   order?: number
 }
 
@@ -1110,11 +1072,11 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | MovingModulesData
-  | SanityImageCrop
-  | SanityImageHotspot
   | FunctionalModulesList
   | FooterData
   | ModulePageContent
+  | SanityImageCrop
+  | SanityImageHotspot
   | DividerContent
   | FaqSection
   | OnePlatformBanner

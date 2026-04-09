@@ -279,6 +279,32 @@ export default defineType({
     }),
 
     defineField({
+      name: 'FAQ',
+      title: 'FAQ',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'faq',
+          fields: [
+            defineField({
+              name: 'question',
+              title: 'Question',
+              type: 'string',
+            }),
+            defineField({
+              name: 'answer',
+              title: 'Answer',
+              type: 'text',
+              rows: 4,
+            }),
+          ],
+        }),
+      ],
+      description: 'Frequently asked questions for this submodule page',
+    }),
+
+    defineField({
       name: 'order',
       title: 'Display Order',
       type: 'number',

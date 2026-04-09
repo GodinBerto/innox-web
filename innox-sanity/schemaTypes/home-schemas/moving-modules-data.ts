@@ -4,7 +4,7 @@ export default defineType({
   name: 'movingModulesData',
   title: 'Moving Modules Data',
   type: 'document',
-  description: 'Standalone document for moving modules data with image references',
+  description: 'Standalone document for moving modules data with icon references',
   fields: [
     defineField({
       name: 'title',
@@ -29,10 +29,10 @@ export default defineType({
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: 'image',
-              title: 'Module Image',
-              type: 'image',
-              options: { hotspot: true },
+              name: 'icon',
+              title: 'Module Icon',
+              type: 'string',
+              description: 'Lucide icon name for this module item',
             }),
           ],
         },
@@ -55,10 +55,10 @@ export default defineType({
               validation: (Rule) => Rule.required(),
             }),
             defineField({
-              name: 'image',
-              title: 'Module Image',
-              type: 'image',
-              options: { hotspot: true },
+              name: 'icon',
+              title: 'Module Icon',
+              type: 'string',
+              description: 'Lucide icon name for this module item',
             }),
           ],
         },

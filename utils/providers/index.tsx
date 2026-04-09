@@ -6,7 +6,7 @@ const Providers = ({ children }: _IChildren) => {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       enableSystem
       disableTransitionOnChange
     >

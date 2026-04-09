@@ -133,20 +133,10 @@ export const movingModulesDataFields = groq`
   title,
   modulesGroupA[] {
     name,
-    image {
-      asset->{
-        _id,
-        url
-      }
-    }
+    icon
   },
   modulesGroupB[] {
     name,
-    image {
-      asset->{
-        _id,
-        url
-      }
-    }
+    icon
   }
 `;

@@ -7,12 +7,14 @@ import { ImproveOutcomes } from '@/components/sub/improve-outcomes';
 import SideSectionsWithBanner from '@/components/sub/side-sections-with-banner';
 import { Features } from '@/components/sub/features';
 import { ResponsiveSection } from '@/components/sub/responsive-section';
+import FAQSection from '@/components/sections/faq';
 import type { SubModule } from '@/types/sanity/schema';
 import {
   getModulePageContent,
   getModulesWithSubModules,
   getSubModulePageContent,
 } from '@/lib/sanity';
+import { faqs as fallbackFaqs } from '@/data';
 
 export const dynamicParams = false;
 
@@ -151,6 +153,10 @@ export default async function ModulePage({
       />
 
       <ResponsiveSection heading={trimmedSlug || 'this section'} />
+
+      <FAQSection
+        faqs={subModuleData.FAQ?.length ? subModuleData.FAQ : fallbackFaqs}
+      />
     </div>
   );
 }

@@ -265,6 +265,13 @@ export interface SubModuleFunctionalFeaturesSection {
   features?: SubModuleFunctionalFeature[];
 }
 
+export interface SubModuleFaqItem {
+  _key: string;
+  _type: 'faq';
+  question?: string;
+  answer?: string;
+}
+
 export interface SubModuleMainCenterListItem {
   _key: string;
   _type: 'listItem';
@@ -310,6 +317,7 @@ export interface SubModulePageContent {
   improve?: SubModuleImprove;
   mainCenter?: SubModuleMainCenter;
   hero?: SubModulePageHero;
+  FAQ?: SubModuleFaqItem[];
 }
 
 export async function getSubModulePageContent(
