@@ -156,10 +156,10 @@ export default function BusinessSolutions() {
         </div>
         <div className="w- mx-auto mt-10 justify-center">
           <Link
-            href="/contact"
+            href="/modules"
             className="inline-flex items-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#11356D]/90 focus:outline-none focus:ring-2 focus:ring-[#11356D]/50 focus:ring-offset-2"
           >
-            View More
+            Explore More
           </Link>
         </div>
       </div>
