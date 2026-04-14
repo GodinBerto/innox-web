@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Check, Circle, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, Check, Circle, Sparkles } from 'lucide-react';
 
 interface _IDividerContent {
   text: string;
@@ -29,18 +29,8 @@ const DividerContent = ({ text, icon = true, link }: _IDividerContent) => {
         <div className="grid items-stretch gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
           <div className="flex flex-col justify-between py-2">
             <div className="space-y-8">
-              <div
-                aria-hidden
-                className="flex items-center justify-center lg:justify-start"
-              >
-                <div className="relative h-8 w-10">
-                  <span className="absolute left-0 top-2 h-3 w-4 -skew-x-[24deg] rounded-sm bg-foreground" />
-                  <span className="absolute left-3 top-0 h-3 w-4 -skew-x-[24deg] rounded-sm bg-foreground" />
-                </div>
-              </div>
-
               <div className="space-y-5 text-center lg:text-left">
-                <h2 className="max-w-[9ch] text-4xl font-semibold leading-[0.92] tracking-[-0.05em] text-foreground sm:text-5xl lg:text-[4.2rem]">
+                <h2 className="max-w-[9ch] text-2xl font-semibold leading-[0.92] tracking-[-0.05em] text-foreground sm:text-5xl lg:text-[4.2rem]">
                   Experience the Difference for Yourself!
                 </h2>
 
@@ -65,7 +55,7 @@ const DividerContent = ({ text, icon = true, link }: _IDividerContent) => {
                 {link ? (
                   <Link
                     href={link}
-                    className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition-colors hover:opacity-90"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-orange-500 px-6 text-sm font-semibold text-background transition-colors hover:opacity-90"
                   >
                     {buttonLabel}
                     {icon && <ArrowRight className="ml-2 h-4 w-4" />}
@@ -77,11 +67,11 @@ const DividerContent = ({ text, icon = true, link }: _IDividerContent) => {
                   </div>
                 )}
 
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                {/* <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Star className="h-4 w-4 fill-[#f59e0b] text-[#f59e0b]" />
                   <span className="font-medium text-foreground">4.7/5</span>
                   <span>based on 2k reviews</span>
-                </div>
+                </div> */}
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-start">

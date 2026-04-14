@@ -14,7 +14,7 @@ import PowerBanner from '@/components/banners/power-banner';
 import BusinessAdministration from '@/components/sections/business-admin';
 import OperationsBanner from '@/components/banners/operations-banner';
 import QuoteBox from '@/components/shared/quote-box';
-import VisualizedIllustration from '@/components/shared/illustration';
+// import VisualizedIllustration from '@/components/shared/illustration';
 import { MovingModules } from '@/components/sections/moving-modules';
 import OnePlatformBanner from '@/components/banners/one-platform-banner';
 import DividerContent from '@/components/sections/divider-content';
@@ -73,7 +73,7 @@ export default async function HomePage() {
         <BusinessAdministration {...(businessAdministrationSection ?? {})} />
         <OperationsBanner />
         <QuoteBox />
-        <VisualizedIllustration />
+        {/* <VisualizedIllustration /> */}
         <MovingModules
           title={movingModulesSection?.title ?? 'Modules'}
           groupA={movingModulesSection?.modulesGroupA ?? []}

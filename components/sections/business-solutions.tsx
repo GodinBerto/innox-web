@@ -9,6 +9,7 @@ import {
   Scale,
   Zap,
 } from 'lucide-react';
+import Link from 'next/link';
 
 const solutions = [
   {
@@ -95,7 +96,7 @@ export default function BusinessSolutions() {
   return (
     <section className="relative py-12 md:py-16">
       <div className="pointer-events-none absolute inset-x-0 top-8 -z-10 mx-auto h-56 w-full max-w-5xl bg-[radial-gradient(circle_at_center,rgba(17,53,109,0.15),rgba(239,100,17,0.08),transparent_70%)] blur-2xl" />
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 justify-center flex flex-col items-center text-center">
         <MotionWrapper
           variant="slideLeft"
           className="mx-auto max-w-3xl space-y-4 text-center"
@@ -130,10 +131,10 @@ export default function BusinessSolutions() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 text-start">
                     {solution.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300 text-start">
                     {solution.description}
                   </p>
 
@@ -152,6 +153,14 @@ export default function BusinessSolutions() {
               </MotionWrapper>
             );
           })}
+        </div>
+        <div className="w- mx-auto mt-10 justify-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#11356D]/90 focus:outline-none focus:ring-2 focus:ring-[#11356D]/50 focus:ring-offset-2"
+          >
+            View More
+          </Link>
         </div>
       </div>
     </section>
