@@ -71,7 +71,7 @@ function MapPreview() {
         <span className="absolute left-6 right-6 top-8 h-px bg-white/80 dark:bg-white/10" />
         <span className="absolute left-10 right-10 top-24 h-px bg-white/75 dark:bg-white/10" />
         <span className="absolute left-8 right-8 top-40 h-px bg-white/80 dark:bg-white/10" />
-        <span className="absolute bottom-[4.5rem] left-10 right-12 h-px bg-white/70 dark:bg-white/10" />
+        <span className="absolute bottom-18 left-10 right-12 h-px bg-white/70 dark:bg-white/10" />
         <span className="absolute bottom-8 left-6 right-6 h-px bg-white/80 dark:bg-white/10" />
 
         <span className="absolute bottom-6 top-6 left-16 w-px bg-white/70 dark:bg-white/10" />
@@ -79,13 +79,13 @@ function MapPreview() {
         <span className="absolute bottom-8 top-8 left-[63%] w-px bg-white/75 dark:bg-white/10" />
         <span className="absolute bottom-6 top-12 right-14 w-px bg-white/70 dark:bg-white/10" />
 
-        <span className="absolute left-4 top-14 h-px w-48 rotate-[28deg] bg-white/80 dark:bg-white/10" />
+        <span className="absolute left-4 top-14 h-px w-48 rotate-28 bg-white/80 dark:bg-white/10" />
         <span className="absolute right-2 top-20 h-px w-52 rotate-[-22deg] bg-white/80 dark:bg-white/10" />
-        <span className="absolute bottom-[4.5rem] left-[4.5rem] h-px w-56 rotate-[-18deg] bg-white/80 dark:bg-white/10" />
-        <span className="absolute bottom-16 right-8 h-px w-44 rotate-[22deg] bg-white/80 dark:bg-white/10" />
+        <span className="absolute bottom-18 left-18 h-px w-56 rotate-[-18deg] bg-white/80 dark:bg-white/10" />
+        <span className="absolute bottom-16 right-8 h-px w-44 rotate-22 bg-white/80 dark:bg-white/10" />
       </div>
 
-      <div className="absolute left-6 top-6 w-[15.5rem] rounded-[1.4rem] border border-border bg-card p-4 shadow-sm">
+      <div className="absolute left-6 top-6 w-62 rounded-[1.4rem] border border-border bg-card p-4 shadow-sm">
         <div className="flex items-start gap-3">
           <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-[#11356D]/10 text-[#11356D] dark:bg-[#11356D]/25 dark:text-blue-200">
             <MapPin className="h-4 w-4" />
@@ -279,7 +279,7 @@ export default function ContactPage() {
                         }
                         required
                         rows={6}
-                        className="min-h-[10rem] w-full resize-none rounded-xl bg-background"
+                        className="min-h-40 w-full resize-none rounded-xl bg-background"
                       />
 
                       <Button
