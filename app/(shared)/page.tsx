@@ -52,6 +52,7 @@ export default async function HomePage() {
   );
   const faqSection = getSectionByType(sections, 'faqSection');
   const movingModulesSection = getSectionByType(sections, 'movingModules');
+  const quoteBoxSection = getSectionByType(sections, 'quoteBox');
 
   return (
     <div className="overflow-x-clip">
@@ -72,7 +73,7 @@ export default async function HomePage() {
         <PowerBanner />
         <BusinessAdministration {...(businessAdministrationSection ?? {})} />
         <OperationsBanner />
-        <QuoteBox />
+        <QuoteBox {...(quoteBoxSection ?? {})} />
         {/* <VisualizedIllustration /> */}
         <MovingModules
           title={movingModulesSection?.title ?? 'Modules'}

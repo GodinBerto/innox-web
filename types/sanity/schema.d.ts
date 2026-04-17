@@ -311,9 +311,29 @@ export type VisualizedIllustration = {
 
 export type QuoteBox = {
   _type: 'quoteBox'
-  quote?: string
-  author?: string
-  authorTitle?: string
+  quotes?: Array<{
+    quote?: string
+    author?: string
+    authorTitle?: string
+    company?: string
+    companyUrl?: string
+    image?: {
+      asset?: {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      }
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    imageAlt?: string
+    illustrationVariant?: 'dataPulse' | 'workflowGrid' | 'growthArc' | 'connectionMesh'
+    _type: 'quoteItem'
+    _key: string
+  }>
 }
 
 export type OperationsBanner = {

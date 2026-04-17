@@ -1,9 +1,221 @@
+'use client';
+
 import Image from 'next/image';
+import { AnimatePresence, motion } from 'motion/react';
+import { startTransition, useEffect, useState } from 'react';
+import { urlForImage } from '@/lib/sanity';
+import type { QuoteBox as QuoteBoxSection } from '@/types/sanity/schema';
 
-const testimonial =
-  'Integrations and automations have transformed my WordPress website into a powerful tool. By connecting various software tools and automating workflows, I’ve eliminated redundant tasks and unlocked a world of new possibilities. Bit Integrations is an incredible plugin that has connected my WordPress site to hundreds of different software tools, revolutionizing my workflow. Highly recommended!';
+const AUTOPLAY_INTERVAL_MS = 6000;
 
-export default function QuoteBox() {
+type QuoteEntry = NonNullable<QuoteBoxSection['quotes']>[number];
+type QuoteImage = NonNullable<QuoteEntry['image']>;
+
+type LegacyQuoteBoxProps = {
+  quote?: string;
+  author?: string;
+  authorTitle?: string;
+  company?: string;
+  companyUrl?: string;
+  image?: QuoteImage;
+  imageAlt?: string;
+};
+
+type QuoteBoxProps = Partial<QuoteBoxSection> & LegacyQuoteBoxProps;
+
+type NormalizedQuote = {
+  key: string;
+  quote: string;
+  author?: string;
+  authorTitle?: string;
+  company?: string;
+  companyUrl?: string;
+  image?: QuoteImage;
+  imageAlt?: string;
+};
+
+const FALLBACK_QUOTES: NormalizedQuote[] = [
+  {
+    key: 'quote-default',
+    quote: 'One platform for finance, HR, operations and legal.',
+    author: 'InnoX Team',
+    authorTitle: 'Enterprise Software Team',
+    company: 'Innorik',
+  },
+];
+
+function normalizeQuotes(props: QuoteBoxProps): NormalizedQuote[] {
+  const cmsQuotes =
+    props.quotes
+      ?.filter((quoteItem): quoteItem is QuoteEntry =>
+        Boolean(quoteItem?.quote),
+      )
+      .map((quoteItem, index) => ({
+        key: quoteItem._key || `quote-${index}`,
+        quote: quoteItem.quote || '',
+        author: quoteItem.author,
+        authorTitle: quoteItem.authorTitle,
+        company: quoteItem.company,
+        companyUrl: quoteItem.companyUrl,
+        image: quoteItem.image,
+        imageAlt: quoteItem.imageAlt,
+      })) ?? [];
+
+  if (cmsQuotes.length > 0) {
+    return cmsQuotes;
+  }
+
+  if (props.quote) {
+    return [
+      {
+        key: 'legacy-quote',
+        quote: props.quote,
+        author: props.author,
+        authorTitle: props.authorTitle,
+        company: props.company,
+        companyUrl: props.companyUrl,
+        image: props.image,
+        imageAlt: props.imageAlt,
+      },
+    ];
+  }
+
+  return FALLBACK_QUOTES;
+}
+
+function getImageSrc(image?: QuoteImage): string | null {
+  if (!image) {
+    return null;
+  }
+
+  return urlForImage(image).width(960).height(1040).fit('crop').url() as string;
+}
+
+function QuoteMeta({ quote }: { quote: NormalizedQuote }) {
+  const hasCompany = Boolean(quote.company);
+  const hasTitle = Boolean(quote.authorTitle);
+
+  return (
+    <div className="mt-10">
+      <p className="text-xl font-semibold text-foreground">
+        {quote.author || quote.company || 'InnoX Team'}
+      </p>
+
+      {(hasCompany || hasTitle) && (
+        <p className="mt-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-muted-foreground lg:justify-start">
+          {quote.company &&
+            (quote.companyUrl ? (
+              <a
+                href={quote.companyUrl}
+                className="text-[#18A0FB] transition hover:text-[#0e7bc3] dark:text-blue-300 dark:hover:text-blue-200"
+              >
+                {quote.company}
+              </a>
+            ) : (
+              <span>{quote.company}</span>
+            ))}
+
+          {hasCompany && hasTitle && (
+            <span className="px-1 text-border">|</span>
+          )}
+          {quote.authorTitle && <span>{quote.authorTitle}</span>}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function QuoteVisual({ quote }: { quote: NormalizedQuote }) {
+  const imageSrc = getImageSrc(quote.image);
+
+  if (!imageSrc) {
+    return null;
+  }
+
+  return (
+    <div className="relative aspect-[1.02/1] w-full max-w-[430px]">
+      <div className="absolute inset-5 overflow-hidden rounded-full backdrop-blur-md ">
+        <motion.div
+          className="relative h-full w-full"
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ duration: 8.2, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <Image
+            src={imageSrc}
+            alt={
+              quote.imageAlt ||
+              `${quote.author || quote.company || 'Customer'} quote image`
+            }
+            fill
+            sizes="(min-width: 1024px) 430px, (min-width: 640px) 380px, 85vw"
+            className="object-cover object-center"
+          />
+        </motion.div>
+      </div>
+
+      <motion.span
+        aria-hidden
+        className="absolute left-5 top-[24%] h-5 w-24 rounded-full bg-background"
+        animate={{ x: [0, 10, 0], rotate: [0, 6, 0] }}
+        transition={{ duration: 6.8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.span
+        aria-hidden
+        className="absolute right-[10%] top-[7%] h-6 w-32 rounded-full bg-background"
+        animate={{ x: [0, -12, 0], y: [0, 8, 0] }}
+        transition={{ duration: 7.4, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <motion.span
+        aria-hidden
+        className="absolute bottom-[5%] left-[16%] h-7 w-28 rounded-full bg-background"
+        animate={{ x: [0, 10, 0], rotate: [0, -6, 0] }}
+        transition={{ duration: 8.3, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.span
+        aria-hidden
+        className="absolute bottom-[20%] left-[4%] h-5 w-20 rounded-full bg-background"
+        animate={{ x: [0, -8, 0], y: [0, 6, 0] }}
+        transition={{ duration: 7.4, repeat: Infinity, ease: 'easeInOut' }}
+      />
+    </div>
+  );
+}
+
+export default function QuoteBox(props: QuoteBoxProps) {
+  const quotes = normalizeQuotes(props);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (activeIndex >= quotes.length) {
+      setActiveIndex(0);
+    }
+  }, [activeIndex, quotes.length]);
+
+  useEffect(() => {
+    if (quotes.length < 2 || isPaused) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      startTransition(() => {
+        setActiveIndex((currentIndex) => (currentIndex + 1) % quotes.length);
+      });
+    }, AUTOPLAY_INTERVAL_MS);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [isPaused, quotes.length]);
+
+  const activeQuote = quotes[activeIndex] ?? quotes[0];
+  const hasActiveImage = Boolean(getImageSrc(activeQuote?.image));
+
+  if (!activeQuote) {
+    return null;
+  }
+
   return (
     <section className="overflow-hidden bg-background px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
       <div className="container">
@@ -15,7 +227,15 @@ export default function QuoteBox() {
             </h2>
           </div>
 
-          <div className="mt-12 grid items-center gap-12 lg:mt-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-8">
+          <div
+            className={`mt-12 grid items-center gap-12 lg:mt-16 ${
+              hasActiveImage
+                ? 'lg:grid-cols-[1.02fr_0.98fr] lg:gap-10'
+                : 'lg:grid-cols-1'
+            }`}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             <div className="max-w-[640px] text-center lg:text-left">
               <div className="mb-8 flex justify-center gap-1 lg:justify-start">
                 <Image
@@ -52,82 +272,76 @@ export default function QuoteBox() {
                 />
               </div>
 
-              <blockquote className="text-base leading-[2.1] text-foreground sm:text-lg">
-                {testimonial}
-              </blockquote>
-
-              <div className="mt-10">
-                <p className="text-xl font-semibold text-foreground">Jeffrey</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  <a
-                    href="https://www.youtube.com/@Lytbox_Academy"
-                    className="text-[#18A0FB] dark:text-blue-300"
-                  >
-                    Jeffrey @ Lytbox
-                  </a>
-                  <span className="px-2 text-border">|</span>
-                  Educator
-                </p>
-              </div>
-            </div>
-
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative aspect-[1.05/1] w-full max-w-[400px]">
-                <span
-                  aria-hidden
-                  className="absolute left-2 top-[26%] h-5 w-24 -rotate-[42deg] rounded-full bg-[#12C7E8] sm:h-6 sm:w-32"
-                />
-                <span
-                  aria-hidden
-                  className="absolute right-[12%] top-[6%] h-5 w-28 -rotate-[42deg] rounded-full bg-[#12C7E8] sm:h-6 sm:w-36"
-                />
-                <span
-                  aria-hidden
-                  className="absolute right-[2%] top-[18%] h-4 w-20 -rotate-[42deg] rounded-full bg-[#12C7E8] sm:h-5 sm:w-24"
-                />
-                <span
-                  aria-hidden
-                  className="absolute right-[1%] top-[31%] h-6 w-16 -rotate-[42deg] rounded-full bg-[#12C7E8] sm:h-7 sm:w-20"
-                />
-                <span
-                  aria-hidden
-                  className="absolute left-[14%] top-[12%] h-[62%] w-[72%] rounded-[2.75rem] bg-[#12C7E8]"
-                  style={{
-                    clipPath:
-                      'polygon(12% 18%, 42% 0%, 84% 6%, 100% 25%, 86% 42%, 100% 62%, 84% 78%, 100% 100%, 62% 95%, 44% 100%, 18% 86%, 0% 58%, 10% 38%, 0% 24%)',
-                  }}
-                />
-
-                <div
-                  className="absolute left-[14%] top-[12%] h-[78%] w-[72%] overflow-hidden"
-                  style={{
-                    clipPath:
-                      'polygon(12% 18%, 42% 0%, 84% 6%, 100% 25%, 86% 42%, 100% 62%, 84% 78%, 100% 100%, 62% 95%, 44% 100%, 18% 86%, 0% 58%, 10% 38%, 0% 24%)',
-                  }}
+              <AnimatePresence initial={false} mode="wait">
+                <motion.div
+                  key={activeQuote.key}
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -18 }}
+                  transition={{ duration: 0.42, ease: 'easeOut' }}
                 >
-                  <Image
-                    src="/assets/images/quote-jeffrey.webp"
-                    alt="Jeffrey from Lytbox"
-                    fill
-                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 360px, 80vw"
-                    className="object-cover object-center"
-                  />
-                </div>
+                  <blockquote className="text-base leading-[2.1] text-foreground sm:text-lg">
+                    {activeQuote.quote}
+                  </blockquote>
+                  <QuoteMeta quote={activeQuote} />
+                </motion.div>
+              </AnimatePresence>
 
-                <span
-                  aria-hidden
-                  className="absolute bottom-[4%] left-[16%] h-7 w-28 rotate-[139deg] rounded-full bg-background sm:h-8 sm:w-36"
-                />
-                <span
-                  aria-hidden
-                  className="absolute bottom-[20%] left-[4%] h-5 w-20 rotate-[139deg] rounded-full bg-background sm:h-6 sm:w-24"
-                />
-                <span
-                  aria-hidden
-                  className="absolute right-[20%] top-[20%] h-5 w-16 rotate-[139deg] rounded-full bg-background sm:h-6 sm:w-20"
-                />
-              </div>
+              {quotes.length > 1 && (
+                <div className="mt-10 flex flex-wrap justify-center gap-3 lg:justify-start">
+                  {quotes.map((quote, index) => {
+                    const isActive = index === activeIndex;
+
+                    return (
+                      <button
+                        key={quote.key}
+                        type="button"
+                        aria-label={`Show quote ${index + 1}`}
+                        aria-pressed={isActive}
+                        onClick={() =>
+                          startTransition(() => {
+                            setActiveIndex(index);
+                          })
+                        }
+                        className={`inline-flex items-center gap-3 rounded-full border px-4 py-2 text-sm font-medium transition ${
+                          isActive
+                            ? 'border-[#11356D] bg-[#11356D] text-white shadow-lg'
+                            : 'border-border/70 bg-background text-muted-foreground hover:border-[#11356D]/25 hover:text-foreground'
+                        }`}
+                      >
+                        <span
+                          className={`h-2.5 w-2.5 rounded-full ${
+                            isActive ? 'bg-[#12C7E8]' : 'bg-muted-foreground/40'
+                          }`}
+                        />
+                        <span>
+                          {quote.author ||
+                            quote.company ||
+                            `Quote ${index + 1}`}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
+
+            {hasActiveImage && (
+              <div className="flex justify-center lg:justify-end">
+                <AnimatePresence initial={false} mode="wait">
+                  <motion.div
+                    key={activeQuote.key}
+                    initial={{ opacity: 0, scale: 0.96, y: 18 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.98, y: -14 }}
+                    transition={{ duration: 0.48, ease: 'easeOut' }}
+                    className="w-full max-w-[430px]"
+                  >
+                    <QuoteVisual quote={activeQuote} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            )}
           </div>
         </div>
       </div>
