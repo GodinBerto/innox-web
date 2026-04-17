@@ -127,10 +127,10 @@ export default function ContactPage() {
     <div className="min-h-screen bg-background">
       <main>
         {/* Hero Section with Illustration */}
-        <section className="relative py-20 lg:py-28 bg-gradient-to-br from-orange-50 via-white to-amber-50 overflow-hidden">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-20 left-10 w-64 h-64 bg-orange-200 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-10 right-20 w-96 h-96 bg-amber-200 rounded-full blur-3xl"></div>
+        <section className="relative overflow-hidden  lg:py-28">
+          <div className="absolute inset-0 opacity-35 dark:opacity-70">
+            <div className="absolute left-10 top-20 h-64 w-64 rounded-full bg-orange-300/50 blur-3xl dark:bg-orange-600/15"></div>
+            <div className="absolute bottom-10 right-20 h-96 w-96 rounded-full bg-amber-300/50 blur-3xl dark:bg-amber-500/10"></div>
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
@@ -162,7 +162,7 @@ export default function ContactPage() {
 
               {/* Illustration Image */}
               <div className="relative">
-                <div className="relative w-full aspect-square max-w-md mx-auto">
+                <div className="relative mx-auto aspect-square w-full max-w-md">
                   <Image
                     src="/assets/images/illustration.png"
                     alt="Contact Us Illustration"
@@ -170,9 +170,9 @@ export default function ContactPage() {
                     className="object-contain"
                   />
                   {/* Floating cards */}
-                  <div className="absolute top-10 right-0 bg-white rounded-xl p-4 shadow-xl border border-orange-100 animate-bounce">
+                  <div className="absolute right-0 top-10 animate-bounce rounded-xl border border-border bg-card/90 p-4 shadow-xl backdrop-blur-sm">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/15">
                         <Zap className="w-5 h-5 text-orange-500" />
                       </div>
                       <div>
@@ -186,11 +186,11 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <div
-                    className="absolute bottom-20 left-0 bg-white rounded-xl p-4 shadow-xl border border-orange-100 animate-bounce"
+                    className="absolute bottom-20 left-0 animate-bounce rounded-xl border border-border bg-card/90 p-4 shadow-xl backdrop-blur-sm"
                     style={{ animationDelay: '0.5s' }}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/15">
                         <Target className="w-5 h-5 text-green-600" />
                       </div>
                       <div>
@@ -217,9 +217,9 @@ export default function ContactPage() {
                 <a
                   key={index}
                   href={method.action}
-                  className="group bg-gradient-to-br from-white to-orange-50 rounded-2xl p-6 border border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group rounded-2xl border border-border bg-linear-to-br from-card to-orange-50/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/40 hover:shadow-xl dark:to-orange-950/10"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br from-orange-400 to-orange-600 transition-transform group-hover:scale-110">
                     <method.icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-foreground mb-1">
@@ -238,17 +238,17 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form & Info with Enhanced Design */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-orange-50/30">
+        <section className="bg-linear-to-br from-muted/40 via-background to-orange-500/5 py-20 dark:from-muted/20 dark:to-orange-500/8">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Contact Form */}
-              <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl border border-orange-100 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-amber-400/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-orange-400/10 to-amber-400/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 lg:p-10">
+                <div className="absolute right-0 top-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-linear-to-br from-orange-400/20 to-amber-400/20 dark:from-orange-500/10 dark:to-amber-500/10"></div>
+                <div className="absolute bottom-0 left-0 h-24 w-24 -translate-x-1/2 translate-y-1/2 rounded-full bg-linear-to-br from-orange-400/10 to-amber-400/10 dark:from-orange-500/8 dark:to-amber-500/8"></div>
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-lg flex items-center justify-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-orange-500 to-amber-500">
                       <MessageCircle className="w-5 h-5 text-white" />
                     </div>
                     <h2 className="text-2xl font-bold text-foreground">
@@ -262,7 +262,7 @@ export default function ContactPage() {
 
                   {isSubmitted ? (
                     <div className="flex flex-col items-center justify-center py-12 text-center">
-                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/15">
                         <CheckCircle className="w-8 h-8 text-green-600" />
                       </div>
                       <h3 className="text-xl font-semibold text-foreground mb-2">
@@ -394,7 +394,7 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         size="lg"
-                        className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+                        className="w-full bg-linear-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600  hover:shadow-xl transition-all duration-300 font-semibold"
                       >
                         <Send className="w-4 h-4 mr-2" />
                         Send Message
@@ -414,10 +414,10 @@ export default function ContactPage() {
                     {supportOptions.map((option, index) => (
                       <div
                         key={index}
-                        className="bg-white rounded-2xl p-6 border border-orange-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                        className="rounded-2xl border border-border bg-card p-6  transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/30 hover:shadow-xl"
                       >
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-orange-400 to-amber-500">
                             <option.icon className="w-6 h-6 text-white" />
                           </div>
                           <div>
@@ -441,9 +441,9 @@ export default function ContactPage() {
                 </div>
 
                 {/* Business Hours */}
-                <div className="bg-white rounded-2xl p-6 border border-orange-100 shadow-lg">
+                <div className="rounded-2xl border border-border bg-card p-6 ">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-orange-400 to-amber-500">
                       <Clock className="w-5 h-5 text-white" />
                     </div>
                     <h3 className="text-lg font-bold text-foreground">
@@ -478,9 +478,9 @@ export default function ContactPage() {
                 </div>
 
                 {/* Response Time */}
-                <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-6 border border-orange-200">
+                <div className="rounded-2xl border border-orange-200/60 p-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-500">
                       <Zap className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -501,7 +501,7 @@ export default function ContactPage() {
         </section>
 
         {/* Global Offices with Enhanced Cards */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-orange-50/30">
+        <section className="bg-linear-to-br from-muted/40 via-background to-orange-500/5 py-20 dark:from-muted/20 dark:to-orange-500/8">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-4">
@@ -520,10 +520,10 @@ export default function ContactPage() {
               {offices.map((office, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-3xl p-8 border border-orange-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group"
+                  className="group rounded-3xl border border-border bg-card p-8  transition-all duration-300 hover:-translate-y-2 hover:border-orange-500/30 hover:shadow-2xl"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br from-orange-500 to-amber-500 transition-transform group-hover:scale-110">
                       <span className="text-white font-bold text-sm">
                         {office.flag}
                       </span>
@@ -540,7 +540,7 @@ export default function ContactPage() {
 
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <MapPin className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
                       <div>
                         <p className="text-foreground">{office.address}</p>
                         <p className="text-muted-foreground">
@@ -549,7 +549,7 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                      <Phone className="w-5 h-5 text-orange-500 shrink-0" />
                       <a
                         href={`tel:${office.phone.replace(/\s/g, '')}`}
                         className="text-foreground hover:text-orange-500 transition-colors"
@@ -558,7 +558,7 @@ export default function ContactPage() {
                       </a>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                      <Mail className="w-5 h-5 text-orange-500 shrink-0" />
                       <a
                         href={`mailto:${office.email}`}
                         className="text-foreground hover:text-orange-500 transition-colors"

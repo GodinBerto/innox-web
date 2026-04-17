@@ -16,10 +16,6 @@ export const navItems: _INavbarLinks[] = [
     name: 'Contact Us',
     link: '/contact',
   },
-  // {
-  //   name: "Pricing",
-  //   link: "#contact",
-  // },
 ];
 
 export const menuData = {
@@ -243,4 +239,6 @@ export const menuData = {
   Home: '/',
   'About Us': '/about-us',
 };
-export const navSheetSecondLinks = ['Contact Us', 'Pricing'];
+export const navSheetSecondLinks: { [key: string]: string }[] = [
+  { name: 'Contact Us', link: '/contact' },
+];

@@ -91,11 +91,11 @@ export default function Navbar() {
               )}
               <NavbarButton
                 variant="primary"
-                href="/contact-us"
+                href="/contact"
                 className="text-white  rounded-full bg-orange-600 shadow-lg hover:bg-orange-700 focus-visible:outline-orange-600 dark:bg-orange-500 dark:hover:bg-orange-600"
                 aria-label="Book a demo of InnoX"
               >
-                Book Demo
+                Get Started
               </NavbarButton>
               <div className="flex-center flex-col sm:flex-row gap-4 mt-6 sm:mt-10 animate-fade-in-delay-more"></div>
             </div>
@@ -141,9 +141,9 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
                 className="w-full"
-                href="/contact-us"
+                href="/contact"
               >
-                Book a call
+                Get Started
               </NavbarButton>
             </div>
           </MobileNavMenu>

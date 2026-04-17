@@ -217,16 +217,17 @@ export function NavigationSheet() {
               <div>
                 {navSheetSecondLinks.map((link, idx) => (
                   <Link
-                    href={link}
+                    href={link.link}
                     key={`second-link-${idx}`}
                     className="w-full text-left hover:translate-x-0.5 flex items-center py-1"
                     prefetch={false}
+                    onClick={closeSheet}
                   >
                     <Typography
                       variant="span"
                       className="cursor-pointer hover:text-blue-600"
                     >
-                      {link}
+                      {link.name}
                     </Typography>
                   </Link>
                 ))}
