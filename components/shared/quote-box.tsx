@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'motion/react';
-import { startTransition, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { urlForImage } from '@/lib/sanity';
 import type { QuoteBox as QuoteBoxSection } from '@/types/sanity/schema';
 
@@ -185,7 +185,6 @@ function QuoteVisual({ quote }: { quote: NormalizedQuote }) {
 export default function QuoteBox(props: QuoteBoxProps) {
   const quotes = normalizeQuotes(props);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (activeIndex >= quotes.length) {
@@ -194,20 +193,18 @@ export default function QuoteBox(props: QuoteBoxProps) {
   }, [activeIndex, quotes.length]);
 
   useEffect(() => {
-    if (quotes.length < 2 || isPaused) {
+    if (quotes.length < 2) {
       return;
     }
 
-    const timer = window.setInterval(() => {
-      startTransition(() => {
-        setActiveIndex((currentIndex) => (currentIndex + 1) % quotes.length);
-      });
+    const timer = window.setTimeout(() => {
+      setActiveIndex((currentIndex) => (currentIndex + 1) % quotes.length);
     }, AUTOPLAY_INTERVAL_MS);
 
     return () => {
-      window.clearInterval(timer);
+      window.clearTimeout(timer);
     };
-  }, [isPaused, quotes.length]);
+  }, [activeIndex, quotes.length]);
 
   const activeQuote = quotes[activeIndex] ?? quotes[0];
   const hasActiveImage = Boolean(getImageSrc(activeQuote?.image));
@@ -233,8 +230,6 @@ export default function QuoteBox(props: QuoteBoxProps) {
                 ? 'lg:grid-cols-[1.02fr_0.98fr] lg:gap-10'
                 : 'lg:grid-cols-1'
             }`}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
           >
             <div className="max-w-[640px] text-center lg:text-left">
               <div className="mb-8 flex justify-center gap-1 lg:justify-start">
@@ -287,7 +282,7 @@ export default function QuoteBox(props: QuoteBoxProps) {
                 </motion.div>
               </AnimatePresence>
 
-              {quotes.length > 1 && (
+              {/* {quotes.length > 1 && (
                 <div className="mt-10 flex flex-wrap justify-center gap-3 lg:justify-start">
                   {quotes.map((quote, index) => {
                     const isActive = index === activeIndex;
@@ -298,11 +293,7 @@ export default function QuoteBox(props: QuoteBoxProps) {
                         type="button"
                         aria-label={`Show quote ${index + 1}`}
                         aria-pressed={isActive}
-                        onClick={() =>
-                          startTransition(() => {
-                            setActiveIndex(index);
-                          })
-                        }
+                        onClick={() => setActiveIndex(index)}
                         className={`inline-flex items-center gap-3 rounded-full border px-4 py-2 text-sm font-medium transition ${
                           isActive
                             ? 'border-[#11356D] bg-[#11356D] text-white shadow-lg'
@@ -323,7 +314,7 @@ export default function QuoteBox(props: QuoteBoxProps) {
                     );
                   })}
                 </div>
-              )}
+              )} */}
             </div>
 
             {hasActiveImage && (
