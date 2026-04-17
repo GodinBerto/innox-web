@@ -173,7 +173,7 @@ export function NavigationSheet() {
 
           {/* Right Content - Navigation */}
           <div className="w-1/4 h-full flex flex-col bg-neutral-200 dark:bg-neutral-800 p-10">
-            <div className="flex flex-col flex-grow h-full space-y-4 sm:space-y-8">
+            <div className="flex flex-col grow h-full space-y-4 sm:space-y-8">
               {/* Main Navigation Links */}
               <div>
                 {primaryNavEntries.map(([key, value], idx) => {
