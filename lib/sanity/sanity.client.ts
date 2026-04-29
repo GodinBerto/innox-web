@@ -318,6 +318,26 @@ export interface SubModulePageContent {
   mainCenter?: SubModuleMainCenter;
   hero?: SubModulePageHero;
   FAQ?: SubModuleFaqItem[];
+  responsiveDesign?: {
+    desktopImage?: {
+      asset?: {
+        _id?: string;
+        url?: string;
+      };
+    };
+    mobileImage?: {
+      asset?: {
+        _id?: string;
+        url?: string;
+      };
+    };
+    tabletImage?: {
+      asset?: {
+        _id?: string;
+        url?: string;
+      };
+    };
+  };
 }
 
 export async function getSubModulePageContent(

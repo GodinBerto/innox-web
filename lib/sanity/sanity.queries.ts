@@ -148,6 +148,26 @@ export const subModulePageContentBySlugsQuery = groq`
         value,
         description
       }
+    },
+    responsiveDesign {
+      mobileImage {
+        asset->{
+          _id,
+          url
+        }
+      },
+      desktopImage {
+        asset->{
+          _id,
+          url
+        }
+      },
+      tabletImage {
+        asset->{
+          _id,
+          url
+        }
+      }
     }
   }
 `;

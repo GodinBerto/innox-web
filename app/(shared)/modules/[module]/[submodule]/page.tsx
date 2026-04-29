@@ -119,6 +119,12 @@ export default async function ModulePage({
       })),
   };
 
+  const responsiveSectionProps = {
+    heading: trimmedSlug || 'this section',
+    desktopImageUrl: subModuleData.responsiveDesign?.desktopImage?.asset?.url,
+    mobileImageUrl: subModuleData.responsiveDesign?.mobileImage?.asset?.url,
+  };
+
   return (
     <div className="space-y-4 md:space-y-28">
       <DashboardSliderProvider length={3}>
@@ -152,7 +158,7 @@ export default async function ModulePage({
         heading={trimmedSlug || 'this section'}
       />
 
-      <ResponsiveSection heading={trimmedSlug || 'this section'} />
+      <ResponsiveSection {...responsiveSectionProps} />
 
       <FAQSection
         faqs={subModuleData.FAQ?.length ? subModuleData.FAQ : fallbackFaqs}

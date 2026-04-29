@@ -380,3 +380,153 @@
     rotate: 4deg;
   }
 }
+
+.widget-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: transparent;
+  min-height: 400px;
+}
+
+.showcase-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Laptop Styling */
+.laptop-mockup {
+  flex: 1;
+  position: relative;
+  perspective: 1000px;
+}
+
+.laptop-screen {
+  background: #0b0b0b;
+  border-radius: 24px 24px 6px 6px;
+  padding: 12px;
+  border: 1.5px solid #3d444d;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.laptop-screen::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #1a202c;
+  border-radius: 50%;
+  border: 1px solid #2d3748;
+}
+
+.screen-content {
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.screen-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.laptop-base {
+  height: 16px;
+  background: linear-gradient(180deg, #d1d5db 0%, #9ca3af 100%);
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  width: 108%;
+  left: -4%;
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.25);
+  margin-top: -2px;
+  z-index: 1;
+}
+
+.laptop-base::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 6px;
+  background: #4b5563;
+  opacity: 0.2;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Phone Styling */
+.phone-mockup {
+  position: absolute;
+  right: -5%;
+  bottom: -20px;
+  width: 180px;
+  background: #111;
+  border-radius: 36px;
+  padding: 10px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 3px solid #334155;
+  z-index: 10;
+}
+
+.phone-screen {
+  aspect-ratio: 9 / 19.5;
+  background: #fff;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dynamic Island / Notch */
+.phone-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 16px;
+  background: #111;
+  border-radius: 10px;
+  z-index: 20;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .phone-mockup {
+    width: 140px;
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .phone-mockup {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
+}
