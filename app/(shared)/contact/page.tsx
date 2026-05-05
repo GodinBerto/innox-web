@@ -140,7 +140,7 @@ export default function ContactPage() {
                       href="tel:+15552311221"
                       className="block font-medium text-foreground transition hover:text-[#EF6411]"
                     >
-                      +233 55 604 581121
+                      +233 55 604 5811
                     </a>
                     <p className="text-muted-foreground">Customer Support</p>
                   </div>
