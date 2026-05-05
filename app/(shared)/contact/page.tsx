@@ -59,26 +59,6 @@ function MapPreview() {
         referrerPolicy="no-referrer-when-downgrade"
         className="absolute inset-0"
       />
-
-      {/* Overlay card (keep your design) */}
-      <div className="absolute left-6 top-6 w-62 rounded-[1.4rem] border border-border bg-card p-4 shadow-sm">
-        <div className="space-y-1">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Innorik Ltd
-          </p>
-          <p className="text-sm font-semibold text-foreground">
-            Osu Badu Ave, Accra
-          </p>
-
-          <a
-            href="https://www.google.com/maps/place/Innorik+Ltd/@5.6162767,-0.1921992,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf85e6c000e74b:0xfac583f9c673f529!8m2!3d5.6162767!4d-0.1921992!16s%2Fg%2F11s7g42p5g?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D"
-            target="_blank"
-            className="text-xs font-medium text-[#11356D]"
-          >
-            Open Google Maps
-          </a>
-        </div>
-      </div>
     </div>
   );
 }
