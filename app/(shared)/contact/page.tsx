@@ -28,31 +28,14 @@ const contactHighlights = [
 
 const offices = [
   {
-    city: 'San Francisco',
-    country: 'United States',
-    address: '123 Tech Boulevard, Suite 456',
-    postalCode: 'San Francisco, CA 94105',
-    phone: '+1 (555) 231-1221',
-    email: 'hello@innoxsystems.com',
+    city: 'Accra',
+    country: 'Ghana',
+    address: 'Osu Badu Ave, Accra',
+    postalCode: 'Accra, Ghana 00000',
+    phone: '+233 233 123 4567',
+    phone2: '+1 855-221-9979',
+    email: 'info@innorik.com',
     label: 'Headquarters',
-  },
-  {
-    city: 'London',
-    country: 'United Kingdom',
-    address: '45 Fleet Street, 3rd Floor',
-    postalCode: 'EC4Y 1BT',
-    phone: '+44 20 7123 4567',
-    email: 'london@innoxsystems.com',
-    label: 'Europe',
-  },
-  {
-    city: 'Singapore',
-    country: 'Singapore',
-    address: '1 Raffles Place, Level 20',
-    postalCode: '048616',
-    phone: '+65 6123 4567',
-    email: 'apac@innoxsystems.com',
-    label: 'APAC',
   },
 ] as const;
 
@@ -66,48 +49,36 @@ const defaultFormState = {
 
 function MapPreview() {
   return (
-    <div className="relative aspect-[1.05/0.9] overflow-hidden rounded-[2rem] border border-border bg-muted/50 dark:bg-muted/25">
-      <div className="absolute inset-0">
-        <span className="absolute left-6 right-6 top-8 h-px bg-white/80 dark:bg-white/10" />
-        <span className="absolute left-10 right-10 top-24 h-px bg-white/75 dark:bg-white/10" />
-        <span className="absolute left-8 right-8 top-40 h-px bg-white/80 dark:bg-white/10" />
-        <span className="absolute bottom-18 left-10 right-12 h-px bg-white/70 dark:bg-white/10" />
-        <span className="absolute bottom-8 left-6 right-6 h-px bg-white/80 dark:bg-white/10" />
+    <div className="relative aspect-[1.05/0.9] overflow-hidden rounded-[2rem] border border-border">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5246.309403983805!2d-0.19479480469490415!3d5.614849712866977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf85e6c000e74b%3A0xfac583f9c673f529!2sInnorik%20Ltd!5e0!3m2!1sen!2sgh!4v1777987874130!5m2!1sen!2sgh"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="absolute inset-0"
+      />
 
-        <span className="absolute bottom-6 top-6 left-16 w-px bg-white/70 dark:bg-white/10" />
-        <span className="absolute bottom-8 top-10 left-[38%] w-px bg-white/80 dark:bg-white/10" />
-        <span className="absolute bottom-8 top-8 left-[63%] w-px bg-white/75 dark:bg-white/10" />
-        <span className="absolute bottom-6 top-12 right-14 w-px bg-white/70 dark:bg-white/10" />
-
-        <span className="absolute left-4 top-14 h-px w-48 rotate-28 bg-white/80 dark:bg-white/10" />
-        <span className="absolute right-2 top-20 h-px w-52 rotate-[-22deg] bg-white/80 dark:bg-white/10" />
-        <span className="absolute bottom-18 left-18 h-px w-56 rotate-[-18deg] bg-white/80 dark:bg-white/10" />
-        <span className="absolute bottom-16 right-8 h-px w-44 rotate-22 bg-white/80 dark:bg-white/10" />
-      </div>
-
+      {/* Overlay card (keep your design) */}
       <div className="absolute left-6 top-6 w-62 rounded-[1.4rem] border border-border bg-card p-4 shadow-sm">
-        <div className="flex items-start gap-3">
-          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full bg-[#11356D]/10 text-[#11356D] dark:bg-[#11356D]/25 dark:text-blue-200">
-            <MapPin className="h-4 w-4" />
-          </div>
-          <div className="space-y-1">
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              InnoX Inc.
-            </p>
-            <p className="text-sm font-semibold text-foreground">
-              San Francisco, USA
-            </p>
-            <p className="text-xs leading-5 text-muted-foreground">
-              123 Tech Boulevard, Suite 456
-            </p>
-            <p className="text-xs font-medium text-[#11356D] dark:text-blue-200">
-              Open Google Maps
-            </p>
-          </div>
+        <div className="space-y-1">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Innorik Ltd
+          </p>
+          <p className="text-sm font-semibold text-foreground">
+            Osu Badu Ave, Accra
+          </p>
+
+          <a
+            href="https://www.google.com/maps/place/Innorik+Ltd/@5.6162767,-0.1921992,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf85e6c000e74b:0xfac583f9c673f529!8m2!3d5.6162767!4d-0.1921992!16s%2Fg%2F11s7g42p5g?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            className="text-xs font-medium text-[#11356D]"
+          >
+            Open Google Maps
+          </a>
         </div>
       </div>
-
-      <div className="absolute left-1/2 top-[63%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-background bg-[#EF6411] shadow-[0_0_0_12px_rgba(239,100,17,0.14)] dark:border-card dark:shadow-[0_0_0_12px_rgba(239,100,17,0.12)]" />
     </div>
   );
 }
@@ -115,15 +86,44 @@ function MapPreview() {
 export default function ContactPage() {
   const [formState, setFormState] = useState(defaultFormState);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const headquarter = offices[0];
   const regionalOffices = offices.slice(1);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setFormState(defaultFormState);
-    window.setTimeout(() => setIsSubmitted(false), 3000);
+
+    try {
+      setIsSubmitting(true);
+      setSubmitError('');
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json()) as { error?: string };
+        throw new Error(payload.error ?? 'Could not send message.');
+      }
+
+      setIsSubmitted(true);
+      setFormState(defaultFormState);
+      window.setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : 'Unable to send your message right now.';
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -154,13 +154,13 @@ export default function ContactPage() {
                       href="mailto:hello@innoxsystems.com"
                       className="block font-medium text-foreground transition hover:text-[#EF6411]"
                     >
-                      hello@innoxsystems.com
+                      info@innorik.com
                     </a>
                     <a
                       href="tel:+15552311221"
                       className="block font-medium text-foreground transition hover:text-[#EF6411]"
                     >
-                      +1 (555) 231-1221
+                      +233 55 604 581121
                     </a>
                     <p className="text-muted-foreground">Customer Support</p>
                   </div>
@@ -285,11 +285,18 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         size="lg"
+                        disabled={isSubmitting}
                         className="h-11 w-full rounded-full bg-orange-600 text-white hover:bg-orange-700 focus-visible:outline-orange-600 dark:bg-orange-500 dark:hover:bg-orange-600"
                       >
                         <Send className="mr-2 h-4 w-4" />
-                        Submit
+                        {isSubmitting ? 'Sending...' : 'Submit'}
                       </Button>
+
+                      {submitError ? (
+                        <p className="text-center text-xs leading-5 text-red-600 dark:text-red-400">
+                          {submitError}
+                        </p>
+                      ) : null}
 
                       <p className="text-center text-xs leading-5 text-muted-foreground">
                         By contacting us, you agree to our terms of service and
@@ -331,13 +338,22 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-3 pt-2">
-                    <a
-                      href={`tel:${headquarter.phone.replace(/\s/g, '')}`}
-                      className="flex items-center gap-3 text-sm text-foreground transition hover:text-[#EF6411]"
-                    >
-                      <Phone className="h-4 w-4 text-[#EF6411]" />
-                      {headquarter.phone}
-                    </a>
+                    <div className="flex gap-3">
+                      <a
+                        href={`tel:${headquarter.phone.replace(/\s/g, '')}`}
+                        className="flex items-center gap-3 text-sm text-foreground transition hover:text-[#EF6411]"
+                      >
+                        <Phone className="h-4 w-4 text-[#EF6411]" />
+                        {headquarter.phone}
+                      </a>{' '}
+                      /
+                      <a
+                        href={`tel:${headquarter.phone.replace(/\s/g, '')}`}
+                        className="flex items-center gap-3 text-sm text-foreground transition hover:text-[#EF6411]"
+                      >
+                        {headquarter.phone2}
+                      </a>
+                    </div>
                     <a
                       href={`mailto:${headquarter.email}`}
                       className="flex items-center gap-3 text-sm text-foreground transition hover:text-[#EF6411]"
