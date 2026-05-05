@@ -32,7 +32,7 @@ const offices = [
     country: 'Ghana',
     address: 'Osu Badu Ave, Accra',
     postalCode: 'Accra, Ghana 00000',
-    phone: '+233 233 123 4567',
+    phone: '+233 55 604 5811',
     phone2: '+1 855-221-9979',
     email: 'info@innorik.com',
     label: 'Headquarters',
