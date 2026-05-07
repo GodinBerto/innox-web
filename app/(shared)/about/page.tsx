@@ -148,15 +148,15 @@ const aboutFaqs = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
-      <main className="mx-auto max-w-[1440px] space-y-6 px-4 py-4 sm:px-5 md:px-6 md:py-6 lg:px-8">
+      <main className="mx-auto max-w-[1440px] space-y-10 px-4 py-4 sm:space-y-12 sm:px-5 md:space-y-16 md:px-6 md:py-6 lg:px-8">
         <section>
           <MotionWrapper variant="slideLeft" className="overflow-hidden">
-            <div className="flex min-h-[300px] items-center justify-center px-8 py-16 text-center text-forground sm:px-10 md:min-h-[360px] md:py-20">
+            <div className="flex min-h-60 items-center justify-center px-4 py-10 text-center text-foreground sm:min-h-[300px] sm:px-8 sm:py-14 md:min-h-[360px] md:px-10 md:py-20">
               <div className="max-w-3xl space-y-4">
                 <p className="text-sm text-foreground/70 sm:text-base">
                   About Us
                 </p>
-                <h2 className="text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl lg:text-7xl">
+                <h2 className="text-3xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl lg:text-7xl">
                   Built to Simplify Complexity and Power Smarter Operations
                 </h2>
               </div>
@@ -164,17 +164,17 @@ export default function AboutPage() {
           </MotionWrapper>
         </section>
 
-        <section className="my-20">
+        <section className="my-12 sm:my-16 md:my-20">
           <div className="space-y-6">
             <MotionWrapper
               variant="slideUp"
-              className="rounded-[2rem] p-7 md:p-8"
+              className="rounded-[2rem] p-5 sm:p-6 md:p-8"
             >
               <div className="space-y-5">
                 <span className="inline-flex px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-white">
                   Our Story
                 </span>
-                <h3 className="max-w-[16ch] text-4xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-5xl">
+                <h3 className="max-w-[16ch] text-3xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-4xl md:text-5xl">
                   One connected platform for mission-critical operations
                 </h3>
               </div>
@@ -186,12 +186,12 @@ export default function AboutPage() {
                     alt="InnoX operational overview"
                     width={6000}
                     height={4000}
-                    className="h-full min-h-80 w-full object-cover"
+                    className="h-64 w-full object-cover sm:h-80 lg:h-full lg:min-h-80"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/35 via-transparent to-transparent" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/60 bg-white/15 text-white backdrop-blur">
-                      <CirclePlay className="h-7 w-7" />
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/60 bg-white/15 text-white backdrop-blur sm:h-16 sm:w-16">
+                      <CirclePlay className="h-5 w-5 sm:h-7 sm:w-7" />
                     </span>
                   </div>
                 </div>
@@ -216,10 +216,10 @@ export default function AboutPage() {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-black/10 pt-5 md:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-5 border-t border-black/10 pt-5 lg:grid-cols-4">
                     {storyStats.map((stat) => (
                       <div key={stat.label}>
-                        <p className="text-3xl font-semibold tracking-[-0.05em] text-[#1f1f1f] dark:text-white">
+                        <p className="text-2xl font-semibold tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-3xl">
                           {stat.value}
                         </p>
                         <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
@@ -234,18 +234,18 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="">
+        <section>
           <div className="space-y-6">
-            <div className="flex gap-3">
+            <div className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.9fr)_minmax(0,0.9fr)]">
               <MotionWrapper
                 variant="slideRight"
-                className="rounded-[2rem] bg-background p-7 md:p-8 min-w-[500px] mx-auto"
+                className="rounded-[2rem] bg-background p-5 sm:p-6 md:p-8"
               >
                 <div className="space-y-5">
-                  <span className="inline-flex rounded-full border border-forground/10 px-3 py-1 text-[11px] font-medium text-foreground">
+                  <span className="inline-flex rounded-full border border-foreground/10 px-3 py-1 text-[11px] font-medium text-foreground">
                     About InnoX Platform
                   </span>
-                  <h1 className="max-w-[10ch] text-4xl font-semibold leading-none tracking-[-0.06em] text-foreground sm:text-5xl">
+                  <h1 className="max-w-[12ch] text-3xl font-semibold leading-none tracking-[-0.06em] text-foreground sm:max-w-[10ch] sm:text-4xl md:text-5xl">
                     Transforming How Organizations Operate
                   </h1>
                   <p className="max-w-md text-sm leading-7 text-foreground sm:text-base">
@@ -271,10 +271,10 @@ export default function AboutPage() {
                     alt="Our mission at InnoX"
                     width={1400}
                     height={2100}
-                    className="h-60 w-full object-cover"
+                    className="h-52 w-full object-cover sm:h-60"
                   />
                 </div>
-                <div className="space-y-3 p-5">
+                <div className="space-y-3 p-4 sm:p-5">
                   <p className="text-xl font-semibold text-[#1f1f1f] dark:text-white">
                     Our Mission
                   </p>
@@ -297,10 +297,10 @@ export default function AboutPage() {
                     alt="Our mission at InnoX"
                     width={1400}
                     height={2100}
-                    className="h-60 w-full object-cover"
+                    className="h-52 w-full object-cover sm:h-60"
                   />
                 </div>
-                <div className="space-y-3 p-5">
+                <div className="space-y-3 p-4 sm:p-5">
                   <p className="text-xl font-semibold text-[#1f1f1f] dark:text-white">
                     Our Vision
                   </p>
@@ -316,20 +316,20 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="my-20">
+        <section className="my-12 sm:my-16 md:my-20">
           <MotionWrapper variant="slideUp" className=" ">
             <div
-              className="h-full w-full p-8 md:p-10 rounded-[2rem] text-white shadow-[0_24px_80px_rgba(15,23,42,0.16)] overflow-hidden relative"
+              className="relative h-full w-full overflow-hidden rounded-[2rem] p-5 text-white shadow-[0_24px_80px_rgba(15,23,42,0.16)] sm:p-8 md:p-10"
               style={{
-                backgroundImage: 'url(\'/assets/images/finance.png\')',
+                backgroundImage: 'url(/assets/images/finance.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
               }}
             >
-              <div className="bg-black/50 h-full w-full absolute top-0 left-0" />
-              <div className="max-w-xl space-y-5 relative">
-                <h2 className="max-w-[12ch] text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl">
+              <div className="absolute left-0 top-0 h-full w-full bg-black/50" />
+              <div className="relative max-w-xl space-y-5">
+                <h2 className="max-w-[12ch] text-3xl font-semibold leading-none tracking-[-0.06em] sm:text-4xl md:text-5xl">
                   Built for scale, visibility, and smarter response.
                 </h2>
 
@@ -351,13 +351,13 @@ export default function AboutPage() {
           </MotionWrapper>
         </section>
 
-        <section className="my-20">
+        <section className="my-12 sm:my-16 md:my-20">
           <MotionWrapper variant="slideRight" className=" ">
             <div className="space-y-4">
               <span className="inline-flex rounded-full px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-200">
                 Why Choose InnoX
               </span>
-              <h2 className="max-w-[16ch] text-4xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-5xl">
+              <h2 className="max-w-[16ch] text-3xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-4xl md:text-5xl">
                 The clarity teams need to work faster and smarter
               </h2>
               <p className="max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-200 sm:text-base">
@@ -367,17 +367,21 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {platformHighlights.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
                   <article
                     key={item.title}
-                    className={'rounded-[1.6rem] border border-black/8 p-5 group bg-white text-slate-950 dark:bg-black dark:text-white transition hover:bg-black/5 hover:text-slate-900 dark:hover:bg-white/5 dark:hover:text-slate-200'}
+                    className={
+                      'rounded-[1.6rem] border border-black/8 p-5 group bg-white text-slate-950 dark:bg-black dark:text-white transition hover:bg-black/5 hover:text-slate-900 dark:hover:bg-white/5 dark:hover:text-slate-200'
+                    }
                   >
                     <div
-                      className={'flex h-11 w-11 items-center justify-center rounded-2xl bg-black/5 text-slate-900 dark:bg-white/10 dark:text-white transition group-hover:bg-background/10 group-hover:text-slate-900 dark:group-hover:bg-white/20 dark:group-hover:text-slate-200'}
+                      className={
+                        'flex h-11 w-11 items-center justify-center rounded-2xl bg-black/5 text-slate-900 dark:bg-white/10 dark:text-white transition group-hover:bg-background/10 group-hover:text-slate-900 dark:group-hover:bg-white/20 dark:group-hover:text-slate-200'
+                      }
                     >
                       <Icon className="h-5 w-5" />
                     </div>
@@ -400,12 +404,12 @@ export default function AboutPage() {
           </MotionWrapper>
         </section>
 
-        <section className="rounded-[2rem]  md:p-8 lg:p-10">
+        <section className="rounded-[2rem]">
           <MotionWrapper variant="slideUp" className="text-center">
             <span className="inline-flex rounded-full border border-black/10 px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-200">
               Modules Preview
             </span>
-            <h2 className="mx-auto mt-5 max-w-[14ch] text-4xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-5xl">
+            <h2 className="mx-auto mt-5 max-w-[14ch] text-3xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-4xl md:text-5xl">
               Ready to see InnoX in action?
             </h2>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-200 sm:text-base">
@@ -421,19 +425,19 @@ export default function AboutPage() {
                 key={module.title}
                 variant={index % 2 === 0 ? 'slideUp' : 'slideLeft'}
               >
-                <article className="overflow-hidden rounded-[1.7rem] border border-black/8 dark:border-white/8 bg-white dark:bg-black h-[460px]">
+                <article className="flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-black/8 bg-white dark:border-white/8 dark:bg-black">
                   <div className="overflow-hidden">
                     <Image
                       src={module.image}
                       alt={module.title}
                       width={1440}
                       height={606}
-                      className="h-[220px] w-full object-cover object-top"
+                      className="h-52 w-full object-cover object-top sm:h-[220px]"
                     />
                   </div>
 
-                  <div className="flex h-60 flex-col justify-between p-5">
-                    <div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <div className="flex-1">
                       <h3 className="text-2xl font-semibold leading-tight text-[#1f1f1f] dark:text-white">
                         {module.title}
                       </h3>
@@ -445,7 +449,7 @@ export default function AboutPage() {
 
                     <Link
                       href={module.link}
-                      className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-black/30 w-fit"
+                      className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-black/30"
                     >
                       Explore Module <ArrowRight className="h-4 w-4" />
                     </Link>

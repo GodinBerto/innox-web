@@ -50,7 +50,7 @@ export default function FAQ({
   }
 
   return (
-    <section className="px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+    <section className="px-4 py-12 ">
       <div className="container">
         <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           <MotionWrapper
@@ -58,10 +58,10 @@ export default function FAQ({
             className="space-y-8 text-center lg:text-left"
           >
             <div className="max-w-md space-y-4 mx-auto lg:mx-0">
-              <h2 className="max-w-[10ch] text-4xl font-semibold leading-[0.95] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-[3.5rem]">
+              <h2 className="max-w-[10ch] text-4xl text-start font-semibold leading-[0.95] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-[3.5rem]">
                 {heading}
               </h2>
-              <p className="max-w-md text-sm leading-7 text-muted-foreground sm:text-base">
+              <p className="max-w-md text-sm leading-7 text-muted-foreground sm:text-base text-start">
                 {description}
               </p>
             </div>
