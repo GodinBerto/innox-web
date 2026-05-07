@@ -92,22 +92,22 @@ ${message}`,
 <p><strong>Message:</strong><br/>${safeMessage}</p>`,
     });
 
-    await transporter.sendMail({
-      from: fromEmail,
-      to: email,
-      subject: 'Copy of your message to Innorik',
-      text: `Hi ${fullName},
+    //     await transporter.sendMail({
+    //       from: fromEmail,
+    //       to: email,
+    //       subject: 'Copy of your message to Innorik',
+    //       text: `Hi ${fullName},
 
-Thank you for contacting Innorik. This is a copy of the message you sent us:
+    // Thank you for contacting Innorik. This is a copy of the message you sent us:
 
-${message}
+    // ${message}
 
-Our customer service team will get back to you soon.`,
-      html: `<p>Hi ${escapeHtml(fullName)},</p>
-<p>Thank you for contacting Innorik. This is a copy of the message you sent us:</p>
-<blockquote>${safeMessage}</blockquote>
-<p>Our customer service team will get back to you soon.</p>`,
-    });
+    // Our customer service team will get back to you soon.`,
+    //       html: `<p>Hi ${escapeHtml(fullName)},</p>
+    // <p>Thank you for contacting Innorik. This is a copy of the message you sent us:</p>
+    // <blockquote>${safeMessage}</blockquote>
+    // <p>Our customer service team will get back to you soon.</p>`,
+    //     });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
