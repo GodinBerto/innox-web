@@ -1,406 +1,466 @@
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import type { LucideIcon } from 'lucide-react';
 import {
-  Target,
-  Heart,
-  Lightbulb,
-  Users,
-  Award,
-  TrendingUp,
-  Globe,
-  Clock,
+  ArrowRight,
+  CirclePlay,
+  Eye,
+  Gauge,
+  Layers3,
+  LineChart,
+  Link2,
+  ShieldCheck,
 } from 'lucide-react';
 import FAQ from '@/components/sections/faq';
-import { faqs } from '@/data';
+import { MotionWrapper } from '@/components/hoc/motion-wrapper';
 
-const values = [
+type HighlightCard = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+type ModulePreview = {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+};
+
+type StatCard = {
+  value: string;
+  label: string;
+};
+
+const ctaPrimaryClassName =
+  'inline-flex items-center justify-center gap-2 rounded-full bg-[#1f1f1f] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-black';
+
+const storyStats: StatCard[] = [
+  { value: '1', label: 'Unified operations platform' },
+  { value: '6', label: 'Core functions connected' },
+  { value: '15+', label: 'Years of industry experience' },
+  { value: 'Real-time', label: 'Visibility and insights' },
+];
+
+const platformHighlights: HighlightCard[] = [
   {
-    icon: Target,
-    title: 'Customer Focus',
+    icon: Layers3,
+    title: 'Unified Performance Oversight',
     description:
-      'We put our customers at the heart of everything we do, ensuring their success is our success.',
+      'Gain a 360° view of tasks, operations, and assignments across your organization for complete control and accountability.',
   },
   {
-    icon: Heart,
-    title: 'Integrity',
+    icon: Eye,
+    title: 'Instant Accessibility',
     description:
-      'We operate with transparency and honesty in all our business relationships.',
+      'Access accurate, reliable information instantly, anytime and anywhere, enabling faster response and execution.',
   },
   {
-    icon: Lightbulb,
-    title: 'Innovation',
+    icon: Gauge,
+    title: 'Operational Efficiency',
     description:
-      'We continuously push boundaries to deliver cutting-edge HR solutions.',
+      'Streamline processes, reduce manual effort, and improve service delivery while minimizing human errors.',
   },
   {
-    icon: Users,
-    title: 'Collaboration',
+    icon: LineChart,
+    title: 'Real-Time Insights',
     description:
-      'We believe great things happen when talented people work together.',
+      'Leverage up-to-the-minute data to eliminate duplication, prevent inconsistencies, and drive informed decisions.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Data Security & Integrity',
+    description:
+      'Ensure secure data flow across systems while maintaining accuracy, consistency, and reliability at every level.',
+  },
+  {
+    icon: Link2,
+    title: 'Seamless Integration & Cost Optimization',
+    description:
+      'Integrate effortlessly with Oracle ERP, Computron Financials, SAP, and SCADA with minimal configuration.',
   },
 ];
 
-// const stats = [
-//   { value: '2015', label: 'Founded' },
-//   { value: '10K+', label: 'Companies' },
-//   { value: '2M+', label: 'Users' },
-//   { value: '150+', label: 'Countries' },
-// ];
-
-// const team = [
-//   {
-//     name: 'Sarah Chen',
-//     role: 'CEO & Co-Founder',
-//     bio: 'Former VP of HR at Fortune 500 company with 20+ years experience',
-//     initials: 'SC',
-//   },
-//   {
-//     name: 'Michael Roberts',
-//     role: 'CTO & Co-Founder',
-//     bio: 'Ex-Google engineer with expertise in scalable enterprise systems',
-//     initials: 'MR',
-//   },
-//   {
-//     name: 'Emily Watson',
-//     role: 'VP of Product',
-//     bio: 'Product leader who previously built HR tools at major tech companies',
-//     initials: 'EW',
-//   },
-//   {
-//     name: 'David Kim',
-//     role: 'VP of Engineering',
-//     bio: 'Engineering leader with experience at top SaaS companies',
-//     initials: 'DK',
-//   },
-// ];
-
-const milestones = [
+const modulePreviews: ModulePreview[] = [
   {
-    year: '2015',
-    event: 'Founded in San Francisco with a mission to transform HR',
+    title: 'Human Resource Management',
+    description:
+      'Bring employee data, approvals, and workforce visibility into one connected operating view.',
+    image: '/assets/images/smarter-hr.png',
+    link: '/modules/human-resource-management-system-hrms',
   },
   {
-    year: '2017',
-    event: 'Reached 1,000 customers and raised Series A funding',
+    title: 'Asset Management',
+    description:
+      'Track physical infrastructure, fleet, and operational assets with clearer ownership and lifecycle control.',
+    image: '/assets/images/manage-assets.png',
+    link: '/modules/assets-management',
   },
-  { year: '2019', event: 'Expanded globally with offices in Europe and Asia' },
-  { year: '2021', event: 'Surpassed 1 million users worldwide' },
-  { year: '2023', event: 'Launched AI-powered performance insights' },
-  { year: '2025', event: 'Serving 10,000+ companies across 150+ countries' },
+  {
+    title: 'Finance & Accounting',
+    description:
+      'Connect financial workflows, reduce duplicate handling, and improve reporting confidence across teams.',
+    image: '/assets/images/finance.png',
+    link: '/modules/financials-and-accounting',
+  },
+  {
+    title: 'Operations & Power Apps',
+    description:
+      'Support field operations, outage workflows, and real-time coordination from one operational workspace.',
+    image: '/assets/images/operations.png',
+    link: '/modules/power-applications',
+  },
+];
+
+const aboutFaqs = [
+  {
+    question: 'What is InnoX?',
+    answer:
+      'InnoX is a unified operations platform that integrates core business functions into a single system, enabling organizations to streamline processes, improve visibility, and make data-driven decisions.',
+  },
+  {
+    question: 'Can InnoX integrate with existing systems?',
+    answer:
+      'Yes. InnoX is designed to integrate seamlessly with enterprise systems such as Oracle, SAP, SCADA, and other third-party platforms with minimal configuration.',
+  },
+  {
+    question: 'Is InnoX scalable?',
+    answer:
+      'Absolutely. InnoX is built to scale with your organization, supporting growth, increased data volume, and expanding operational needs.',
+  },
+  {
+    question: 'Is data secure on InnoX?',
+    answer:
+      'Yes. InnoX is built with enterprise-grade security measures to ensure data integrity, secure access, and protection against unauthorized use.',
+  },
+  {
+    question: 'Can InnoX be customized?',
+    answer:
+      'Yes. InnoX is highly flexible and can be tailored to meet the specific requirements of different organizations and industries.',
+  },
+  {
+    question: 'How can we get started with InnoX?',
+    answer:
+      'You can request a demo through our website or contact our team to discuss your requirements and explore how InnoX can support your operations.',
+  },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <main>
-        {/* Hero Section */}
-        <section className="relative py-20 lg:py-32 overflow-hidden">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-6">
-                  About Innox Systems
-                </span>
-                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
-                  Building the Future of Work
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  We are on a mission to transform how organizations manage and
-                  develop their most valuable asset - their people. Since 2015,
-                  we have been helping companies of all sizes build
-                  high-performing teams.
+    <div className="min-h-screen">
+      <main className="mx-auto max-w-[1440px] space-y-6 px-4 py-4 sm:px-5 md:px-6 md:py-6 lg:px-8">
+        <section>
+          <MotionWrapper variant="slideLeft" className="overflow-hidden">
+            <div className="flex min-h-[300px] items-center justify-center px-8 py-16 text-center text-forground sm:px-10 md:min-h-[360px] md:py-20">
+              <div className="max-w-3xl space-y-4">
+                <p className="text-sm text-foreground/70 sm:text-base">
+                  About Us
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button
-                    size="lg"
-                    className="bg-orange-500 text-white hover:bg-orange-500/90"
-                  >
-                    Join Our Team
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    Contact Us
-                  </Button>
-                </div>
-              </div>
-              <div className="relative">
-                <Image
-                  src="/images/team.jpg"
-                  alt="Inova HRMS Team"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        {/* <section className="py-16 bg-orange-500">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-white/80">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
-
-        {/* Mission Section */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1">
-                <Image
-                  src="/images/office.jpg"
-                  alt="Our Office"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-xl"
-                />
-              </div>
-              <div className="order-1 lg:order-2">
-                <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-4">
-                  Our Mission
-                </span>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                  Empowering Organizations to Unlock Human Potential
+                <h2 className="text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl lg:text-7xl">
+                  Built to Simplify Complexity and Power Smarter Operations
                 </h2>
-                <p className="text-muted-foreground text-lg mb-6">
-                  We believe that when employees thrive, businesses succeed. Our
-                  mission is to provide organizations with the tools they need
-                  to create meaningful performance conversations, foster
-                  continuous growth, and build cultures of excellence.
-                </p>
-                <p className="text-muted-foreground text-lg">
-                  Every feature we build, every decision we make, is guided by
-                  our commitment to helping companies and their people reach
-                  their full potential.
-                </p>
               </div>
             </div>
-          </div>
+          </MotionWrapper>
         </section>
 
-        {/* Values Section */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-4">
-                Our Values
-              </span>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                What We Stand For
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                Our values guide every aspect of how we work and interact with
-                our customers, partners, and each other.
-              </p>
-            </div>
+        <section className="my-20">
+          <div className="space-y-6">
+            <MotionWrapper
+              variant="slideUp"
+              className="rounded-[2rem] p-7 md:p-8"
+            >
+              <div className="space-y-5">
+                <span className="inline-flex px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-white">
+                  Our Story
+                </span>
+                <h3 className="max-w-[16ch] text-4xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-5xl">
+                  One connected platform for mission-critical operations
+                </h3>
+              </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div
-                  key={index}
-                  className="bg-background rounded-xl p-8 shadow-sm border border-border text-center"
-                >
-                  <div className="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mx-auto mb-6">
-                    <value.icon className="w-7 h-7 text-orange-500" />
+              <div className="mt-7 grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+                <div className="relative overflow-hidden rounded-[1.7rem] bg-white">
+                  <Image
+                    src="/assets/images/modules/dark-hero.jpg"
+                    alt="InnoX operational overview"
+                    width={6000}
+                    height={4000}
+                    className="h-full min-h-80 w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/35 via-transparent to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/60 bg-white/15 text-white backdrop-blur">
+                      <CirclePlay className="h-7 w-7" />
+                    </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground">{value.description}</p>
                 </div>
-              ))}
+
+                <div className="space-y-5">
+                  <div className="space-y-4 text-sm leading-7 text-slate-600 dark:text-slate-200 sm:text-base">
+                    <p className="font-medium text-slate-900 dark:text-white">
+                      Built on over 15 years of industry experience and
+                      continuous refinement, InnoX combines operational insight
+                      with reliable technology.
+                    </p>
+                    <p>
+                      It brings together critical business functions including
+                      Electronic Logging, Outage Management, Trouble Reporting,
+                      Finance, HR, and Asset Management into a single,
+                      intelligent system.
+                    </p>
+                    <p>
+                      With InnoX, organizations eliminate silos, reduce manual
+                      processes, and gain real-time insights to operate more
+                      efficiently.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-black/10 pt-5 md:grid-cols-4">
+                    {storyStats.map((stat) => (
+                      <div key={stat.label}>
+                        <p className="text-3xl font-semibold tracking-[-0.05em] text-[#1f1f1f] dark:text-white">
+                          {stat.value}
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </MotionWrapper>
+          </div>
+        </section>
+
+        <section className="">
+          <div className="space-y-6">
+            <div className="flex gap-3">
+              <MotionWrapper
+                variant="slideRight"
+                className="rounded-[2rem] bg-background p-7 md:p-8 min-w-[500px] mx-auto"
+              >
+                <div className="space-y-5">
+                  <span className="inline-flex rounded-full border border-forground/10 px-3 py-1 text-[11px] font-medium text-foreground">
+                    About InnoX Platform
+                  </span>
+                  <h1 className="max-w-[10ch] text-4xl font-semibold leading-none tracking-[-0.06em] text-foreground sm:text-5xl">
+                    Transforming How Organizations Operate
+                  </h1>
+                  <p className="max-w-md text-sm leading-7 text-foreground sm:text-base">
+                    InnoX is a unified operations platform designed to
+                    streamline processes, enhance visibility, and improve
+                    decision-making across organizations.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href="/contact" className={ctaPrimaryClassName}>
+                      Request Demo <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </MotionWrapper>
+
+              <MotionWrapper
+                variant="slideLeft"
+                className="overflow-hidden rounded-[2rem] bg-white dark:bg-black border dark:border-stone-500/20 border-stone-200 shadow-[0_20px_60px_rgba(15,23,42,0.06)]"
+              >
+                <div className="relative">
+                  <Image
+                    src="/assets/images/cta-journey.jpg"
+                    alt="Our mission at InnoX"
+                    width={1400}
+                    height={2100}
+                    className="h-60 w-full object-cover"
+                  />
+                </div>
+                <div className="space-y-3 p-5">
+                  <p className="text-xl font-semibold text-[#1f1f1f] dark:text-white">
+                    Our Mission
+                  </p>
+                  <p className="text-sm leading-6 text-slate-600 dark:text-slate-400">
+                    To empower organizations across Africa and beyond with a
+                    unified operations platform that simplifies complexity,
+                    enhances visibility, and drives efficient, data-driven
+                    decision-making.
+                  </p>
+                </div>
+              </MotionWrapper>
+
+              <MotionWrapper
+                variant="slideLeft"
+                className="overflow-hidden rounded-[2rem] bg-white dark:bg-black border dark:border-stone-500/20 border-stone-200 shadow-[0_20px_60px_rgba(15,23,42,0.06)]"
+              >
+                <div className="relative">
+                  <Image
+                    src="/assets/images/cta-journey.jpg"
+                    alt="Our mission at InnoX"
+                    width={1400}
+                    height={2100}
+                    className="h-60 w-full object-cover"
+                  />
+                </div>
+                <div className="space-y-3 p-5">
+                  <p className="text-xl font-semibold text-[#1f1f1f] dark:text-white">
+                    Our Vision
+                  </p>
+                  <p className="text-sm leading-6 text-slate-600 dark:text-slate-400">
+                    To become a leading global platform for enterprise
+                    operations, transforming how organizations manage, automate,
+                    and scale their processes through intelligent, integrated,
+                    and reliable technology.
+                  </p>
+                </div>
+              </MotionWrapper>
             </div>
           </div>
         </section>
 
-        {/* Timeline */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-4">
-                Our Journey
+        <section className="my-20">
+          <MotionWrapper variant="slideUp" className=" ">
+            <div
+              className="h-full w-full p-8 md:p-10 rounded-[2rem] text-white shadow-[0_24px_80px_rgba(15,23,42,0.16)] overflow-hidden relative"
+              style={{
+                backgroundImage: 'url(\'/assets/images/finance.png\')',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            >
+              <div className="bg-black/50 h-full w-full absolute top-0 left-0" />
+              <div className="max-w-xl space-y-5 relative">
+                <h2 className="max-w-[12ch] text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl">
+                  Built for scale, visibility, and smarter response.
+                </h2>
+
+                <p className="text-sm leading-7 text-white/75 sm:text-base">
+                  Built for scalability and reliability, InnoX empowers teams to
+                  work smarter, respond faster, and drive sustainable growth. It
+                  reflects deep operational insight across mission-critical
+                  environments.
+                </p>
+
+                <Link
+                  href="/modules"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/90"
+                >
+                  Explore Modules
+                </Link>
+              </div>
+            </div>
+          </MotionWrapper>
+        </section>
+
+        <section className="my-20">
+          <MotionWrapper variant="slideRight" className=" ">
+            <div className="space-y-4">
+              <span className="inline-flex rounded-full px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-200">
+                Why Choose InnoX
               </span>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                Key Milestones
+              <h2 className="max-w-[16ch] text-4xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-5xl">
+                The clarity teams need to work faster and smarter
               </h2>
-              <p className="text-muted-foreground text-lg">
-                From a small startup to a global HR technology leader, here is
-                our story.
+              <p className="max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-200 sm:text-base">
+                InnoX is built to automate and optimize organizational
+                processes, providing instant access to critical information and
+                enabling faster, smarter decision-making across all levels.
               </p>
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              <div className="relative">
-                {/* Timeline line */}
-                <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-border" />
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {platformHighlights.map((item, index) => {
+                const Icon = item.icon;
 
-                <div className="space-y-8">
-                  {milestones.map((milestone, index) => (
+                return (
+                  <article
+                    key={item.title}
+                    className={'rounded-[1.6rem] border border-black/8 p-5 group bg-white text-slate-950 dark:bg-black dark:text-white transition hover:bg-black/5 hover:text-slate-900 dark:hover:bg-white/5 dark:hover:text-slate-200'}
+                  >
                     <div
-                      key={index}
-                      className={`relative flex items-center gap-8 ${
-                        index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                      className={'flex h-11 w-11 items-center justify-center rounded-2xl bg-black/5 text-slate-900 dark:bg-white/10 dark:text-white transition group-hover:bg-background/10 group-hover:text-slate-900 dark:group-hover:bg-white/20 dark:group-hover:text-slate-200'}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 text-xl font-semibold leading-tight">
+                      {item.title}
+                    </h3>
+                    <p
+                      className={`mt-3 text-sm leading-7 ${
+                        index === 0 || index === 3
+                          ? 'text-slate-600'
+                          : 'text-slate-600'
                       }`}
                     >
-                      <div
-                        className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : ''}`}
-                      >
-                        <div className="bg-background rounded-xl p-6 shadow-lg border border-border inline-block">
-                          <span className="text-orange-500 font-bold text-lg">
-                            {milestone.year}
-                          </span>
-                          <p className="text-foreground mt-2">
-                            {milestone.event}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-background" />
-                      <div className="flex-1 hidden md:block" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+                      {item.description}
+                    </p>
+                  </article>
+                );
+              })}
             </div>
+          </MotionWrapper>
+        </section>
+
+        <section className="rounded-[2rem]  md:p-8 lg:p-10">
+          <MotionWrapper variant="slideUp" className="text-center">
+            <span className="inline-flex rounded-full border border-black/10 px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-200">
+              Modules Preview
+            </span>
+            <h2 className="mx-auto mt-5 max-w-[14ch] text-4xl font-semibold leading-none tracking-[-0.05em] text-[#1f1f1f] dark:text-white sm:text-5xl">
+              Ready to see InnoX in action?
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600 dark:text-slate-200 sm:text-base">
+              InnoX brings together critical business functions in one platform.
+              Start with the modules your teams need most, then expand smoothly
+              as operations grow.
+            </p>
+          </MotionWrapper>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {modulePreviews.map((module, index) => (
+              <MotionWrapper
+                key={module.title}
+                variant={index % 2 === 0 ? 'slideUp' : 'slideLeft'}
+              >
+                <article className="overflow-hidden rounded-[1.7rem] border border-black/8 dark:border-white/8 bg-white dark:bg-black h-[460px]">
+                  <div className="overflow-hidden">
+                    <Image
+                      src={module.image}
+                      alt={module.title}
+                      width={1440}
+                      height={606}
+                      className="h-[220px] w-full object-cover object-top"
+                    />
+                  </div>
+
+                  <div className="flex h-60 flex-col justify-between p-5">
+                    <div>
+                      <h3 className="text-2xl font-semibold leading-tight text-[#1f1f1f] dark:text-white">
+                        {module.title}
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-200">
+                        {module.description}
+                      </p>
+                    </div>
+
+                    <Link
+                      href={module.link}
+                      className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-black/30 w-fit"
+                    >
+                      Explore Module <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </article>
+              </MotionWrapper>
+            ))}
           </div>
         </section>
 
-        {/* Global Presence */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span className="inline-block px-4 py-1.5 bg-orange-500/10 text-orange-500 text-sm font-medium rounded-full mb-4">
-                  Global Reach
-                </span>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                  Serving Customers Worldwide
-                </h2>
-                <p className="text-muted-foreground text-lg mb-8">
-                  With offices across North America, Europe, and Asia, we
-                  provide localized support and solutions to companies around
-                  the globe.
-                </p>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Globe className="w-5 h-5 text-orange-500" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">
-                        150+ Countries
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        Customers in every continent
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Clock className="w-5 h-5 text-orange-500" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">
-                        24/7 Support
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        Always here to help
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Award className="w-5 h-5 text-orange-500" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">
-                        Industry Leader
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        Recognized by Gartner
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <TrendingUp className="w-5 h-5 text-orange-500" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1">
-                        40% YoY Growth
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        Sustainable expansion
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-muted/30 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold text-foreground mb-6">
-                  Our Offices
-                </h3>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-orange-500 font-semibold">HQ</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">
-                        San Francisco, USA
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        123 Market Street, CA 94105
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-orange-500 font-semibold">EU</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">
-                        London, UK
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        45 Fleet Street, EC4Y 1BT
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-orange-500 font-semibold">
-                        APAC
-                      </span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">
-                        Singapore
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        1 Raffles Place, 048616
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20">
-          <FAQ faqs={faqs} />
-        </section>
+        <FAQ
+          heading="Frequently asked questions"
+          description="Answers to the questions organizations usually ask when evaluating InnoX for integration, scale, security, and rollout."
+          faqs={aboutFaqs}
+        />
       </main>
     </div>
   );
