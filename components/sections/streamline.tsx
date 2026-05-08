@@ -69,7 +69,7 @@ export default function Streamline() {
             </div>
 
             <div className="flex justify-center pt-2 lg:justify-start">
-              <Link href={'/Modules'}>
+              <Link href={'/modules'}>
                 <Button
                   size="lg"
                   className="h-11 rounded-full bg-[#EF6411] px-8 text-white hover:bg-[#d9570e]"
