@@ -30,8 +30,8 @@ const offices = [
   {
     city: 'Accra',
     country: 'Ghana',
-    address: 'Osu Badu Ave, Accra',
-    postalCode: 'Accra, Ghana 00000',
+    address: 'Osu Badu Ave. Dzorwulu     ',
+    // postalCode: 'Accra',
     phone: '+233 55 604 5811',
     phone2: '+1 855-221-9979',
     email: 'info@innorik.com',
@@ -312,7 +312,7 @@ export default function ContactPage() {
                     <div className="mt-3 space-y-1 text-sm leading-6 text-muted-foreground">
                       <p>{headquarter.city}</p>
                       <p>{headquarter.address}</p>
-                      <p>{headquarter.postalCode}</p>
+                      {/* <p>{headquarter.postalCode}</p> */}
                       <p>{headquarter.country}</p>
                     </div>
                   </div>
