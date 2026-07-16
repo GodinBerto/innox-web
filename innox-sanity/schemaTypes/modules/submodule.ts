@@ -91,6 +91,20 @@ export default defineType({
           options: { hotspot: true },
         }),
         defineField({
+          name: 'bannerImage',
+          title: 'Banner Image',
+          type: 'image',
+          options: { hotspot: true },
+          description: 'Optional banner image for the hero section',
+        }),
+        defineField({
+          name: 'ctaImages',
+          title: 'CTA Images',
+          type: 'array',
+          of: [defineArrayMember({ type: 'image', options: { hotspot: true } })],
+          description: 'Optional images that can be used in the call-to-action area',
+        }),
+        defineField({
           name: 'title',
           title: 'Title',
           type: 'string',
