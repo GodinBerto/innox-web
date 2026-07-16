@@ -6,6 +6,7 @@ import { ModulePageContent, SanityImageAsset } from '@/types/sanity/schema';
 import { urlForImage } from '@/lib/sanity/sanity.image';
 
 type SanityImageLike =
+  | string
   | SanityImageAsset
   | NonNullable<ModulePageContent['subModuleBanner']>['image'];
 

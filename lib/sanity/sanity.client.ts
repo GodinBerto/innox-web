@@ -229,6 +229,18 @@ export interface SubModulePageHero {
     value?: string;
     description?: string;
   };
+  bannerImage?: {
+    asset?: {
+      _id?: string;
+      url?: string;
+    };
+  };
+  ctaImages?: {
+    asset?: {
+      _id?: string;
+      url?: string;
+    };
+  }[];
 }
 
 export interface SubModuleImproveItem {

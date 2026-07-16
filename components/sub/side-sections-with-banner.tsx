@@ -1,19 +1,16 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import { CheckCircle2 } from 'lucide-react';
 import { BannerCard } from '@/components/modules/items-with-banners';
 import { urlForImage } from '@/lib/sanity/sanity.image';
 import type { SubModuleMainCenterSideSection } from '@/lib/sanity/sanity.client';
-import type { ModulePageContent } from '@/types/sanity/schema';
 
 type BannerData = {
   title?: string;
   content?: string;
-  image?: ModulePageContent['subModuleBanner'] extends infer T
-    ? T extends { image?: infer I }
-      ? I
-      : never
-    : never;
+  image?: string;
 };
 
 type Props = {

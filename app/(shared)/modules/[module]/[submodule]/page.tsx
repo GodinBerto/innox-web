@@ -125,6 +125,12 @@ export default async function ModulePage({
     mobileImageUrl: subModuleData.responsiveDesign?.mobileImage?.asset?.url,
   };
 
+  const subModuleBannerImageUrl = (
+    modulePageData?.subModuleBanner?.image as
+      | { asset?: { url?: string } }
+      | undefined
+  )?.asset?.url;
+
   return (
     <div className="space-y-4 md:space-y-28">
       <DashboardSliderProvider length={3}>
@@ -146,7 +152,9 @@ export default async function ModulePage({
               ? {
                   title: modulePageData.subModuleBanner.title ?? '',
                   content: modulePageData.subModuleBanner.content ?? '',
-                  image: modulePageData.subModuleBanner.image,
+                  image:
+                    subModuleData.hero?.bannerImage?.asset?.url ||
+                    subModuleBannerImageUrl,
                 }
               : undefined
           }

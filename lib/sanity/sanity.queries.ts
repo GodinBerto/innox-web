@@ -140,6 +140,12 @@ export const subModulePageContentBySlugsQuery = groq`
           url
         }
       },
+      bannerImage {
+        asset->{
+          _id,
+          url
+        }
+      },
       dashboardFunctions[] {
         iconUrl,
         content
