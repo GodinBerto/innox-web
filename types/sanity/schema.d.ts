@@ -631,6 +631,39 @@ export type Streamline = {
   }>
 }
 
+export type IndustriesSection = {
+  _type: 'industriesSection'
+  heading?: string
+  description?: string
+  industries?: Array<
+    {
+      _key: string
+    } & Industry
+  >
+}
+
+export type PartnersSection = {
+  _type: 'partnersSection'
+  heading?: string
+  description?: string
+  partners?: Array<
+    {
+      _key: string
+    } & Partner
+  >
+}
+
+export type CtaImagesSection = {
+  _type: 'ctaImagesSection'
+  heading?: string
+  description?: string
+  ctaImages?: Array<
+    {
+      _key: string
+    } & CtaImage
+  >
+}
+
 export type BusinessSolutions = {
   _type: 'businessSolutions'
   heading?: string
@@ -697,6 +730,15 @@ export type HomePage = {
     | ({
         _key: string
       } & BusinessSolutions)
+    | ({
+        _key: string
+      } & CtaImagesSection)
+    | ({
+        _key: string
+      } & PartnersSection)
+    | ({
+        _key: string
+      } & IndustriesSection)
     | ({
         _key: string
       } & Streamline)
@@ -1012,6 +1054,59 @@ export type Module = {
   }>
 }
 
+export type Industry = {
+  _type: 'industry'
+  title?: string
+  logo?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}
+
+export type Partner = {
+  _type: 'partner'
+  name?: string
+  logo?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  link?: string
+}
+
+export type CtaImage = {
+  _type: 'ctaImage'
+  image?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  altText?: string
+  link?: string
+}
+
 export type FunctionalFeature = {
   _type: 'functionalFeature'
   icon?: string
@@ -1141,6 +1236,9 @@ export type AllSanitySchemaTypes =
   | HrBanner
   | ManagePeople
   | Streamline
+  | IndustriesSection
+  | PartnersSection
+  | CtaImagesSection
   | BusinessSolutions
   | ModulesCarousel
   | Hero
@@ -1150,6 +1248,9 @@ export type AllSanitySchemaTypes =
   | ImproveSection
   | Slug
   | Module
+  | Industry
+  | Partner
+  | CtaImage
   | FunctionalFeature
   | SanityImagePaletteSwatch
   | SanityImagePalette

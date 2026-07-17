@@ -22,6 +22,12 @@ import {
   faqSection,
   dividerContent,
   hero,
+  ctaImagesSection,
+  partnersSection,
+  industriesSection,
+  ctaImage,
+  partner,
+  industry,
   modulesCarousel,
   testimonial,
   // New document schemas
@@ -35,6 +41,9 @@ export const schemaTypes = [
   // Reusable object schemas
   functionalFeature,
   improveSection,
+  ctaImage,
+  partner,
+  industry,
   // Documents
   module,
   subModule,
@@ -44,6 +53,9 @@ export const schemaTypes = [
   hero,
   modulesCarousel,
   businessSolutions,
+  ctaImagesSection,
+  partnersSection,
+  industriesSection,
   streamline,
   managePeople,
   hrBanner,
